@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const organize_a_trip_schema = new mongoose.Schema(
   {
-    uniqueId: {
+    tour_created_userId: {
       type: String,
     },
     

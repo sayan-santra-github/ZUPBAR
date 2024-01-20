@@ -124,8 +124,8 @@ const get_trip_view = async (req, res) => {
 
 const organize_trip_view = async (req, res) => {
   try {
-    const user = await user_data.findById(req.session.user_id);
-    res.render("organize_a_trip", { user });
+    // const user = await user_data.findById(req.session.user_id);
+    res.render("organize_a_trip");
   } catch (error) {
     console.log(error.message);
   }
@@ -182,7 +182,7 @@ const organize_trip = async (req, res) => {
       ifsc_code
     ) {
       const tourorganizer = new trip_detail({
-        uniqueId: req.session.user_id + '-----' + Date.now(),
+        tour_created_userId: req.session.user_id,
         company_name: req.body.company_name,
         company_email: req.body.company_email,
         company_website: req.body.company_website,
