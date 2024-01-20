@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barbbo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/organize_a_trip.css" />
+</head>
+
+<body>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-4">Design your trip</h4>
+        <div class="card overflow-hidden">
+
+            <form action="/organizeTrip" method="post">
+                <div class="row no-gutters row-bordered row-border-light">
+                    <div class="col-md-3 pt-0">
+                        <div class="list-group list-group-flush account-settings-links">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list"
+                                href="#account-general">General</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#tour-info">Tour
+                                Info</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#tour-vehicle-info">Vehicle Info</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#legal-info">Legal
+                                Info</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#bankAccount-info">Bank Account
+                                Info</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                                href="#account-social-links">Social links</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="account-general">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label" for="company_name">Company Name*</label>
+                                        <input type="text" class="form-control mb-1" placeholder="Company Ltd."
+                                            name="company_name" id="company_name" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="company_email">Company E-mail*</label>
+                                        <input type="email" class="form-control mb-1" id="company_email"
+                                            name="company_email"
+                                            placeholder="If not then please write email id of this account" required />
+                                        <div class="alert alert-warning mt-3">
+                                            Your email is not confirmed. Please check your inbox.<br />
+                                            <a href="javascript:void(0)">Resend confirmation</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="company_website">Company Website</label>
+                                        <input type="text" class="form-control" id="company_website"
+                                            name="company_website" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="bankAccount-info">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label" for="accountHolder_name">Account Holder Name*</label>
+                                        <input type="text" class="form-control mb-1" placeholder="IN CAPITAL LETTER"
+                                            name="accountHolder_name" id="accountHolder_name" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="account_number">Account Number*</label>
+                                        <input type="number" class="form-control mb-1" id="account_number"
+                                            name="account_number" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="ifsc_code">IFSC Code*</label>
+                                        <input type="text" class="form-control" id="ifsc_code"
+                                            name="ifsc_code" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tour-info">
+                                <div class="card-body pb-2">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tour_starting_place">Tour Starting / Ending
+                                            Destination*</label>
+                                        <input type="text" class="form-control" id="tour_starting_place"
+                                            name="tour_starting_place" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="tour_started_date">Tour Start in*</label>
+                                        <input type="date" class="form-control" id="tour_started_date"
+                                            name="tour_started_date" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="tour_started_time">Boarding Time*</label>
+                                        <input type="time" class="form-control" id="tour_started_time"
+                                            name="tour_started_time" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="touring_destination">Touring Destination*</label>
+                                        <input type="text" class="form-control" id="touring_destination"
+                                            name="touring_destination" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="tour_ended_date">Tour Ends in*</label>
+                                        <input type="date" class="form-control" id="tour_ended_date"
+                                            name="tour_ended_date" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="tour_ended_time">Ending Time*</label>
+                                        <input type="time" class="form-control" id="tour_ended_time"
+                                            name="tour_ended_time" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Tour Range*</label>
+                                        <span style="display: flex; font-size:large">
+                                            <input type="number" class="form-control" id="tourRange_day"
+                                                name="tourRange_day" style="width: 5vw;"
+                                                required />&nbsp;&nbsp;<label for="tourRange_day">Days</label>&nbsp;&nbsp;&nbsp;
+                                            <input type="number" class="form-control ml-2" id="tourRange_night"
+                                                name="tourRange_night" style="width: 5vw;" required />&nbsp;&nbsp;<label for="tourRange_night">Nights</label>
+                                        </span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="tour_package_rate">Package Rate* (in INR)</label>
+                                        <input type="number" class="form-control" id="tour_package-rate"
+                                            name="tour_package_rate" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Package Include* : </label>
+
+                                        <input type="checkbox" name="packageInclude_roomRent"
+                                            id="packageInclude_roomRent" value="Room Rent" checked> Room Rent </input>
+                                        <input type="checkbox" name="packageInclude_freeFood" id="packageInclude_freeFood" value="Free Food" checked> Free Food </input>
+                                        <input type="checkbox" name="packageInclude_carRent" id="packageInclude_carRent" value="Car Rent" checked> Car Rent </input>
+
+                                        <textarea class="form-control" rows="2" placeholder="Other inclusions ...">
+                                        </textarea>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="details_about_tour">Details About Tour</label>
+                                        <textarea class="form-control" rows="5" id="details_about_tour"
+                                            name="details_about_tour" aria-valuenow=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tour-vehicle-info">
+                                <div class="card-body media align-items-center">
+                                    <img src="" class="d-block ui-w-80" id="tour_details_picture" />
+                                    <div class="media-body ml-4">
+                                        <label class="btn btn-outline-primary" for="tour_details_picture__upload">
+                                            Upload Photo
+                                            <input type="file" class="tour_details_picture-fileinput"
+                                                id="tour_details_picture__upload" name="tour_details_picture__upload"
+                                                accept="image/jpeg, image/png, image/jpg" />
+                                        </label>
+                                        &nbsp;
+                                        <button type="reset" class="btn btn-default md-btn-flat">
+                                            Reset
+                                        </button>
+                                        <div class="text-light small mt-1">
+                                            Upload your vehicals picture or your company performance
+                                            certificate or any other picture related to your trip
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="border-light m-0" />
+                                <div class="form-group">
+                                    <div class="form-check" style="display:flex">
+
+                                        <p style="padding-right: 3vw;">Bus Type* :</p>
+                                        <div>
+                                            <p>
+                                                <input class="form-check-input" type="radio" name="bus-type"
+                                                    id="seat-can-be-cancelled" value="AC">
+                                                <label class="form-check-label" for="seat-can-be-cancelled">
+                                                    AC
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <input class="form-check-input" type="radio" name="bus-type"
+                                                    id="seat-can-be-cancelled" value="NON-AC" checked>
+                                                <label class="form-check-label" for="seat-can-be-cancelled">
+                                                    NON-AC
+                                                </label>
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="legal-info">
+                                <div class="card-body pb-2">
+                                    <h6 class="mb-4"><strong>Cancellation Policies*</strong></h6>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <p>
+                                                <input class="form-check-input" type="radio" name="seat-cancellation"
+                                                    id="seat-can-be-cancelled" value="Booked seat can be cancelled"
+                                                    checked>
+                                                <label class="form-check-label" for="seat-can-be-cancelled">
+                                                    Booked seat can be cancelled :
+                                                    <select name="" id="">
+                                                        <option value="before 3 days of boarding">before 3 days of
+                                                            boarding
+                                                        </option>
+                                                        <option value="before 4 days of boarding">before 4 days of
+                                                            boarding
+                                                        </option>
+                                                        <option value="before 6 days of boarding">before 6 days of
+                                                            boarding
+                                                        </option>
+                                                        <option value="before 7 days of boarding" selected>before 7 days
+                                                            of
+                                                            boarding
+                                                        </option>
+                                                        <option value="before 10 days of boarding">before 10 days of
+                                                            boarding</option>
+                                                    </select>
+                                                </label>
+                                            </p>
+
+                                            <p>
+                                                <input class="form-check-input" type="radio" name="seat-cancellation"
+                                                    id="seat-can-be-cancelled" value="Booked seat can not cancelled">
+                                                <label class="form-check-label" for="seat-can-be-cancelled">
+                                                    Booked seat can not cancelled.
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="border-light m-0" />
+
+                                    <h6 class="mb-4"><strong>Terms & Conditions*</strong></h6>
+
+                                    <p style="display: flex;">1.&nbsp;<input type="text" name="tandc_1" id="tandc_1"
+                                            value="Facility metioned in the package will be provided."
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">2.&nbsp;<input type="text" name="tandc_2" id="tandc_2"
+                                            value="Anything not mentioned in the package will not be provided."
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">3.&nbsp;<input type="text" name="tandc_3" id="tandc_3"
+                                            value="Refund in case of cancellations depends on the Operator's Cancellation Policy."
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">4.&nbsp;<input type="text" name="tandc_4" id="tandc_4"
+                                            value="If required, all passengers shall produce the Identity Proof compulsory for the Darshan, any of the ID proof like, Voter ID / Passport / Driving License, Aadhaar Card."
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">5.&nbsp;<input type="text" name="tandc_5" id="tandc_5"
+                                            value="All of the passenger should behave well and friendly."
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">6.&nbsp;<input type="text" name="tandc_6" id="tandc_6"
+                                            value="No misconduct shall be allowed on the journey."
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">7.&nbsp;<input type="text" name="tandc_7" id="tandc_7"
+                                            value="" style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">8.&nbsp;<input type="text" name="tandc_8" id="tandc_8"
+                                            value="" style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p style="display: flex;">9.&nbsp;<input type="text" name="tandc_9" id="tandc_9"
+                                            value="" style="width: 100%; height:fit-content; font-size: 0.7rem;"></p>
+                                    <p>Other Conditions(please enter like below view)<textarea name="tandc_ohter"
+                                            id="tandc_other"
+                                            placeholder="10. Please write your condition. &#10;11. Please write your condition. "
+                                            style="width: 100%; height:fit-content; font-size: 0.7rem;"></textarea></p>
+
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="account-social-links">
+                                <div class="card-body pb-2">
+                                    <div class="form-group">
+                                        <label class="form-label">Twitter</label>
+                                        <input type="text" class="form-control" value="https://twitter.com/user" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Facebook</label>
+                                        <input type="text" class="form-control" value="https://www.facebook.com/user" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Instagram</label>
+                                        <input type="text" class="form-control"
+                                            value="https://www.instagram.com/user" />
+                                    </div>
+                                    <div class="text-right mt-3">
+                                        <button type="submit" class="btn btn-primary"
+                                            value="Submit">Submit</button>&nbsp;
+                                        <button type="button" class="btn btn-default"
+                                            onclick="history.back()">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {{!-- <div class="text-right mt-3">
+            <button type="submit" class="btn btn-primary" onsubmit="clickfunc(this)"
+                value="/organizeTrip/confirmTrip">Place Tour</button>&nbsp;
+            <button type="button" class="btn btn-default" onclick="history.back()">Cancel</button>
+        </div> --}}
+    </div>
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        let tour_details_picture = document.getElementById(
+            "tour_details_picture"
+        );
+        let tour_details_picture__upload = document.getElementById(
+            "tour_details_picture__upload"
+        );
+
+        tour_details_picture__upload.onchange = function () {
+            tour_details_picture.src = URL.createObjectURL(
+                tour_details_picture__upload.files[0]
+            );
+        };
+
+
+        function clickfunc(link) {
+            location.href = link.value;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#maindiv {
+  position: absolute;
+  top: 87px;
+  width: 100%;
+  height: fit-content;
+}
+
+#backbutton {
+  height: 27px;
+  width: 82px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.all-trip {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trips {
+  font-family: Montserrat, sans-serif;
+  text-decoration: none;
+  position: relative;
+  color: #1d1d1d;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 4vh 4vw;
+  margin: 5vh 0;
+  width: 80vw;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+}
+
+.route_details {
+  color: #1d1d1d;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.route {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #1d1d1d;
+}
+
+.fare {
+  color: #1d1d1d;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
+.row2 {
+  margin: 22px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.D117_td {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  color: #2d2c2c;
+}
+
+.totalRoutes {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  color: #747474;
+  font-weight: 500;
+  font-size: 15px;
+}

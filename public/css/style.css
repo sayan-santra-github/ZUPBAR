@@ -1,0 +1,286 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.nav-link {
+  opacity: 0.8;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+#firsthome {
+  height: 31rem;
+  background-image: url(https://img.freepik.com/free-vector/tourists-travel-group-people-excursion_107791-14284.jpg?t=st=1695032248~exp=1695032848~hmac=7db7683c6ed01315e21b52fd5902ad850364a573bde06d9d1cf66f41af0fe39b);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+#homepagegreet {
+  font-family: "Croissant One", cursive;
+  font-size: 3rem;
+}
+
+#homePageGreetDiv {
+  position: absolute;
+  left: 1rem;
+  top: 13rem;
+}
+
+#services {
+  position: relative;
+  top: 6em;
+  height: 50vw;
+  display: grid;
+  grid-template-columns: 32vw 32vw 32vw;
+  grid-template-rows: 25vw 25vw;
+}
+
+#productDivision {
+  border: 1px solid #09ed3a;
+  position: relative;
+  top: 5rem;
+  left: 20vw;
+  box-shadow: 0.5px 1px 8px #7bd57b;
+  width: 60vw;
+}
+
+#ourServiceTag {
+  font-family: "Oswald", sans-serif;
+  position: absolute;
+  top: 2vw;
+  left: 37vw;
+  font-size: 4vw;
+}
+
+.loginbtn:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.servicediv {
+  height: 23vw;
+  width: 23vw;
+  position: relative;
+  top: 17vw;
+  left: 6vw;
+  margin-right: 9vw;
+  overflow: hidden;
+  box-shadow: -2px -2px 8px #6b6868;
+  border-radius: 10%;
+  border: none;
+  background-color: white;
+}
+
+.servicediv img {
+  height: 15vw;
+}
+
+.servicediv:hover {
+  transform: scale(101%);
+  transition: 0.1s ease-in-out;
+}
+
+.servicedivcontent {
+  font-size: 1.8vw;
+  text-decoration: none;
+  position: relative;
+  top: 1vw;
+  left: 3vw;
+}
+
+
+/* MEDIA QUARIES */
+
+@media only screen and (max-width: 1220px) {
+  #firsthome {
+    background-size: 46vw 60vh;
+  }
+}
+
+@media only screen and (max-width: 1115px) {
+  #firsthome {
+    background-size: 38vw 55vh;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  #firsthome {
+    background-size: 42vw 55vh;
+  }
+
+  #homepagegreet {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  #firsthome {
+    background-size: 386px 55vh;
+  }
+
+  #homepagegreet {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 835px) {
+  #firsthome {
+    height: 90vh;
+    background-size: 370px 55vh;
+  }
+
+  #homePageGreetDiv {
+    top: 12rem;
+  }
+
+  #homepagegreet {
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  #firsthome {
+    height: 80vh;
+    background-size: 350px 55vh;
+  }
+
+  #homePageGreetDiv {
+    top: 10rem;
+  }
+
+  #homepagegreet {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  #firsthome {
+    height: 65vh;
+    background-size: 300px 35vh;
+  }
+
+  #homePageGreetDiv {
+    top: 8rem;
+  }
+
+  #homepagegreet {
+    font-size: 1.3rem;
+  }
+
+  #services :nth-child(2) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  #services :nth-child(3) {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  #services :nth-child(4) {
+    grid-column: 2/3;
+  }
+
+  #serviceDiv1 {
+    left: 10vw;
+  }
+
+  #serviceDiv2 {
+    left: 23vw;
+  }
+
+  #serviceDiv3 {
+    top: 38vw;
+    left: 0vw;
+  }
+
+  #services {
+    height: 120vw;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  #firsthome {
+    height: 55vh;
+    background-size: 300px 35vh;
+    opacity: 0.7;
+  }
+
+  #homePageGreetDiv {
+    top: 7rem;
+    left: 0.3rem;
+  }
+
+  #homepagegreet {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  #firsthome {
+    height: 45vh;
+    background: url("../photos/bb.jpg") no-repeat center;
+    background-size: 100% 30vh;
+    background-color: black;
+  }
+
+  #homePageGreetDiv {
+    top: 7rem;
+    left: 0.3rem;
+  }
+
+  #homepagegreet {
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+  }
+
+  .servicediv {
+    height: 35vw;
+    width: 35vw;
+  }
+
+  .servicediv img {
+    height: 25vw;
+  }
+
+  .servicedivcontent {
+    font-size: 2.8vw;
+    text-decoration: none;
+    position: relative;
+    top: 1vw;
+    left: 3vw;
+  }
+}
+
+@media only screen and (max-width: 255px) {
+  #firsthome {
+    height: 40vh;
+    background: url("../photos/bb.jpg") no-repeat center;
+    background-size: 100% 30vh;
+    background-color: black;
+    /* opacity: 0.7; */
+  }
+
+  #homePageGreetDiv {
+    top: 5rem;
+    left: 0.3rem;
+  }
+
+  #homepagegreet {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+  }
+
+  .servicedivcontent {
+    font-size: 2.6vw;
+    text-decoration: none;
+    position: relative;
+    top: 1vw;
+    left: 3vw;
+  }
+
+  .servicediv img{
+    height: 23vw;
+  }
+}

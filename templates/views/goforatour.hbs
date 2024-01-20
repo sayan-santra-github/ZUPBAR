@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zupbar || Get a Trip</title>
+    <link rel="stylesheet" href="css/gettrip.css">
+</head>
+
+<body>
+
+    {{#if user}}
+    {{>logged_navbar}}
+    {{else}}
+    {{>navbar}}
+    {{/if}}
+
+    <div id="maindiv">
+        <button type="button" id="backbutton" onclick="history.back()"><strong>&#8592; Back</strong></button>
+        <div class="all-trip">
+
+            {{#each trips}}
+            <div class="trips">
+
+
+                <div class="route_details">
+                    <a href="/goforatour/busdetails" class="route" title="{{tour_starting_place}} to puri Package">
+                        {{tour_starting_place}} to {{touring_destination}}
+                    </a>
+                    <p>
+                        <span>Package Rate &nbsp;</span>
+                        <span class="fare">INR {{tour_package_rate}} /-</span>
+                    </p>
+                </div>
+
+                <div class="row2 D117_td" id="D117_table_column_1">
+                    <span class="totalRoutes">
+                        {{tourRange_day}} Days, {{tourRange_night}} Nights
+                    </span>
+                    <span class="totalRoutes">From :
+                        <strong>{{tour_started_date_Day}}/{{tour_started_date_Month}}/{{tour_started_date_Year}}</strong>
+                    </span>
+                    <span class="totalRoutes">To :
+                        <strong>{{tour_ended_date_Day}}/{{tour_ended_date_Month}}/{{tour_ended_date_Year}}</strong>
+                    </span>
+                    <span class="book_now" id="time-btn-61"><a href="/goforatour/busdetails" style="text-decoration: none; color:rgba(0, 0, 0, 0.813)">BOOK NOW</a></span>
+
+                </div>
+
+            </div>
+            {{/each}}
+
+            <div class="trips">
+
+
+                <div class="route_details">
+                    <a href="/goforatour/busdetails" class="route" title="Kolkata to puri Package">
+                        Kolkata to Puri Package
+                    </a>
+                    <p>
+                        <span>From</span>
+                        <span class="fare">INR 2000</span>
+                    </p>
+                </div>
+
+                <div class="row2 D117_td" id="D117_table_column_1">
+                    <span class="totalRoutes">
+                        3 bus options
+                    </span>
+                    <span class="totalRoutes">First Bus<!-- --> :
+                        <strong>17:00</strong>
+                    </span>
+                    <span class="totalRoutes">Last Bus<!-- --> :
+                        <strong>19:00</strong>
+                    </span>
+                    <span class="book_now" id="time-btn-61">BOOK NOW</span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="trips">
+                <!-- <div style="display: flex;column-gap: 33%;">
+                <span>Kolkata to Puri</span>
+                <p>12/12/2023</p>
+               </div> -->
+
+
+                <div class="route_details">
+                    <a href="/bus-tickets/hyderabad-to-shirdi-package" class="route" title="Kolkata to puri Package">
+                        Kolkata to Puri Package
+                    </a>
+                    <p>
+                        <span>From</span>
+                        <span class="fare">INR 2000</span>
+                    </p>
+                </div>
+
+                <div class="row2 D117_td" id="D117_table_column_1">
+                    <span class="totalRoutes">
+                        3 bus options
+                    </span>
+                    <span class="totalRoutes">First Bus<!-- --> :
+                        <strong>17:00</strong>
+                    </span>
+                    <span class="totalRoutes">Last Bus<!-- --> :
+                        <strong>19:00</strong>
+                    </span>
+                    <span class="book_now" id="time-btn-61">BOOK NOW</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

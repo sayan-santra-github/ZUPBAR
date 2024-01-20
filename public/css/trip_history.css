@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .bodyDiv {
+    background-color: rgb(220 241 231);
+    height: 100vh;
+  }
+  

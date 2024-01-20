@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bodyDiv {
+  background-color: rgb(220 241 231);
+  height: 100vh;
+}
+
+#mainDiv {
+  position: relative;
+  top: 15vh;
+  left: 7vw;
+  height: 70vh;
+  width: 86vw;
+  background-color: rgb(255 255 255);
+  border-radius: 5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subdiv {
+  width: 37vw;
+  height: 56vh;
+  position: relative;
+  top: 6.5vh;
+  margin-left: 44px;
+  margin-right: 44px;
+  background-color: white;
+}
+
+.summary {
+  padding-top: 1.5em;
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.summary .summary_body {
+  border: 1px solid #dedede;
+  border-radius: 3px;
+}
+.summary .summary_body .package_name {
+  padding: 1em 1.5em 0;
+  color: #3e3d53;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.summary .summary_body .generic_section {
+  padding: 1.5em 1.5em 0;
+  display: flex;
+  color: #3e3d53;
+}
+.summary .summary_body .generic_section .journey_date {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  font-size: 0.875em;
+  color: #34495e;
+  padding-right: 1em;
+  border-right: 1px solid #dedede;
+  align-items: center;
+}
+.summary .summary_body .generic_section .journey_date .date_label {
+  text-align: center;
+}
+.summary .summary_body .generic_section .journey_date .date {
+  font-weight: bold;
+  background: rgb(251, 255, 251);
+  padding: 8px 12px;
+}
+.summary .summary_body .generic_section .includes {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-left: 1em;
+  width: 70%;
+}
+.summary .summary_body .generic_section .includes .pkg_incl_label {
+  font-size: 0.875em;
+  margin-bottom: 8px;
+}
+.summary .summary_body .generic_section .includes .pkg_includes {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.summary .summary_body .generic_section .includes .pkg_includes .benefits {
+  display: flex;
+  /* flex-direction: row; */
+  /* flex-grow: 1; */
+  align-items: center;
+  margin: 6px 0;
+  /* flex-wrap: wrap; */
+  flex-basis: 1;
+  flex: 1 0 30%;
+}
+.summary
+  .summary_body
+  .generic_section
+  .includes
+  .pkg_includes
+  .benefits
+  .icon {
+  font-size: 1.5em;
+}
+.summary
+  .summary_body
+  .generic_section
+  .includes
+  .pkg_includes
+  .benefits
+  .text {
+  font-size: 0.75em;
+  margin-left: 0.5em;
+}
+.summary .summary_body .select_seat {
+  margin-top: 1.5em;
+  border-top: 1px solid #dedede;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+.summary .summary_body .select_seat .select_label {
+  color: #3e3d53;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.summary .summary_body .select_seat .bus_travels {
+  color: #7e7e8d;
+}
+.summary .summary_body .select_seat .bus_travels > span:first-child {
+  font-size: 0.875em;
+  font-weight: bold;
+  text-transform: capitalize;
+  display: block;
+  margin-bottom: 0.5em;
+}
+.summary .summary_body .select_seat .bus_travels > span:last-child {
+  font-size: 0.75em;
+  text-transform: initial;
+}
+.summary .summary_body .select_seat .book_seat_btn {
+  border-radius: 7px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 1em;
+  padding: 0.5em;
+  text-transform: uppercase;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+}
+.summary .summary_body .select_seat .book_seat_btn:focus {
+  outline: 0;
+}
+
+.fixed_summary {
+  position: fixed;
+  width: 29%;
+}
+
+.fixed_summary_new {
+  position: relative !important;
+  width: 97% !important;
+  display: block;
+  margin-top: 97em;
+}
+
+.fixed_summary_new_height {
+  position: relative !important;
+  width: 97% !important;
+  display: block;
+  margin-top: 225em;
+}
+
+.section_heading {
+  color: #000000;
+  font-size: 4vh;
+  font-weight: 600;
+  margin: 0;
+  margin-left: 2vw;
+  margin-top: 7vh;
+}
+
+.activityCard {
+  margin-top: 6vh;
+  margin-left: 2vw;
+}
+
+.activityCard .date {
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: bold;
+  padding-left: 24px;
+}
+
+.activityCard .time {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #3e3d53;
+  font-size: 13px;
+  text-transform: uppercase;
+  position: relative;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+div.cardContainer {
+  padding-left: 24px;
+}
+
+.activityCard .card {
+  margin-top: 5px;
+  padding-bottom: 16px;
+  background: #fff;
+  border-bottom: 1px solid #d1d1d8;
+}
+
+.activityCard .activityName {
+  color: #1fd2437e;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 8px 0px;
+}
+
+.activityCard .card .card_detail {
+  display: flex;
+}
+
+.activityCard .card .card_detail .card_content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.activityCard .card .card_detail .card_content .card_header {
+  font-size: 0.875em;
+}
+
+.activityCard .card .cardLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activityCard .card .card_detail .card_content .card_header .cardSubHeading {
+  color: #7e7e8d;
+}
+
+.activityCard .card .card_detail .card_content .card_body {
+  flex-grow: 1;
+  position: relative;
+  color: #3e3d53;
+  font-size: 1em;
+  margin-top: 1em;
+}
+
+.activityCard .card .card_detail .card_content .card_body .card_description {
+  font-size: 0.75em;
+}
+
+.activityCard
+  .card
+  .card_detail
+  .card_content
+  .card_body
+  .card_description
+  .cardLine:first-child {
+  margin-bottom: 0.5em;
+}
+
+.activityCard .card .cardLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activityCard .card .card_detail .card_content .card_body .section_detail_link {
+  color: #1034d9;
+  font-size: 0.875em;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  right: 0;
+  bottom: 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  display: block;
+  text-align: right;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.cancellationContainer {
+  font-size: 22px;
+  color: #3e3d53;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.cancellationContainer td {
+  border: 1px solid #dddddd;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: normal;
+  color: #3e3d53;
+  text-align: center;
+}
+
+.cancellationContainer table {
+  border-collapse: collapse;
+}
+
+.durationTd {
+  width: 35%;
+}
+
+.cancellationHeader {
+  font-size: 22px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.26;
+  letter-spacing: normal;
+  color: #3e3d53;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.header_cancellation {
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid #dddddd;
+}
+
+.time_cancellation_text {
+  font-weight: 600;
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.percentage_deduction_cancellation {
+  font-weight: 600;
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.deduction_percentage {
+  width: 33%;
+}
+
+.percentage_cancellation_charges {
+  font-weight: 600;
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.tncDescription {
+  background: #ffffff;
+  color: #3e3e52;
+}
+
+.tncDescription .termsCondition {
+  font-size: 0.75em;
+  padding: 0px 0px 1em;
+}

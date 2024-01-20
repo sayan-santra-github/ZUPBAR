@@ -1,0 +1,277 @@
+.cont-hedn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8vw;
+  width: 100%;
+  font-size: 3.5vw;
+}
+
+.cont-phone {
+  border: 2px solid #8b8383c0;
+  height: 6.5vw;
+  width: 22vw;
+  position: absolute;
+  top: 15vw;
+  left: 6vw;
+  box-shadow: 0px 0px 9px 0px #635d5d;
+  border-radius: 14px;
+}
+
+.cont-phone-p {
+  font-size: 1.5vw;
+  margin-top: 1vw;
+}
+
+.cont-email {
+  border: 2px solid #8b8383c0;
+  height: 6.5vw;
+  width: 22vw;
+  position: absolute;
+  top: 15vw;
+  left: 40vw;
+  box-shadow: 0px 0px 9px 0px #635d5d;
+  border-radius: 14px;
+}
+
+.cont-email-p {
+  font-size: 1.5vw;
+  margin-top: 1vw;
+}
+
+.cont-address {
+  border: 2px solid #8b8383c0;
+  height: 6.5vw;
+  width: 22vw;
+  position: absolute;
+  top: 15vw;
+  left: 72vw;
+  box-shadow: 0px 0px 9px 0px #635d5d;
+  border-radius: 14px;
+}
+
+.cont-address-p {
+  font-size: 1.5vw;
+  margin-top: 1vw;
+}
+
+.messg-main {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 32vw;
+  width: 100%;
+  height: 48vw;
+}
+
+.messg-submain {
+  width: 70vw;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.messg-submain-getintouch {
+  position: absolute;
+  top: 3vw;
+  left: 23vw;
+  font-size: 3vw;
+}
+
+.cont-formLable {
+  font-size: 1.6vw;
+}
+
+.messg-submain-nameDiv {
+  position: absolute;
+  top: 11vw;
+  left: 17vw;
+  width: 18.5vw;
+}
+
+#name {
+  font-size: 1.4vw;
+}
+
+.messg-submain-emailDiv {
+  position: absolute;
+  top: 11vw;
+  left: 37vw;
+  width: 25vw;
+}
+
+#email {
+  font-size: 1.4vw;
+}
+
+.messg-submain-mobileDiv {
+  position: absolute;
+  top: 11vw;
+  left: 64vw;
+  width: 18vw;
+}
+
+.messg-sunmain-mobile-countycde {
+  font-size: 1.3vw;
+}
+
+#mobile {
+  font-size: 1.4vw;
+}
+
+.messg-submain-messageDiv {
+  top: 20vw;
+  width: 61vw;
+  left: 4vw;
+}
+
+#message {
+  height: 21.5vw;
+  padding-top: 3vw;
+  font-size: 1.3vw;
+}
+
+.messg-submain-sendbtn {
+  position: absolute;
+  top: 42.5vw;
+  left: 72vw;
+  font-size: 1.5vw;
+}
+
+/* media quaries */
+
+@media only screen and (max-width: 800px) {
+  .cont-hedn {
+    top: 10vw;
+  }
+
+  #message {
+    height: 21.5vw;
+    padding-top: 5vw;
+  }
+
+  .messg-main {
+    top: 32vw;
+    width: 100%;
+    height: 55vw;
+  }
+
+  .messg-submain {
+    width: 80vw;
+    background-color: white;
+    border-radius: 20px;
+  }
+
+  .cont-phone {
+    height: 9vw;
+    width: 28vw;
+    position: absolute;
+    top: 18vw;
+    left: 2vw;
+    box-shadow: 0px 0px 3px 0px #635d5d;
+    border-radius: 14px;
+  }
+  .cont-email {
+    border: 2px solid #8b8383c0;
+    height: 9vw;
+    width: 32vw;
+    position: absolute;
+    top: 18vw;
+    left: 32vw;
+    box-shadow: 0px 0px 3px 0px #635d5d;
+    border-radius: 14px;
+  }
+  .cont-address {
+    border: 2px solid #8b8383c0;
+    height: 9vw;
+    width: 32vw;
+    position: absolute;
+    top: 18vw;
+    left: 66vw;
+    box-shadow: 0px 0px 3px 0px #635d5d;
+    border-radius: 14px;
+  }
+  .messg-submain-nameDiv {
+    position: absolute;
+    top: 11vw;
+    left: 13vw;
+    width: 20vw;
+  }
+
+  #name {
+    font-size: 1.8vw;
+  }
+
+  .messg-submain-emailDiv {
+    position: absolute;
+    top: 11vw;
+    left: 36vw;
+    width: 25vw;
+  }
+
+  #email {
+    font-size: 1.8vw;
+  }
+
+  .messg-submain-mobileDiv {
+    position: absolute;
+    top: 11vw;
+    left: 64vw;
+    width: 22vw;
+  }
+
+  .messg-sunmain-mobile-countycde {
+    font-size: 1.3vw;
+    height: 5vw;
+  }
+
+  #mobile {
+    font-size: 1.8vw;
+  }
+
+  .messg-submain-messageDiv {
+    top: 20vw;
+    width: 69vw;
+    left: 5.5vw;
+  }
+
+  #message {
+    height: 21.5vw;
+    padding-top: 5vw;
+    font-size: 1.8vw;
+  }
+
+  .messg-submain-sendbtn {
+    position: absolute;
+    top: 42.5vw;
+    left: 72vw;
+    font-size: 1.5vw;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .cont-hedn {
+    top: 15vw;
+  }
+
+  .cont-phone {
+    top: 27vw;
+    border-radius: 7px;
+  }
+
+  .cont-email {
+    top: 27vw;
+    border-radius: 7px;
+  }
+
+  .cont-address {
+    top: 27vw;
+    border-radius: 7px;
+  }
+
+  .messg-main {
+    top: 45vw;
+    height: 48vw;
+  }
+
+}
