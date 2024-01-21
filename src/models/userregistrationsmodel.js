@@ -64,10 +64,18 @@ const userregistrationschema = new mongoose.Schema(
       min: [6, "Must be at least 6, got {VALUE}"],
     },
 
-    email_isVerified:{
+    email_isVerified: {
       type: Boolean,
       default: false,
     },
+
+    trip_attended: [
+      {
+        trip: {
+          type: String,
+        },
+      },
+    ],
 
     tokens: [
       {

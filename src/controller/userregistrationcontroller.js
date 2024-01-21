@@ -25,7 +25,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-
 // user profile picture upload
 
 const storageforprofilepicupdate = multer.diskStorage({
@@ -38,7 +37,9 @@ const storageforprofilepicupdate = multer.diskStorage({
   },
 });
 
-const uploadforprofilepicupdate = multer({ storage: storageforprofilepicupdate });
+const uploadforprofilepicupdate = multer({
+  storage: storageforprofilepicupdate,
+});
 
 // sending mail for verification
 
@@ -98,11 +99,11 @@ const get_trip_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
     const trips = await trip_detail.find({});
-    // const tripsintfdte = await trips.findById({uniqueId:})
-    // console.log(trips.uniqueId)
+    // const tripsintfdte = await trips.findById({tour_created_userId})
+    // console.log(trips.tour_created_userId)
 
-    var tour_started_date = await new Date(trips.tour_started_date)
-    var tour_ended_date = await new Date(trips.tour_ended_date)
+    var tour_started_date = await new Date(trips.tour_started_date);
+    var tour_ended_date = await new Date(trips.tour_ended_date);
 
     var tour_started_date_Day = tour_started_date.getDate();
     var tour_started_date_Month = tour_started_date.getMonth();
@@ -112,9 +113,16 @@ const get_trip_view = async (req, res) => {
     var tour_ended_date_Month = tour_ended_date.getMonth();
     var tour_ended_date_Year = tour_ended_date.getFullYear();
 
-
-
-    res.render("goforatour", { user, trips, tour_started_date_Day, tour_started_date_Month, tour_started_date_Year, tour_ended_date_Day, tour_ended_date_Month, tour_ended_date_Year });
+    res.render("goforatour", {
+      user,
+      trips,
+      tour_started_date_Day,
+      tour_started_date_Month,
+      tour_started_date_Year,
+      tour_ended_date_Day,
+      tour_ended_date_Month,
+      tour_ended_date_Year,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -208,7 +216,7 @@ const organize_trip = async (req, res) => {
         tandc_other: req.body.tandc_other,
         accountHolder_name: req.body.accountHolder_name,
         account_number: req.body.account_number,
-        ifsc_code: req.body.ifsc_code
+        ifsc_code: req.body.ifsc_code,
       });
 
       const tourorganized = await tourorganizer.save();
@@ -222,7 +230,7 @@ const organize_trip = async (req, res) => {
         });
       }
     } else {
-      res.send("please fill all details" );
+      res.send("please fill all details");
     }
   } catch (error) {
     res.send({ message: "there is a problem please try again" });
@@ -238,15 +246,19 @@ const myaccount_view = async (req, res) => {
 
     var birthday = new Date(user.dob);
 
-    var birthday_date = birthday.getDate()
-    var birthday_month = birthday.getMonth()
-    var birthday_year = birthday.getFullYear()
-
+    var birthday_date = birthday.getDate();
+    var birthday_month = birthday.getMonth();
+    var birthday_year = birthday.getFullYear();
 
     if (!user) {
       res.redirect("/login");
     } else {
-      res.render("userprofile", { user, birthday_year, birthday_month, birthday_date });
+      res.render("userprofile", {
+        user,
+        birthday_year,
+        birthday_month,
+        birthday_date,
+      });
     }
   } catch (error) {
     console.log(error);
@@ -259,19 +271,38 @@ const updating_profile_picture_controller = uploadforprofilepicupdate.single(
 
 const myaccount = async (req, res) => {
   try {
-    const user = await user_data.findById({_id: req.session.user_id});
+    const user = await user_data.findById({ _id: req.session.user_id });
 
     if (req.file) {
-      const userDataUpdated = await user_data.findByIdAndUpdate({_id: user._id}, {$set: {profile_picture_url: req.file.filename, first_name: req.body.first_name, last_name: req.body.last_name, country: req.body.country, state: req.body.state, phone: req.body.phone}});
-      
+      const userDataUpdated = await user_data.findByIdAndUpdate(
+        { _id: user._id },
+        {
+          $set: {
+            profile_picture_url: req.file.filename,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            country: req.body.country,
+            state: req.body.state,
+            phone: req.body.phone,
+          },
+        }
+      );
     } else {
-      const userDataUpdated = await user_data.findByIdAndUpdate({_id: user._id}, {$set: {first_name: req.body.first_name, last_name: req.body.last_name, country: req.body.country, state: req.body.state, phone: req.body.phone}});
-
+      const userDataUpdated = await user_data.findByIdAndUpdate(
+        { _id: user._id },
+        {
+          $set: {
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            country: req.body.country,
+            state: req.body.state,
+            phone: req.body.phone,
+          },
+        }
+      );
     }
 
-
-    res.redirect('/');
-
+    res.redirect("/");
   } catch (error) {
     console.log(error);
   }
@@ -293,11 +324,11 @@ const goforatour_busdetails_view = async (req, res) => {
 const trip_history_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
-    res.render('trip_history', {user})
+    res.render("trip_history", { user });
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 // approach_us view
 
@@ -332,8 +363,6 @@ const insertuser = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const conpassword = req.body.conpassword;
-
-    
 
     if (
       first_name &&
@@ -415,7 +444,8 @@ const loginuser = async (req, res) => {
   const sublogincheckForUsericon = auth.logincheckForUsericon;
   try {
     const user_typed_email = req.body.login_email;
-    const user_typed_password = req.body.login_password || req.body.login_passwordForaldcft;
+    const user_typed_password =
+      req.body.login_password || req.body.login_passwordForaldcft;
 
     const useremail = await user_data.findOne({ email: user_typed_email });
 
@@ -438,7 +468,7 @@ const loginuser = async (req, res) => {
         req.session.user_id = useremail._id;
         res.status(201).redirect("/");
       } else {
-        res.send("Your email is not verified....")
+        res.send("Your email is not verified....");
       }
     } else {
       res.send("invaild password details");
