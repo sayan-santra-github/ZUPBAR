@@ -132,7 +132,6 @@ const get_trip_view = async (req, res) => {
 
 const organize_trip_view = async (req, res) => {
   try {
-    // const user = await user_data.findById(req.session.user_id);
     res.render("organize_a_trip");
   } catch (error) {
     console.log(error.message);
@@ -310,10 +309,12 @@ const myaccount = async (req, res) => {
 
 // goforatour_busdetails view
 
-const goforatour_busdetails_view = async (req, res) => {
+const goforatour_details_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
-    res.render("insidegettrip", { user });
+    const tripId = req.query.id;
+    const trips = await trip_detail.findById({_id : tripId})
+    res.render("insidegettrip", { user, trips });
   } catch (error) {
     console.log(error.message);
   }
@@ -505,7 +506,7 @@ module.exports = {
   myaccount_view,
   updating_profile_picture_controller,
   myaccount,
-  goforatour_busdetails_view,
+  goforatour_details_view,
   approach_us_view,
   loginuser_view,
   insertuser_view,

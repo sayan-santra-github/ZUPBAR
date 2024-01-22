@@ -110,7 +110,14 @@ const organize_a_trip_schema = new mongoose.Schema(
     ifsc_code: {
       type: String,
       required: true,
-    }
+    },
+    trip_attendies: [
+      {
+        user_id: {
+          type: String
+        }
+      }
+    ]
   },
   { timestamps: true }
 );
