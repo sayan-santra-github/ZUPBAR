@@ -146,7 +146,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="account-general">
                                 <div class="card-body media align-items-center">
-                                    <img src="/user_profile_photos/{{ user.profile_picture_url }}"
+                                    <img src="/user_profile_photos/<%= user.profile_picture_url %>"
                                         class="d-block ui-w-80" id="profilepic">
                                     <div class="media-body ml-4">
                                         <label class="btn btn-outline-primary" for="profile_picture_upload">
@@ -164,15 +164,15 @@
                                     <div class="form-group">
                                         <label class="form-label" for="first_name">First Name</label>
                                         <input type="text" class="form-control mb-1" name="first_name" id="first_name"
-                                            value="{{user.first_name}}" required>
+                                            value="<%= user.first_name %>" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="last_name">Last Name</label>
                                         <input type="text" class="form-control" name="last_name" id="last_name"
-                                            value="{{user.last_name}}" required>
+                                            value="<%= user.last_name %>" required>
                                     </div>
                                     <div class="form-group">
-                                        <p class="form-label">Gender &rArr; &nbsp;{{user.gender}}</p>
+                                        <p class="form-label">Gender &rArr; &nbsp;<%= user.gender %></p>
                                         
                                     </div>
 
@@ -180,7 +180,7 @@
                             </div>
                             <div class="tab-pane fade" id="account-change-password">
                                 <div class="card-body pb-2">
-                                    {{!-- <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="form-label" for="current_password">Current Password</label>
                                         <input type="password" class="form-control" name="current_password"
                                             id="current_password" placeholder="Enter your current password">
@@ -194,7 +194,7 @@
                                         <label class="form-label" for="conpassword">Confirm New Password</label>
                                         <input type="password" class="form-control" name="conpassword" id="conpassword"
                                             placeholder="Re-enter your new password">
-                                    </div> --}}
+                                    </div> -->
                                     <br>
                                     <br>
                                     <p style="font-size: 1.3rem;">Please use Reset Password Option before Login to update your password. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This functionality is currently unavailble</p>
@@ -205,7 +205,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="dob">Birthday</label>
                                         <input type="text" class="form-control" name="dob" id="dob" readonly="true"
-                                            value="{{birthday_date}}/{{birthday_month}}/{{birthday_year}}">
+                                            value="<%= birthday_date %>/<%= birthday_month %>/<%= birthday_year %>">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="country">Country</label>
@@ -226,12 +226,12 @@
                                     <div class="form-group">
                                         <label class="form-label" for="phone">Phone</label>
                                         <input type="text" class="form-control" name="phone" id="phone"
-                                            value="{{user.phone}}" required>
+                                            value="<%= user.phone %>" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="email">E-mail</label>
                                         <input type="text" class="form-control mb-1" name="email" id="email" readonly="true"
-                                            value="{{user.email}}" required>
+                                            value="<<%= user.email %>>" required>
                                     </div>
                                 </div>
                             </div>

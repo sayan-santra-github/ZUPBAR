@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const auth = require("../middleware/auth");
-const { error } = require("console");
+const { error, log } = require("console");
 const { request } = require("http");
 
 // user profile picture upload
@@ -113,6 +113,7 @@ const get_trip_view = async (req, res) => {
     var tour_ended_date_Month = tour_ended_date.getMonth();
     var tour_ended_date_Year = tour_ended_date.getFullYear();
 
+
     res.render("goforatour", {
       user,
       trips,
@@ -124,7 +125,7 @@ const get_trip_view = async (req, res) => {
       tour_ended_date_Year,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -144,7 +145,7 @@ const organize_trip = async (req, res) => {
     const company_email = req.body.company_email;
     const company_website = req.body.company_website;
     const tour_starting_place = req.body.tour_starting_place;
-    const tour_started_date = req.body.tour_started_date;
+    const tour_started_date = new Date(req.body.tour_started_date);
     const tour_started_time = req.body.tour_started_time;
     const touring_destination = req.body.touring_destination;
     const tour_ended_date = req.body.tour_ended_date;
@@ -166,6 +167,12 @@ const organize_trip = async (req, res) => {
     const accountHolder_name = req.body.accountHolder_name;
     const account_number = req.body.account_number;
     const ifsc_code = req.body.ifsc_code;
+
+    console.log(tour_started_date);
+
+    let tour_started_date_day = tour_started_date.getDate();
+    let tour_started_date_month = tour_started_date.getMonth();
+    let tour_started_date_year = tour_started_date.getFullYear();
 
     if (
       company_name &&
@@ -194,7 +201,7 @@ const organize_trip = async (req, res) => {
         company_email: req.body.company_email,
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
-        tour_started_date: req.body.tour_started_date,
+        tour_started_date: tour_started_date_day/tour_started_date_month/tour_started_date_year,
         tour_started_time: req.body.tour_started_time,
         touring_destination: req.body.touring_destination,
         tour_ended_date: req.body.tour_ended_date,
