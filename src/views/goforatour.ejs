@@ -26,7 +26,7 @@
       <div class="trips">
 
         <div class="route_details">
-          <a href="/goforatour/details?id={{_id}}" class="route" title="{{tour_starting_place}} to puri Package">
+          <a href="/goforatour/details?id=<%= trips._id %>" class="route" title="{{tour_starting_place}} to puri Package">
             <%= trips.tour_starting_place %>  to  <%= trips.touring_destination %>
           </a>
           <p>
@@ -40,10 +40,10 @@
             <%= trips.tourRange_day %> Days, <%= trips.tourRange_night %> Nights
           </span>
           <span class="totalRoutes">From :
-            <strong><%= trips.tour_started_date %>/<%= tour_started_date_Month %>/<%= tour_started_date_Year %></strong>
+            <strong><%= trips.tour_started_date_day %> / <%= trips.tour_started_date_month %> / <%= trips.tour_started_date_year %></strong>
           </span>
           <span class="totalRoutes">To :
-            <strong>{{tour_ended_date_Day}}/{{tour_ended_date_Month}}/{{tour_ended_date_Year}}</strong>
+            <strong><%= trips.tour_ended_date_day %> / <%= trips.tour_ended_date_month %> / <%= trips.tour_ended_date_year %></strong>
           </span>
           <span class="book_now" id="time-btn-61"><a href="/goforatour/busdetails" style="text-decoration: none; color:rgba(0, 0, 0, 0.813)">BOOK
               NOW</a>

@@ -23,7 +23,7 @@
                   <div class="card_header">
                     <div class="cardLine"></div>
                     <div class="cardLine">
-                      <span class="cardheading" style="font-size: 3vh">{{trips.company_name}}</span>
+                      <span class="cardheading" style="font-size: 3vh"><%= trips.company_name %></span>
                     </div>
                     <div class="cardLine">
                       <span class="cardSubHeading">
@@ -33,7 +33,7 @@
                   </div>
                   <div class="card_body">
                     <div class="card_description">
-                      <div class="cardLine">Board the bus from {{trips.tour_starting_place}}</div>
+                      <div class="cardLine">Board the bus from <%= trips.tour_starting_place %></div>
                       <div class="cardLine">
                         Please ensure you reach boarding point 30 mins before
                         to avoid any rush
@@ -122,37 +122,42 @@
           <br>
           <br>
           <div class="termsCondition">
-            1. {{trips.tandc_1}}
+            1. <%= trips.tandc_1 %>
           </div>
           <div class="termsCondition">
-            2. {{trips.tandc_2}}
+            2. <%= trips.tandc_2 %>
           </div>
           <div class="termsCondition">
-            3. {{trips.tandc_3}}
+            3. <%= trips.tandc_3 %>
           </div>
           <div class="termsCondition">
-            4. {{trips.tandc_4}}
+            4. <%= trips.tandc_4 %>
           </div>
           <div class="termsCondition">
-            5. {{trips.tandc_5}}
+            5. <%= trips.tandc_5 %>
           </div>
           <div class="termsCondition">
-            6. {{trips.tandc_6}}
+            6. <%= trips.tandc_6 %>
           </div>
+          <% if (trips.tandc_7) { %>
           <div class="termsCondition">
-            7. {{trips.tandc_7}}
+            7. <%= trips.tandc_7 %>
           </div>
+
+          <% } %>
+
+          <% if (trips.tandc_8) { %>
           <div class="termsCondition">
-            8. If required, all passengers shall produce the Identity Proof
-            compulsory for the Darshan, any of the ID proof like, Voter ID /
-            Passport / Driving License, Aadhaar Card
+            8. <%= trips.tandc_8 %>
           </div>
+          <% } %>
+
+          <% if (trips.tandc_9) { %>
           <div class="termsCondition">
-            9. All passengers should get full COVID-19 Vaccination Dose
-            Certificate (2 Doses) as prescribed by the Government of India or
-            COVID-19 Negative Certificate obtained within 72 hours prior to
-            the date of darshan should be produced
+            9. <%= trips.tandc_9 %>
           </div>
+          <% } %>
+
         </div>
       </div>
       <div class="subdiv">

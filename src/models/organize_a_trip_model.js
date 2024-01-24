@@ -7,7 +7,7 @@ const organize_a_trip_schema = new mongoose.Schema(
     tour_created_userId: {
       type: String,
     },
-    
+
     company_name: {
       type: String,
       require: true,
@@ -28,8 +28,18 @@ const organize_a_trip_schema = new mongoose.Schema(
       required: true,
     },
 
-    tour_started_date: {
-      type: Date,
+    tour_started_date_day: {
+      type: String,
+      required: true,
+    },
+
+    tour_started_date_month: {
+      type: String,
+      required: true,
+    },
+
+    tour_started_date_year: {
+      type: String,
       required: true,
     },
     tour_started_time: {
@@ -38,21 +48,31 @@ const organize_a_trip_schema = new mongoose.Schema(
     },
     touring_destination: {
       type: String,
-      required: true
+      required: true,
     },
-    tour_ended_date: {
-      type: Date,
+    tour_ended_date_day: {
+      type: String,
+      required: true,
+    },
+
+    tour_ended_date_month: {
+      type: String,
+      required: true,
+    },
+
+    tour_ended_date_year: {
+      type: String,
       required: true,
     },
     tour_ended_time: {
       type: String,
       required: true,
     },
-    tourRange_day:{
+    tourRange_day: {
       type: Number,
       required: true,
     },
-    tourRange_night:{
+    tourRange_night: {
       type: Number,
       required: true,
     },
@@ -114,10 +134,10 @@ const organize_a_trip_schema = new mongoose.Schema(
     trip_attendies: [
       {
         user_id: {
-          type: String
-        }
-      }
-    ]
+          type: String,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );

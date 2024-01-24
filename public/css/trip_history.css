@@ -1,10 +1,150 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
+
+.bodyDiv {
+  background-color: rgb(220 241 231);
+  height: fit-content;
+}
+
+#backbutton {
+  height: 1.5vw;
+  width: 5vw;
+  border: none;
+  background-color: rgb(220 241 231);
+  cursor: pointer;
+  font-size: 1.3vw;
+  position: relative;
+  top: 2vw;
+  left: 1vw;
+}
+
+#mainDiv {
+  position: relative;
+  top: 8vh;
+  left: 7vw;
+  height: 100vh;
+  width: 86vw;
+  background-color: rgb(255 255 255);
+  border-radius: 2vh;
+}
+
+.navhed{
+  display: flex;
+  height: 4vw;
+  width: 100%;
+  justify-content: center;
+}
+
+.subnavhed{
+  border: 1.5px solid rgb(228, 231, 228);
+  border-radius: 0 10px 10px;
+  height: 3vw;
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.5vw;
+  cursor: pointer;
+  margin-top: 0.5vw;
+}
+
+.subnavhed a:focus-visible{
+  border: 5px solid rgb(0, 255, 0);
   
-  .bodyDiv {
-    background-color: rgb(220 241 231);
-    height: 100vh;
-  }
-  
+}
+
+
+#yourattendedtours{
+  position: relative;
+  top: 3vw;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#yourorganizedtours{
+  position: relative;
+  top: 3vw;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trips {
+  font-family: Montserrat, sans-serif;
+  text-decoration: none;
+  position: relative;
+  color: #1d1d1d;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 4vh 4vw;
+  margin: 5vh 0;
+  width: 68vw;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+}
+
+.route_details {
+  color: #1d1d1d;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.route {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.4vw;
+  text-decoration: none;
+  color: #1d1d1d;
+}
+
+.route_details p:nth-child(2){
+  font-size: 1.4vw;
+}
+
+.route_details p:nth-child(3){
+  font-size: 1.4vw;
+}
+
+.fare {
+  color: #1d1d1d;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
+.row2 {
+  margin: 2vw 0 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5vw 0;
+  text-align: center;
+  font-size: 1vw;
+  color: #2d2c2c;
+}
+
+.totalRoutes {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, sans-serif;
+  color: #747474;
+  font-weight: 500;
+  font-size: 1.2vw;
+}

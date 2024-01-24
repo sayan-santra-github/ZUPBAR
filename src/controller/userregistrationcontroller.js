@@ -102,27 +102,9 @@ const get_trip_view = async (req, res) => {
     // const tripsintfdte = await trips.findById({tour_created_userId})
     // console.log(trips.tour_created_userId)
 
-    var tour_started_date = await new Date(trips.tour_started_date);
-    var tour_ended_date = await new Date(trips.tour_ended_date);
-
-    var tour_started_date_Day = tour_started_date.getDate();
-    var tour_started_date_Month = tour_started_date.getMonth();
-    var tour_started_date_Year = tour_started_date.getFullYear();
-
-    var tour_ended_date_Day = tour_ended_date.getDate();
-    var tour_ended_date_Month = tour_ended_date.getMonth();
-    var tour_ended_date_Year = tour_ended_date.getFullYear();
-
-
     res.render("goforatour", {
       user,
       trips,
-      tour_started_date_Day,
-      tour_started_date_Month,
-      tour_started_date_Year,
-      tour_ended_date_Day,
-      tour_ended_date_Month,
-      tour_ended_date_Year,
     });
   } catch (error) {
     console.log(error.message);
@@ -143,36 +125,31 @@ const organize_trip = async (req, res) => {
   try {
     const company_name = req.body.company_name;
     const company_email = req.body.company_email;
-    const company_website = req.body.company_website;
     const tour_starting_place = req.body.tour_starting_place;
     const tour_started_date = new Date(req.body.tour_started_date);
     const tour_started_time = req.body.tour_started_time;
     const touring_destination = req.body.touring_destination;
-    const tour_ended_date = req.body.tour_ended_date;
+    const tour_ended_date = new Date(req.body.tour_ended_date);
     const tour_ended_time = req.body.tour_ended_time;
     const tourRange_day = req.body.tourRange_day;
     const tourRange_night = req.body.tourRange_night;
     const tour_package_rate = req.body.tour_package_rate;
-    const details_about_tour = req.body.details_about_tour;
     const tandc_1 = req.body.tandc_1;
     const tandc_2 = req.body.tandc_2;
     const tandc_3 = req.body.tandc_3;
     const tandc_4 = req.body.tandc_4;
     const tandc_5 = req.body.tandc_5;
     const tandc_6 = req.body.tandc_6;
-    const tandc_7 = req.body.tandc_7;
-    const tandc_8 = req.body.tandc_8;
-    const tandc_9 = req.body.tandc_9;
-    const tandc_other = req.body.tandc_other;
     const accountHolder_name = req.body.accountHolder_name;
     const account_number = req.body.account_number;
     const ifsc_code = req.body.ifsc_code;
 
-    console.log(tour_started_date);
-
     let tour_started_date_day = tour_started_date.getDate();
     let tour_started_date_month = tour_started_date.getMonth();
     let tour_started_date_year = tour_started_date.getFullYear();
+    let tour_ended_date_day = tour_ended_date.getDate();
+    let tour_ended_date_month = tour_ended_date.getMonth();
+    let tour_ended_date_year = tour_ended_date.getFullYear();
 
     if (
       company_name &&
@@ -182,6 +159,7 @@ const organize_trip = async (req, res) => {
       tour_starting_place &&
       tour_started_date &&
       tour_started_time &&
+      touring_destination &&
       tourRange_day &&
       tourRange_night &&
       tour_package_rate &&
@@ -201,10 +179,14 @@ const organize_trip = async (req, res) => {
         company_email: req.body.company_email,
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
-        tour_started_date: tour_started_date_day/tour_started_date_month/tour_started_date_year,
+        tour_started_date_day,
+        tour_started_date_month: tour_started_date_month + 1,
+        tour_started_date_year,
         tour_started_time: req.body.tour_started_time,
         touring_destination: req.body.touring_destination,
-        tour_ended_date: req.body.tour_ended_date,
+        tour_ended_date_day,
+        tour_ended_date_month : tour_ended_date_month +1,
+        tour_ended_date_year,
         tour_ended_time: req.body.tour_ended_time,
         tourRange_day: req.body.tourRange_day,
         tourRange_night: req.body.tourRange_night,
@@ -287,6 +269,7 @@ const myaccount = async (req, res) => {
             profile_picture_url: req.file.filename,
             first_name: req.body.first_name,
             last_name: req.body.last_name,
+            gender: req.body.gender,
             country: req.body.country,
             state: req.body.state,
             phone: req.body.phone,
@@ -300,6 +283,7 @@ const myaccount = async (req, res) => {
           $set: {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
+            gender: req.body.gender,
             country: req.body.country,
             state: req.body.state,
             phone: req.body.phone,
@@ -314,13 +298,13 @@ const myaccount = async (req, res) => {
   }
 };
 
-// goforatour_busdetails view
+// goforatour_details view
 
 const goforatour_details_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
     const tripId = req.query.id;
-    const trips = await trip_detail.findById({_id : tripId})
+    const trips = await trip_detail.findById({ _id: tripId });
     res.render("insidegettrip", { user, trips });
   } catch (error) {
     console.log(error.message);
@@ -404,14 +388,7 @@ const insertuser = async (req, res) => {
           confirm_password: req.body.conpassword,
         });
 
-        const token = await registeruser.generateAuthToken();
-        console.log("the success part is :" + token);
-
-        res.cookie("jwt", token, {
-          expires: new Date(Date.now() + 45 * 24 * 3600000),
-          httpOnly: true,
-        });
-
+      
         const user_registerd = await registeruser.save();
 
         if (user_registerd) {
@@ -437,7 +414,7 @@ const insertuser = async (req, res) => {
       });
     }
   } catch (error) {
-    // res.render("createanaccountform", { message: "User Already registered", });
+    res.render("createanaccountform", { message: "User Already registered", });
     console.log(error);
   }
 };

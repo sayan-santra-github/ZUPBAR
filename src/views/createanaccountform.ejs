@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zupbar--My Account</title>
+  <title>Zupbar || create an account</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 
 <style>
   body {
@@ -59,15 +58,6 @@
   .card {
     background-clip: padding-box;
     box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-  }
-
-  .genders {
-    margin: 0 2%;
-    margin-bottom: 13px;
-    display: flex;
-    align-items: center;
-    color: rgb(106, 106, 106);
-    width: 20%;
   }
 
   .row-bordered {
@@ -129,15 +119,30 @@
     padding: 0.85rem 1.5rem;
     border-color: rgba(24, 28, 33, 0.03) !important;
   }
+
+  .genders {
+    margin: 0 2%;
+    margin-bottom: 13px;
+    display: flex;
+    align-items: center;
+    color: rgb(106, 106, 106);
+    width: 20%;
+  }
 </style>
 
 <body>
-  <form action="/myaccount" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="hidden_user_id" id="hidden_user_id" value="{{user._id}}">
 
+  <% if (locals.message) { %>
+  <div class="container">
+    <p class="alert alert-danger mt-4" role="alert">! Alert : <%= locals.message %></p>
+  </div>
+  <% } %>
+
+
+  <form action="/createanaccount" method="post" enctype="multipart/form-data">
     <div class="container light-style flex-grow-1 container-p-y">
       <h4 class="font-weight-bold py-3 mb-4">
-        Account settings
+        Create Account
       </h4>
       <div class="card overflow-hidden">
         <div class="row no-gutters row-bordered row-border-light">
@@ -145,17 +150,19 @@
             <div class="list-group list-group-flush account-settings-links">
               <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
               <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Info</a>
+              <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-verification">Verification</a>
               <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Password</a>
+              <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">Connections</a>
             </div>
           </div>
           <div class="col-md-9">
             <div class="tab-content">
               <div class="tab-pane fade active show" id="account-general">
                 <div class="card-body media align-items-center">
-                  <img src="/user_profile_photos/<%= user.profile_picture_url %>" class="d-block ui-w-80" id="profilepic">
+                  <img src="user-regular-24.png" class="d-block ui-w-80" id="profilepic">
                   <div class="media-body ml-4">
                     <label class="btn btn-outline-primary" for="profile_picture_upload">
-                      Upload new photo
+                      Upload Profile Photo
                       <input type="file" class="account-settings-fileinput" id="profile_picture_upload" name="profile_picture_upload" accept="image/jpeg, image/png, image/jpg">
                     </label> &nbsp;
                     <button type="button" class="btn btn-default md-btn-flat">Reset</button>
@@ -165,21 +172,21 @@
                 <hr class="border-light m-0">
                 <div class="card-body">
                   <div class="form-group">
-                    <label class="form-label" for="first_name">First Name</label>
-                    <input type="text" class="form-control mb-1" name="first_name" id="first_name" value="<%= user.first_name %>" required>
+                    <label class="form-label" for="first_name">First Name*</label>
+                    <input type="text" class="form-control mb-1" name="first_name" id="first_name" placeholder="Enter Your First Name" required>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="last_name">Last Name</label>
-                    <input type="text" class="form-control" name="last_name" id="last_name" value="<%= user.last_name %>" required>
+                    <label class="form-label" for="last_name">Last Name*</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Your Last Name" required>
                   </div>
                   <div class="form-group">
                     <label class="form-label">Gender*</label>
                     <label for="male" class="genders">
-                      <input type="radio" name="gender" id="male" value="Male" <% if (user.gender === 'Male') { %> checked <% } %>>Male
+                      <input type="radio" name="gender" id="male" value="Male">Male
                     </label>
 
                     <label for="female" class="genders">
-                      <input type="radio" name="gender" id="female" value="Male" <% if (user.gender === 'Female') { %> checked <% } %>>Female
+                      <input type="radio" name="gender" id="female" value="Female">Female
                     </label>
                   </div>
 
@@ -187,40 +194,30 @@
               </div>
               <div class="tab-pane fade" id="account-change-password">
                 <div class="card-body pb-2">
-                  <!-- <div class="form-group">
-                                        <label class="form-label" for="current_password">Current Password</label>
-                                        <input type="password" class="form-control" name="current_password"
-                                            id="current_password" placeholder="Enter your current password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="password">New Password</label>
-                                        <input type="password" class="form-control" name="password" id="password"
-                                            placeholder="Enter your new password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="conpassword">Confirm New Password</label>
-                                        <input type="password" class="form-control" name="conpassword" id="conpassword"
-                                            placeholder="Re-enter your new password">
-                                    </div> -->
-                  <br>
-                  <br>
-                  <p style="font-size: 1.3rem;">Please use Reset Password Option before Login to update your password. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This functionality is currently unavailble</p>
+                  <div class="form-group">
+                    <label class="form-label" for="password">Password*</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="conpassword">Confirm password*</label>
+                    <input type="password" class="form-control" name="conpassword" id="conpassword" placeholder="Re-enter your password">
+                  </div>
                 </div>
               </div>
               <div class="tab-pane fade" id="account-info">
                 <div class="card-body pb-2">
                   <div class="form-group">
-                    <label class="form-label" for="dob">Birthday</label>
-                    <input type="text" class="form-control" name="dob" id="dob" readonly="true" value="<%= birthday_date %>/<%= birthday_month %>/<%= birthday_year %>">
+                    <label class="form-label" for="dob">Birthday*</label>
+                    <input type="date" class="form-control" name="dob" id="dob" required>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="country">Country</label>
+                    <label class="form-label" for="country">Country*</label>
                     <select class="custom-select" name="country" id="country" required>
                       <option selected>INDIA</option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="state">State</label>
+                    <label class="form-label" for="state">State*</label>
                     <select class="custom-select" name="state" id="state" required>
                       <option selected>WEST BENGAL</option>
                     </select>
@@ -230,26 +227,57 @@
                 <div class="card-body pb-2">
                   <h6 class="mb-4">Contacts</h6>
                   <div class="form-group">
-                    <label class="form-label" for="phone">Phone</label>
-                    <input type="text" class="form-control" name="phone" id="phone" value="<%= user.phone %>" required>
+                    <label class="form-label" for="phone">Phone*</label>
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your mobile number" required>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="email">E-mail</label>
-                    <input type="text" class="form-control mb-1" name="email" id="email" readonly="true" value="<%= user.email %>" required>
+                    <label class="form-label" for="email">E-mail*</label>
+                    <input type="text" class="form-control mb-1" name="email" id="email" placeholder="Enter your Email id" required>
                   </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="account-verification">
+                <div class="card-body pb-2">
+                  <div class="alert alert-warning mt-3">
+                    Your email is not confirmed! &nbsp;Please click on...<br>
+                    <a href="javascript:void(0)">Send confirmation</a>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="account-connections">
+                <div class="card-body">
+                  <button type="button" class="btn btn-twitter">Connect to
+                    <strong>X(Twitter)</strong></button>
+                </div>
+                <hr class="border-light m-0">
+                <hr class="border-light m-0">
+                <div class="card-body">
+                  <button type="button" class="btn btn-facebook">Connect to
+                    <strong>Facebook</strong></button>
+                </div>
+                <hr class="border-light m-0">
+                <div class="card-body">
+                  <button type="button" class="btn btn-instagram">Connect to
+                    <strong>Instagram</strong></button>
                 </div>
               </div>
 
             </div>
           </div>
+        </div>
+      </div>
+      <div class="text-right mt-3">
+        <button type="submit" class="btn btn-primary" value="Submit">Submit</button>&nbsp;
+        <button type="button" class="btn btn-default" onclick="history.back()">Cancel</button>
+      </div>
+    </div>
+
   </form>
-  </div>
-  </div>
-  <div class="text-right mt-3">
-    <button type="submit" class="btn btn-primary">Save Changes</button>&nbsp;
-    <button type="button" class="btn btn-default" onclick="history.back()">Cancel</button>
-  </div>
-  </div>
+
+
+
+
+
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
