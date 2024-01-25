@@ -9,17 +9,17 @@
   </head>
   <body>
     <div class="bodyDiv">
-      <button type="button" id="backbutton" onclick="history.back()">
+      <button type="button" id="backbutton" onclick="back(this)" value="/">
         <strong>&#8592; Back</strong>
       </button>
 
       <div id="mainDiv">
-        <div class="navhed">
-          <div class="subnavhed active"><a href="#yourattendedtours" style="text-decoration: none; color: black;">Your Attended Tours</a></div>
-          <div class="subnavhed active"><a href="#yourorganizedtours" style="text-decoration: none; color: black;">Your Organized Tours</a></div>
+        <div id="navhed">
+          <button class="subnavhed active" value="#yourattendedtours" onclick="showattendedcontent(this)"><a href="#yourattendedtours">Your Attended Tours</a></button>
+          <button class="subnavhed " value="#yourorganizedtours" onclick="showorganizedcontent(this)"><a href="#yourorganizedtours" >Your Organized Tours</a></button>
         </div>
 
-        <!-- <div id="yourattendedtours">
+        <div id="yourattendedtours">
           <div class="trips">
             <div class="route_details">
               <p class="route">kolkata to puri</p>
@@ -49,7 +49,7 @@
             </div>
           </div>
 
-        </div> -->
+        </div>
 
         <div id="yourorganizedtours">
           <div class="trips">
@@ -89,6 +89,37 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <script>
+      let subnavheds = document.querySelectorAll(".subnavhed");
+
+      subnavheds.forEach(subnavhed => {
+        subnavhed.addEventListener("click", () => {
+          document.querySelector(".active").classList.remove("active");
+          subnavhed.classList.add("active");
+        });
+
+      });
+
+      function showattendedcontent(link) {
+        location.href = link.value;
+
+        document.getElementById("yourorganizedtours").style.display = "none";
+        document.getElementById("yourattendedtours").style.display = "flex";
+      } 
+      
+      function showorganizedcontent(link) {
+        location.href = link.value;
+
+        document.getElementById("yourattendedtours").style.display = "none";
+        document.getElementById("yourorganizedtours").style.display = "flex";
+      } 
+
+      function back(link) {
+        location.href = link.value;
+      }
+    </script>
   </body>
 </html>

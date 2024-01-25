@@ -30,7 +30,7 @@
   border-radius: 2vh;
 }
 
-.navhed{
+#navhed{
   display: flex;
   height: 4vw;
   width: 100%;
@@ -49,13 +49,22 @@
   font-size: 1.5vw;
   cursor: pointer;
   margin-top: 0.5vw;
+  outline: none;
+  background-color: white;
 }
 
-.subnavhed a:focus-visible{
-  border: 5px solid rgb(0, 255, 0);
-  
+.subnavhed a{
+  text-decoration: none;
+  color: rgb(90, 86, 86);
 }
 
+.active{
+  border:  2px solid rgb(157, 163, 157);
+}
+
+.active a{
+  color: black;
+}
 
 #yourattendedtours{
   position: relative;
@@ -73,7 +82,7 @@
   top: 3vw;
   left: 5%;
   width: 90%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
