@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const connecttocontroller = require("./../controller/userregistrationcontroller");
 const auth = require("../middleware/auth");
-const Razorpay = require("razorpay");
 
 router.use(
   session({
@@ -16,19 +15,6 @@ router.use(
   })
 );
 
-// var instance = new Razorpay({
-//   key_id: 'rzp_test_tlMAzLf18LtWnE',
-//   key_secret: 'SJjNA4UTdbLzbnfWQdeGdROo',
-// });
-
-// var options = {
-//   amount: 50000,  // amount in the smallest currency unit
-//   currency: "INR",
-//   receipt: "order_rcptid_11"
-// };
-// instance.orders.create(options, function(err, order) {
-//   console.log(order);
-// });
 
 router.get("/", connecttocontroller.homeview);
 
@@ -76,6 +62,10 @@ router.get(
   connecttocontroller.goforatour_details_view
 );
 
+router.post("/goforatour/details/payments", connecttocontroller.Payment)
+
 router.get("/approachus", connecttocontroller.approach_us_view);
+
+router.get("*", connecttocontroller.notfoundPage)
 
 module.exports = router;

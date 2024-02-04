@@ -38,7 +38,7 @@
 }
 .summary .summary_body {
   border: 1px solid #dedede;
-  border-radius: 3px;
+  border-radius: 1vw;
 }
 .summary .summary_body .package_name {
   padding: 1em 1.5em 0;
@@ -121,6 +121,41 @@
   padding: 1.5em;
   display: flex;
   flex-direction: column;
+}
+.select_seat_upcontainer{
+  display: flex;
+}
+.sela-bt-cont{
+  width: fit-content;
+}
+.lnepartion {
+  height: 5.5vw;
+  border: 1px solid rgba(60, 58, 58, 0.353);
+  margin-left: 1vw;
+}
+.slseno-cont{
+  margin-left: 2vw;
+  display: flex;
+  flex-direction: column;
+}
+.slseno-cont label{
+  margin-left: 1vw;
+  font-size: 1.3vw;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.728);
+}
+#number_of_seats{
+  width: 3vw;
+  height: 2vw;
+  position: relative;
+  top: 1vw;
+  left: 2vw;
+  outline: none;
+  font-size: 1.5vw;
+  padding-left: 1vw;
+  border: #aeaeae solid 0.2vw;
+  border-radius: 0.5vw;
+  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.5);
 }
 .summary .summary_body .select_seat .select_label {
   color: #3e3d53;

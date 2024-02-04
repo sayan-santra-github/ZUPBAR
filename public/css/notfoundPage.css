@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.errorCode {
+  position: relative;
+  top: 8vw;
+  left: 28.5vw;
+  height: fit-content;
+  width: fit-content;
+}
+
+.errorCode p {
+  font-size: 5vw;
+  font-family: "Protest Revolution", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #40606a99;
+  
+}
+
+.oops {
+  position: relative;
+  top: 12vw;
+  left: 36.5vw;
+  height: fit-content;
+  width: fit-content;
+}
+
+.oops p {
+  font-size: 8vw;
+  font-family: "Protest Riot", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #cdae0e;
+}
+
+.gobacktohomepage {
+    position: relative;
+    top: 18vw;
+    left: 38.5vw;
+    height: fit-content;
+    width: fit-content;
+}
+
+.gobacktohomepage a {
+  font-size: 2vw;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: #000000;
+}

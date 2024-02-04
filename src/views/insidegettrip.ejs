@@ -5,13 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zupbar || get a trip</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
 <link rel="stylesheet" href="/css/insidegettrip.css" />
 <style data-styled="" data-styled-version="4.3.2"></style>
 
 <body>
 
-  <div class="bodyDiv">
+  <form class="bodyDiv">
+    <input type="number" name="tour_package_rate" id="tour_package_rate" value="<%= trips.tour_package_rate %>">
     <div id="mainDiv">
       <div class="subdiv" style="overflow-y: scroll">
         <h3 class="section_heading">&rArr; Agenda</h3>
@@ -191,18 +194,99 @@
               </div>
             </div>
             <div class="select_seat">
-              <div class="select_label">Book your seats</div>
-              <div class="bus_travels">
-                <span>India tours and travels</span>
-                <span>Non-AC Semi-Sleeper</span>
+              <div class="select_seat_upcontainer">
+                <div class="sela-bt-cont">
+                  <div class="select_label">Book your seats</div>
+                  <div class="bus_travels">
+                    <span>India tours and travels</span>
+                    <span>Non-AC Semi-Sleeper</span>
+                  </div>
+                </div>
+                <div class="lnepartion"></div>
+                <div class="slseno-cont">
+                  <label for="number_of_seats">Select Seats :</label>
+                  <input type="number" name="number_of_seats" id="number_of_seats" value="1" min="1" max="20">
+                </div>
+
               </div>
-              <button class="book_seat_btn">Book Seats</button>
+              <button type="submit" class="book_seat_btn" id="bookSeats">Book Seats</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
+
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+
+    $(document).ready( function() {
+
+      
+      var settings = {
+        "url": "/goforatour/details/payments",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+          "amount": "50000",
+
+        }),
+      };
+
+      //creates new orderId everytime
+      $.ajax(settings).done(function(response) {
+
+        orderId = response.orderId;
+        $("button").show();
+      });
+    });
+
+    var options = {
+      "key": "rzp_test_PAvdEzSBZI90ek", // Enter the Key ID generated from the Dashboard
+      "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Acme Corp",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": ra, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function(response) {
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+      },
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function(response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    document.getElementById('bookSeats').onclick = function(e) {
+      rzp1.open();
+      e.preventDefault();
+    }
+  </script>
+
+
 </body>
 
 </html>

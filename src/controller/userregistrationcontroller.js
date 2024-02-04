@@ -10,6 +10,7 @@ const nodemailer = require("nodemailer");
 const auth = require("../middleware/auth");
 const { error, log } = require("console");
 const { request } = require("http");
+const Razorpay = require("razorpay");
 
 // user profile picture upload
 
@@ -185,7 +186,7 @@ const organize_trip = async (req, res) => {
         tour_started_time: req.body.tour_started_time,
         touring_destination: req.body.touring_destination,
         tour_ended_date_day,
-        tour_ended_date_month : tour_ended_date_month +1,
+        tour_ended_date_month: tour_ended_date_month + 1,
         tour_ended_date_year,
         tour_ended_time: req.body.tour_ended_time,
         tourRange_day: req.body.tourRange_day,
@@ -307,7 +308,7 @@ const goforatour_details_view = async (req, res) => {
     const trips = await trip_detail.findById({ _id: tripId });
     res.render("insidegettrip", { user, trips });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -388,7 +389,6 @@ const insertuser = async (req, res) => {
           confirm_password: req.body.conpassword,
         });
 
-      
         const user_registerd = await registeruser.save();
 
         if (user_registerd) {
@@ -414,7 +414,7 @@ const insertuser = async (req, res) => {
       });
     }
   } catch (error) {
-    res.render("createanaccountform", { message: "User Already registered", });
+    res.render("createanaccountform", { message: "User Already registered" });
     console.log(error);
   }
 };
@@ -475,6 +475,49 @@ const logoutUser = async (req, res) => {
   }
 };
 
+//Payment Method
+
+const Payment = async (req, res) => {
+  try {
+    var instance = new Razorpay({
+      key_id: "rzp_test_PAvdEzSBZI90ek",
+      key_secret: "eVzJyo6RSA6Zku6rgTgP1Q6d",
+    });
+
+    // const amount = Number(req.body.tour_package_rat) * 100 * Number(req.body.number_of_seats);
+    // console.log("jfdhgkdjshfghjgdhfgjd" + req.body.tour_package_rat);
+    // console.log(req.body)
+    // console.log("duyfreiuriuoeyrueyiuhr" + amount)
+
+    var options = {
+      amount: "50000",
+      currency: "INR",
+      receipt: "rcptid_1",
+    };
+    instance.orders.create(options, function (err, order) {
+      if (!err) {
+        console.log("order ytfuyiyytytuyttutt");
+        res.send({ orderId: order });
+      } else {
+        console.log(err)
+        console.log(order)
+      }
+    });
+  } catch (error) {
+    console.log("payment " + error);
+  }
+};
+
+// Not Found Page_view
+
+const notfoundPage = async (req, res) => {
+  try {
+    res.render("notfoundPage")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // exports function
 
 module.exports = {
@@ -484,6 +527,7 @@ module.exports = {
   logoutUser,
   homeview,
   get_trip_view,
+  Payment,
   organize_trip_view,
   organize_trip,
   trip_history_view,
@@ -494,4 +538,5 @@ module.exports = {
   approach_us_view,
   loginuser_view,
   insertuser_view,
+  notfoundPage
 };
