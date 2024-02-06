@@ -47,18 +47,19 @@ const uploadforprofilepicupdate = multer({
 const sendverificationmail = async (first_name, last_name, email, user_id) => {
   try {
     const transporter = await nodemailer.createTransport({
-      host: "smtp.mail.yahoo.com",
+      service: "gmail",
+      host: "smtp.gmail.com",
       port: 587,
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayantwt@yahoo.com",
-        pass: "sayanSSent1234@@",
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
       },
     });
 
     const mailOptions = await {
-      from: "sayantwt@yahoo.com",
+      from: "sayanssent@gmail.com",
       to: email,
       subject: "no-reply verification mail",
       html:
@@ -66,9 +67,9 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
         first_name +
         "" +
         last_name +
-        ' , please verify your mail by clicking link below <a href = "http://127.0.0.1:8000/verify?id=' +
+        ' , please verify your mail by clicking link below http://127.0.0.1:8000/verify?id=' +
         user_id +
-        ">verify</a> </p>",
+        "",
     };
 
     await transporter.sendMail(mailOptions, function (error, info) {
@@ -100,8 +101,6 @@ const get_trip_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
     const trips = await trip_detail.find({});
-    // const tripsintfdte = await trips.findById({tour_created_userId})
-    // console.log(trips.tour_created_userId)
 
     res.render("goforatour", {
       user,
@@ -392,12 +391,12 @@ const insertuser = async (req, res) => {
         const user_registerd = await registeruser.save();
 
         if (user_registerd) {
-          // await sendverificationmail(
-          //   req.body.first_name,
-          //   req.body.last_name,
-          //   req.body.email,
-          //   user_registerd._id,
-          // );
+          await sendverificationmail(
+            req.body.first_name,
+            req.body.last_name,
+            req.body.email,
+            user_registerd._id,
+          );
           console.log("the page part is :" + user_registerd);
           res.status(201).redirect("/");
         } else {
