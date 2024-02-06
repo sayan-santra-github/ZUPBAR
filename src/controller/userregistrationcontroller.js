@@ -61,15 +61,15 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
     const mailOptions = await {
       from: "sayanssent@gmail.com",
       to: email,
-      subject: "no-reply verification mail",
+      subject: "no-reply",
       html:
-        "<p>Hii  " +
+        "<p>Hello, " +
         first_name +
-        "" +
+        " " +
         last_name +
-        ' , please verify your mail by clicking link below http://127.0.0.1:8000/verify?id=' +
+        ', please click the link to <a target="_blank" href="http://localhost:8000/email-verify?id=' +
         user_id +
-        "",
+        '"> verify</a> your mail.</p>',
     };
 
     await transporter.sendMail(mailOptions, function (error, info) {
@@ -232,20 +232,11 @@ const myaccount_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
 
-    var birthday = new Date(user.dob);
-
-    var birthday_date = birthday.getDate();
-    var birthday_month = birthday.getMonth();
-    var birthday_year = birthday.getFullYear();
-
     if (!user) {
       res.redirect("/login");
     } else {
       res.render("userprofile", {
         user,
-        birthday_year,
-        birthday_month,
-        birthday_date,
       });
     }
   } catch (error) {
@@ -333,6 +324,21 @@ const approach_us_view = async (req, res) => {
   }
 };
 
+// user email verification method
+
+const user_email_verify = async (req, res) => {
+  try {
+    await user_data.updateOne(
+      { _id: req.query.id },
+      { $set: { email_isVerified: true } }
+    );
+
+    res.render("userEmailVerified_View");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // user registration method
 
 const insertuser_view = (req, res) => {
@@ -348,7 +354,6 @@ const insertuser = async (req, res) => {
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const gender = req.body.gender;
-    const dob = req.body.dob;
     const country = req.body.country;
     const state = req.body.state;
     const phone = req.body.phone;
@@ -360,7 +365,6 @@ const insertuser = async (req, res) => {
       first_name &&
       last_name &&
       gender &&
-      dob &&
       country &&
       state &&
       phone &&
@@ -379,7 +383,6 @@ const insertuser = async (req, res) => {
           first_name: req.body.first_name,
           last_name: req.body.last_name,
           gender: req.body.gender,
-          dob: req.body.dob,
           country: req.body.country,
           state: req.body.state,
           phone: req.body.phone,
@@ -395,7 +398,7 @@ const insertuser = async (req, res) => {
             req.body.first_name,
             req.body.last_name,
             req.body.email,
-            user_registerd._id,
+            user_registerd._id
           );
           console.log("the page part is :" + user_registerd);
           res.status(201).redirect("/");
@@ -409,11 +412,11 @@ const insertuser = async (req, res) => {
       }
     } else {
       res.render("createanaccountform", {
-        message: "Please enter all '*' marked fields.",
+        message: "Please fill all the fields",
       });
     }
   } catch (error) {
-    res.render("createanaccountform", { message: "User Already registered" });
+    res.render("createanaccountform", { message: "User already registered" });
     console.log(error);
   }
 };
@@ -498,8 +501,8 @@ const Payment = async (req, res) => {
         console.log("order ytfuyiyytytuyttutt");
         res.send({ orderId: order });
       } else {
-        console.log(err)
-        console.log(order)
+        console.log(err);
+        console.log(order);
       }
     });
   } catch (error) {
@@ -511,17 +514,18 @@ const Payment = async (req, res) => {
 
 const notfoundPage = async (req, res) => {
   try {
-    res.render("notfoundPage")
+    res.render("notfoundPage");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // exports function
 
 module.exports = {
   uploading_profile_picture_controller,
   insertuser,
+  user_email_verify,
   loginuser,
   logoutUser,
   homeview,
@@ -537,5 +541,5 @@ module.exports = {
   approach_us_view,
   loginuser_view,
   insertuser_view,
-  notfoundPage
+  notfoundPage,
 };

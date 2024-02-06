@@ -30,6 +30,8 @@ router.post(
   connecttocontroller.insertuser
 );
 
+router.get("/email-verify", connecttocontroller.user_email_verify)
+
 router.get("/login", auth.islogout, connecttocontroller.loginuser_view);
 
 router.post("/login", connecttocontroller.loginuser);

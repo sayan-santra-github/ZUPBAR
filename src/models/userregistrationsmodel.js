@@ -23,11 +23,6 @@ const userregistrationschema = new mongoose.Schema(
       enum: ["Male", "Female"],
     },
 
-    dob: {
-      type: Date,
-      required: true,
-    },
-
     country: {
       type: String,
       required: true,

@@ -179,7 +179,7 @@
                     </label>
 
                     <label for="female" class="genders">
-                      <input type="radio" name="gender" id="female" value="Male" <% if (user.gender === 'Female') { %> checked <% } %>>Female
+                      <input type="radio" name="gender" id="female" value="Female" <% if (user.gender === 'Female') { %> checked <% } %>>Female
                     </label>
                   </div>
 
@@ -187,21 +187,6 @@
               </div>
               <div class="tab-pane fade" id="account-change-password">
                 <div class="card-body pb-2">
-                  <!-- <div class="form-group">
-                                        <label class="form-label" for="current_password">Current Password</label>
-                                        <input type="password" class="form-control" name="current_password"
-                                            id="current_password" placeholder="Enter your current password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="password">New Password</label>
-                                        <input type="password" class="form-control" name="password" id="password"
-                                            placeholder="Enter your new password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="conpassword">Confirm New Password</label>
-                                        <input type="password" class="form-control" name="conpassword" id="conpassword"
-                                            placeholder="Re-enter your new password">
-                                    </div> -->
                   <br>
                   <br>
                   <p style="font-size: 1.3rem;">Please use Reset Password Option before Login to update your password. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This functionality is currently unavailble</p>
@@ -209,10 +194,6 @@
               </div>
               <div class="tab-pane fade" id="account-info">
                 <div class="card-body pb-2">
-                  <div class="form-group">
-                    <label class="form-label" for="dob">Birthday</label>
-                    <input type="text" class="form-control" name="dob" id="dob" readonly="true" value="<%= birthday_date %>/<%= birthday_month %>/<%= birthday_year %>">
-                  </div>
                   <div class="form-group">
                     <label class="form-label" for="country">Country</label>
                     <select class="custom-select" name="country" id="country" required>
