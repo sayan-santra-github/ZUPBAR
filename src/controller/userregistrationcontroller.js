@@ -121,6 +121,8 @@ const organize_trip_view = async (req, res) => {
   }
 };
 
+// organize a trip
+
 const organize_trip = async (req, res) => {
   try {
     const company_name = req.body.company_name;
@@ -191,7 +193,14 @@ const organize_trip = async (req, res) => {
         tourRange_day: req.body.tourRange_day,
         tourRange_night: req.body.tourRange_night,
         tour_package_rate: req.body.tour_package_rate,
+        tour_package_include: req.body.tour_package_include,
         details_about_tour: req.body.details_about_tour,
+        vehicle_type: req.body.vehicle_type,
+        vehicle_seat_type: req.body.vehicle_seat_type,
+        vehicle_environment: req.body.vehicle_environment,
+        vehicle_model: req.body.vehicle_model,
+        seat_cancellation: req.body.seat_cancellation,
+        seat_can_be_cancelled_options: req.body.seat_can_be_cancelled_options,
         tandc_1: req.body.tandc_1,
         tandc_2: req.body.tandc_2,
         tandc_3: req.body.tandc_3,
@@ -205,6 +214,9 @@ const organize_trip = async (req, res) => {
         accountHolder_name: req.body.accountHolder_name,
         account_number: req.body.account_number,
         ifsc_code: req.body.ifsc_code,
+        social_links_twt: req.body.social_links_twt,
+        social_links_facebook: req.body.social_links_facebook,
+        social_links_insta: req.body.social_links_insta
       });
 
       const tourorganized = await tourorganizer.save();
@@ -400,7 +412,6 @@ const insertuser = async (req, res) => {
             req.body.email,
             user_registerd._id
           );
-          console.log("the page part is :" + user_registerd);
           res.status(201).redirect("/");
         } else {
           res.redirect("/createanaccount", {

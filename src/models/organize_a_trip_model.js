@@ -80,32 +80,54 @@ const organize_a_trip_schema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    tour_package_include: {
+      type: Array,
+      required: true
+    },
     details_about_tour: {
       type: String,
     },
+    vehicle_type: {
+      type: String,
+      required: true
+    },
+    vehicle_seat_type: {
+      type: String,
+      required: true
+    },
+    vehicle_environment: {
+      type: String,
+      required: true
+    },
+    vehicle_model: {
+      type: String,
+      required: true
+    },
+    seat_cancellation: {
+      type: String,
+      required: true
+    },
+    seat_can_be_cancelled_options: {
+      type: String,
+      required: true
+    },
     tandc_1: {
       type: String,
-      required: true,
     },
     tandc_2: {
       type: String,
-      required: true,
     },
     tandc_3: {
       type: String,
-      required: true,
     },
     tandc_4: {
       type: String,
-      required: true,
     },
     tandc_5: {
       type: String,
-      required: true,
     },
     tandc_6: {
       type: String,
-      required: true,
     },
     tandc_7: {
       type: String,
@@ -130,6 +152,15 @@ const organize_a_trip_schema = new mongoose.Schema(
     ifsc_code: {
       type: String,
       required: true,
+    },
+    social_links_twt:{
+      type: String,
+    },
+    social_links_facebook:{
+      type: String,
+    },
+    social_links_insta:{
+      type: String,
     },
     trip_attendies: [
       {
