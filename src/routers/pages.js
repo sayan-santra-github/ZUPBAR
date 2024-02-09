@@ -48,6 +48,8 @@ router.get(
 
 router.post("/organizeTrip", connecttocontroller.organize_trip);
 
+router.get("/registeryourvehicle", connecttocontroller.registerYourVehicleView)
+
 router.get("/myaccount", auth.isloggedin, connecttocontroller.myaccount_view);
 
 router.post(

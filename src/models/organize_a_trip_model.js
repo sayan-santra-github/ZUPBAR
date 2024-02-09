@@ -162,13 +162,10 @@ const organize_a_trip_schema = new mongoose.Schema(
     social_links_insta:{
       type: String,
     },
-    trip_attendies: [
-      {
-        user_id: {
-          type: String,
-        },
+    trip_attendies:{
+        type: mongoose.Schema.Types.ObjectId
       },
-    ],
+    
   },
   { timestamps: true }
 );

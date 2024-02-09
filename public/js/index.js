@@ -8,3 +8,8 @@ function showlogin(link){
 function goforatour(link){
     location.href = link.value
 }
+
+
+function registeryourvehicle(link){
+    location.href = link.value
+}

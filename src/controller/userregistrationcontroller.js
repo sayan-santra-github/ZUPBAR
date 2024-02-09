@@ -325,6 +325,16 @@ const trip_history_view = async (req, res) => {
   }
 };
 
+// register you vehicle_view
+
+const registerYourVehicleView = async (req, res) => {
+  try {
+    res.render("servicenotavailable")
+  } catch (error) {
+    console.log(error)
+  }
+};
+
 // approach_us view
 
 const approach_us_view = async (req, res) => {
@@ -545,6 +555,7 @@ module.exports = {
   organize_trip_view,
   organize_trip,
   trip_history_view,
+  registerYourVehicleView,
   myaccount_view,
   updating_profile_picture_controller,
   myaccount,
