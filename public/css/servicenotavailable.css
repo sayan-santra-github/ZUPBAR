@@ -59,3 +59,43 @@
 .msgdiv p:nth-child(2) a:hover {
   text-decoration: underline;
 }
+
+
+/* media quaries */
+
+
+@media only screen and (max-width: 840px){
+  .imgDiv img {
+    height: 70vh;
+  }
+}
+
+
+@media only screen and (max-width: 500px){
+  .msgdiv p:nth-child(1) {
+    font-size: 4vh;
+  }
+  .msgdiv p:nth-child(2) {
+    font-size: 2vh;
+  }
+}
+
+
+@media only screen and (max-width: 400px){
+  .imgDiv img {
+    height: 60vh;
+  }
+  .msgdiv p:nth-child(1) {
+    font-size: 3vh;
+  }
+}
+
+
+@media only screen and (max-width: 300px){
+  .imgDiv img {
+    height: 50vh;
+  }
+  .msgdiv p:nth-child(1) {
+    font-size: 2vh;
+  }
+}
