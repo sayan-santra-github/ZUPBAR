@@ -9,7 +9,9 @@ require('./db/connectdb')
 
 
 app.use(express.json())
+app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')
 app.set("views", path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, '../public')))

@@ -2,7 +2,6 @@ const express = require("express");
 const router = new express.Router();
 const user_data = require("../models/userregistrationsmodel");
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 const session = require("express-session");
 const connecttocontroller = require("./../controller/userregistrationcontroller");
 const auth = require("../middleware/auth");

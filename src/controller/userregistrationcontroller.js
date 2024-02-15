@@ -305,7 +305,7 @@ const myaccount = async (req, res) => {
 
 const goforatour_details_view = async (req, res) => {
   try {
-    const user = await user_data.findById(req.session.user_id);
+    const user = await user_data.findById({_id: req.session.user_id});
     const tripId = req.query.id;
     const trips = await trip_detail.findById({ _id: tripId });
     res.render("insidegettrip", { user, trips });
@@ -453,7 +453,7 @@ const loginuser = async (req, res) => {
   try {
     const user_typed_email = req.body.login_email;
     const user_typed_password =
-      req.body.login_password || req.body.login_passwordForaldcft;
+      req.body.login_password || req.body.login_passwordForaldcft || req.body.login_password_smscr;
 
     const useremail = await user_data.findOne({ email: user_typed_email });
 
@@ -502,32 +502,34 @@ const logoutUser = async (req, res) => {
 
 const Payment = async (req, res) => {
   try {
+
     var instance = new Razorpay({
       key_id: "rzp_test_PAvdEzSBZI90ek",
       key_secret: "eVzJyo6RSA6Zku6rgTgP1Q6d",
     });
 
-    // const amount = Number(req.body.tour_package_rat) * 100 * Number(req.body.number_of_seats);
-    // console.log("jfdhgkdjshfghjgdhfgjd" + req.body.tour_package_rat);
-    // console.log(req.body)
-    // console.log("duyfreiuriuoeyrueyiuhr" + amount)
+    const body = req.body
+    console.log(Object.assign(body))
+    const amount = req.body.tourPackage * 100 * req.body.numberSeats;
 
-    var options = {
-      amount: "50000",
+    let options = {
+      amount: amount,
       currency: "INR",
-      receipt: "rcptid_1",
+      receipt:  "testorderhaifirverrorkyun"
     };
     instance.orders.create(options, function (err, order) {
+
       if (!err) {
-        console.log("order ytfuyiyytytuyttutt");
-        res.send({ orderId: order });
-      } else {
-        console.log(err);
         console.log(order);
+      res.json(order);
+      } else {
+        const errobj = err;
+        console.log(Object.assign(errobj))
       }
+      
     });
   } catch (error) {
-    console.log("payment " + error);
+    console.log(error);
   }
 };
 
