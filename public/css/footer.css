@@ -1,9 +1,7 @@
 footer {
-  background-color: rgb(38 38 38);
-  height: 46vh;
+  background-color: rgb(60, 59, 59);
+  height: fit-content;
   position: sticky;
-  top: 100vh;
-  left: 0vw;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -11,43 +9,40 @@ footer {
 
 #fo-ic-div {
   font-size: 2.5vw;
-  color: whitesmoke;
-  position: absolute;
-  top: 1vw;
-  left: 1vw;
+  font-weight: 500;
+  color: rgb(170, 170, 170);
+  margin-top: 1vw;
+  margin-left: 1vw;
 }
 
 #fo-main-div {
-  display: grid;
-  grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
-  grid-template-rows: 11vw 11vw;
+  display: flex;
 }
-.fo-qiklik-div {
-  /* position: absolute;
-  top: 6vw;
-  left: 18vw; */
-  /* margin-right: 20vw; */
+
+#fo-main-div div:nth-child(1) {
+  width: 15vw;
+}
+
+#fo-main-div div:nth-child(3) {
+  width: 15vw;
+}
+
+#fo-main-div div:nth-child(5) {
+  width: 15vw;
+}
+
+.fo-lik-div {
   display: flex;
   flex-direction: column;
-  margin-top: 5.5vw;
 }
-
-#fo-main-div :nth-child(1){
-  grid-column: 2;
-  grid-row: 1;
-}
-
-#fo-main-div :nth-child(2){
-  grid-column: 3;
-  grid-row: 1;
-}
-
 
 .fo-linkheader {
-  color: rgb(207, 205, 205);
+  color: rgb(245, 229, 229);
   position: relative;
   left: 1.8vw;
   font-size: 1.4vw;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -61,4 +56,122 @@ footer {
   text-decoration: none;
   color: bisque;
   font-size: 1.2vw;
+  font-family: "Montserrat", sans-serif;
+}
+
+#fo-bo-div {
+  height: 3vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#fo-bo-div p {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+#fo-bo-div p:nth-child(1) {
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  font-size: 1.2vw;
+  font-family: "Roboto", sans-serif;
+}
+
+#fo-bo-div p:nth-child(1) a {
+  color: whitesmoke;
+}
+
+#fo-bo-div p:nth-child(2) {
+  width: 15vw;
+  justify-content: space-evenly;
+}
+
+#fo-bo-div p:nth-child(2) a img {
+  height: 2vw;
+}
+
+/* Media Quaries */
+
+@media screen and (max-width: 1000px) {
+  footer {
+    position: relative;
+    top: 10vh;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #fo-bo-div {
+    height: 4vw;
+  }
+
+  #fo-ic-div {
+    font-size: 3vw;
+  }
+
+  .fo-linkheader {
+    font-size: 1.8vw;
+  }
+
+  .fo-link-initl {
+    padding-left: 6vw;
+  }
+
+  .fo-link {
+    font-size: 1.5vw;
+  }
+
+  #fo-bo-div p:nth-child(1) {
+    font-size: 1.5vw;
+  }
+
+  #fo-bo-div p:nth-child(2) a img {
+    height: 2.5vw;
+  }
+
+  #fo-main-div div:nth-child(1) {
+    width: 12vw;
+  }
+
+  #fo-main-div div:nth-child(3) {
+    width: 12vw;
+  }
+
+  #fo-main-div div:nth-child(5) {
+    width: 12vw;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  #fo-main-div {
+    position: relative;
+    top: 1vw;
+  }
+
+  ul li {
+    padding-top: 0vw;
+  }
+
+  #fo-ic-div {
+    font-size: 4vw;
+  }
+  .fo-linkheader {
+    font-size: 2vw;
+  }
+  .fo-link {
+    font-size: 1.8vw;
+  }
+}
+
+
+@media screen and (max-width: 575px) {
+  #fo-main-div div:nth-child(3) {
+    width: 5vw;
+  }
+
+  #fo-main-div div:nth-child(5) {
+    width: 5vw;
+  }
 }
