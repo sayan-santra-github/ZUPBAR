@@ -27,8 +27,8 @@ const order_details_schema = new mongoose.Schema({
     timestamps: true,
 })
 
-const order_details_model = mongoose.model('order_details_model', order_details_schema)
+const order_details_model = mongoose.model('order_details', order_details_schema)
 
-exports.exports = {
+module.exports = {
     order_details_model
 }

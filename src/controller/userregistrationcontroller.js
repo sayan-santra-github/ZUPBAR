@@ -1,6 +1,8 @@
 const user_data = require("./../models/userregistrationsmodel");
 const trip_detail = require("./../models/organize_a_trip_model");
+const {order_details_model} = require("../models/order_details_model.js");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto")
 const path = require("path");
 const multer = require("multer");
 const jwt = require("jsonwebtoken");
@@ -666,17 +668,24 @@ const Payment = async (req, res) => {
     const body = req.body;
     console.log(Object.assign(body));
     const amount =
-      Number(req.body.tourPackage) * 100 * Number(req.body.numberSeats);
+      Number(req.body.tourPackage) * Number(req.body.numberSeats);
 
     console.log(amount);
 
     let options = {
-      amount: amount,
+      amount: amount * 100,
       currency: "INR",
-      receipt: "testorderhaifirverrorkyun",
+      receipt: req.session.user_id + "-" + Date.now() + "-" + amount,
     };
-    instance.orders.create(options, function (err, order) {
+    instance.orders.create(options, async function (err, order) {
       if (!err) {
+
+        await order_details_model.create({
+          order_id: order.id,
+          trip_id: req.body.trip_id,
+          amount: amount,
+        })
+
         console.log(order);
         res.json(order);
       } else {
@@ -689,11 +698,64 @@ const Payment = async (req, res) => {
   }
 };
 
+
+// Payment Verification
+
+const PaymentVerification = async (req, res) => {
+  try {
+    const {razorpay_payment_id, razorpay_order_id, razorpay_signature} = req.body;
+
+    const bodyData = razorpay_order_id + '|' + razorpay_payment_id ;
+
+    const except_bodyData = crypto.createHmac('sha256', '7oHTLeSmCN6ocJiT5a9OVixM')
+    .update(bodyData).digest('hex');
+
+    const isValid = except_bodyData === razorpay_signature;
+
+    if (isValid) {
+
+        await order_details_model.findOneAndUpdate({order_id: razorpay_order_id}, {
+          razorpay_payment_id, razorpay_order_id, razorpay_signature
+        })
+
+      res.redirect(`http://localhost:8000/goforatour/details/prepayment/payments/payment-successful?payment_id= ${razorpay_payment_id}`)
+      return;
+    } else {
+      res.redirect('http://localhost:8000/goforatour/details/prepayment/payments/payment-failed')
+      return;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+// Payment successful 
+
+const paymentSuccessful = async (req, res) => {
+  try {
+    res.render('paymentsuccess')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+// Payment Failed 
+
+const paymentFailed = async (req, res) => {
+  try {
+    res.render('paymentfailed')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Not Found Page_view
 
 const notfoundPage = async (req, res) => {
   try {
-    res.render("notfoundPage");
+    res.status(404).render("notfoundPage");
   } catch (error) {
     console.log(error);
   }
@@ -714,6 +776,9 @@ module.exports = {
   homeview,
   get_trip_view,
   Payment,
+  PaymentVerification,
+  paymentSuccessful,
+  paymentFailed,
   prepayment_view,
   booking_view,
   organize_trip_view,

@@ -75,7 +75,13 @@ router.get(
 
 router.get("/goforatour/details/prepayment", auth.isloggedin, connecttocontroller.prepayment_view)
 
+router.get("/goforatour/details/prepayment/payments/payment-successful", connecttocontroller.paymentSuccessful)
+
+router.get("/goforatour/details/prepayment/payments/payment-failed", connecttocontroller.paymentFailed)
+
 router.post("/goforatour/details/prepayment/payments", connecttocontroller.Payment)
+
+router.post("/goforatour/details/prepayment/payments/payment-verification", connecttocontroller.PaymentVerification)
 
 router.get("/approachus", connecttocontroller.approach_us_view);
 
