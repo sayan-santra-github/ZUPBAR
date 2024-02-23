@@ -1,6 +1,6 @@
 const mongoose =  require("mongoose")
 
-const order_details_schema = new mongoose.schema({
+const order_details_schema = new mongoose.Schema({
     trip_id : {
         type: String,
     },

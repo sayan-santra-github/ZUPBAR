@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
+ <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zupbar--My Account</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
 
 
 <style>
@@ -131,7 +126,6 @@
   }
 </style>
 
-<body>
   <form action="/myaccount" method="post" enctype="multipart/form-data">
     <input type="hidden" name="hidden_user_id" id="hidden_user_id" value="{{user._id}}">
 
@@ -247,7 +241,3 @@
       profilepic.src = URL.createObjectURL(profile_picture_upload.files[0])
     }
   </script>
-
-</body>
-
-</html>

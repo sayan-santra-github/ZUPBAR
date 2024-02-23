@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zupbar -- Get better tour exprience now</title>
@@ -12,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet" />
-</head>
 
 <body style="height: 100vh">
   <% if (user) { %>
@@ -40,18 +35,18 @@
     <div id="services">
       <h1 id="ourServiceTag">Our Services</h1>
 
-      <button class="servicediv" onclick="goforatour(this)" value="/goforatour" id="serviceDiv1">
+      <button class="servicediv" onclick="openlink(this)" value="/goforatour" id="serviceDiv1">
         <img src="https://img.freepik.com/premium-vector/walking-woman-tourist-icon-cartoon-walking-woman-tourist-vector-icon-web-design-isolated-white-background_98402-37471.jpg?w=740" alt="" />
-        <a class="icon-link icon-link-hover servicedivcontent" href="#">Go for a tour &rarr;<svg class="bi" aria-hidden="true"></svg>
+        <a class="icon-link icon-link-hover servicedivcontent" href="/goforatour">Go for a tour &rarr;<svg class="bi" aria-hidden="true"></svg>
         </a>
       </button>
-      <button class="servicediv" onclick="goforatour(this)" value="/organizeTrip" id="serviceDiv2">
+      <button class="servicediv" onclick="openlink(this)" value="/organizeTrip" id="serviceDiv2">
         <img src="https://img.freepik.com/free-vector/woman-holding-briefcase-man-buying-tickets_1262-21303.jpg?w=740&t=st=1695134001~exp=1695134601~hmac=767d29d76da403b55982869d3d0e9407f5bf2bed4b140e38dc004155b672e598" alt="" />
         <a class="icon-link icon-link-hover servicedivcontent" href="/organizeTrip">Organize a tour
           &rarr;<svg class="bi" aria-hidden="true"></svg>
         </a>
       </button>
-      <button class="servicediv" onclick="registeryourvehicle(this)" value="/registeryourvehicle" id="serviceDiv3">
+      <button class="servicediv" onclick="openlink(this)" value="/registeryourvehicle" id="serviceDiv3">
         <img src="https://img.freepik.com/free-vector/guide-excursion-composition-with-characters-guide-group-tourists-top-sightseeing-bus-vector-illustration_1284-66013.jpg?w=740&t=st=1695134312~exp=1695134912~hmac=73ba91d7139e7c59f5da7c055cc6b3cc8ff4b94c7edd4f8e25e2ac195ea22fd0" alt="" />
         <a class="icon-link icon-link-hover servicedivcontent" href="/registeryourvehicle">Register your vehicle &rarr;<svg class="bi" aria-hidden="true"></svg>
         </a>
@@ -63,5 +58,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
 </body>
-
-</html>

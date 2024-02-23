@@ -72,6 +72,11 @@ const userregistrationschema = new mongoose.Schema(
       },
     ],
 
+    token: {
+      type: String,
+      default: "",
+    },
+
     tokens: [
       {
         token: {

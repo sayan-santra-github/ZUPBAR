@@ -1,125 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/trip_history.css">
-  </head>
-  <body>
-    <div class="bodyDiv">
-      <button type="button" id="backbutton" onclick="back(this)" value="/">
-        <strong>&#8592; Back</strong>
-      </button>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/trip_history.css">
 
-      <div id="mainDiv">
-        <div id="navhed">
-          <button class="subnavhed active" value="#yourattendedtours" onclick="showattendedcontent(this)"><a href="#yourattendedtours">Your Attended Tours</a></button>
-          <button class="subnavhed " value="#yourorganizedtours" onclick="showorganizedcontent(this)"><a href="#yourorganizedtours" >Your Organized Tours</a></button>
+<div class="bodyDiv">
+  <button type="button" id="backbutton" onclick="back(this)" value="/">
+    <strong>&#8592; Back</strong>
+  </button>
+
+  <div id="mainDiv">
+    <div id="navhed">
+      <button class="subnavhed active" value="#yourattendedtours" onclick="showattendedcontent(this)"><a href="#yourattendedtours">Your Attended Tours</a></button>
+      <button class="subnavhed " value="#yourorganizedtours" onclick="showorganizedcontent(this)"><a href="#yourorganizedtours">Your Organized Tours</a></button>
+    </div>
+
+    <div id="yourattendedtours">
+      <div class="trips">
+        <div class="route_details">
+          <p class="route">kolkata to puri</p>
+          <p>
+            <span>Package Rate &nbsp;</span>
+            <span class="fare">INR 2000 /-</span>
+          </p>
         </div>
 
-        <div id="yourattendedtours">
-          <div class="trips">
-            <div class="route_details">
-              <p class="route">kolkata to puri</p>
-              <p>
-                <span>Package Rate &nbsp;</span>
-                <span class="fare">INR 2000 /-</span>
-              </p>
-            </div>
+        <div class="row2">
+          <span class="totalRoutes"> 3 Days, 4 Nights </span>
+          <span class="totalRoutes">From :
+            <strong>12/01/2024</strong>
+          </span>
+          <span class="totalRoutes">To :
+            <strong>20/01/2024</strong>
+          </span>
+          <span class="book_now" id="time-btn-61"><a href="" style="text-decoration: none; color: rgba(0, 0, 0, 0.813)">BOOK NOW</a></span>
+        </div>
+      </div>
 
-            <div class="row2">
-              <span class="totalRoutes"> 3 Days, 4 Nights </span>
-              <span class="totalRoutes"
-                >From :
-                <strong>12/01/2024</strong>
-              </span>
-              <span class="totalRoutes"
-                >To :
-                <strong>20/01/2024</strong>
-              </span>
-              <span class="book_now" id="time-btn-61"
-                ><a
-                  href=""
-                  style="text-decoration: none; color: rgba(0, 0, 0, 0.813)"
-                  >BOOK NOW</a
-                ></span
-              >
-            </div>
-          </div>
+    </div>
 
+    <div id="yourorganizedtours">
+      <div class="trips">
+        <div class="route_details">
+          <p class="route">kolkata to puri</p>
+          <p>
+            <span>Created at : &nbsp;</span>
+            <span class="fare">INR 2000 /-</span>
+          </p>
+          <p>
+            <span>Package Rate &nbsp;</span>
+            <span class="fare">INR 2000 /-</span>
+          </p>
         </div>
 
-        <div id="yourorganizedtours">
-          <div class="trips">
-            <div class="route_details">
-              <p class="route">kolkata to puri</p>
-              <p>
-                <span>Created at : &nbsp;</span>
-                <span class="fare">INR 2000 /-</span>
-              </p>
-              <p>
-                <span>Package Rate &nbsp;</span>
-                <span class="fare">INR 2000 /-</span>
-              </p>
-            </div>
-
-            <div class="row2">
-              <span class="totalRoutes"> 3 Days, 4 Nights </span>
-              <span class="totalRoutes"
-                >From :
-                <strong>12/01/2024</strong>
-              </span>
-              <span class="totalRoutes"
-                >To :
-                <strong>20/01/2024</strong>
-              </span>
-              <span class="book_now" id="time-btn-61"
-                > <a
-                  href=""
-                  style="text-decoration: none; color: rgba(0, 0, 0, 0.813)"
-                  >BOOK NOW</a
-                > </span
-              >
-            </div>
+        <div class="row2">
+          <span class="totalRoutes"> 3 Days, 4 Nights </span>
+          <span class="totalRoutes">From :
+            <strong>12/01/2024</strong>
+          </span>
+          <span class="totalRoutes">To :
+            <strong>20/01/2024</strong>
+          </span>
+          <span class="book_now" id="time-btn-61"> <a href="" style="text-decoration: none; color: rgba(0, 0, 0, 0.813)">BOOK NOW</a> </span>
         </div>
       </div>
     </div>
+  </div>
 
 
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-    <script>
-      let subnavheds = document.querySelectorAll(".subnavhed");
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 
-      subnavheds.forEach(subnavhed => {
-        subnavhed.addEventListener("click", () => {
-          document.querySelector(".active").classList.remove("active");
-          subnavhed.classList.add("active");
-        });
+  <script>
+    let subnavheds = document.querySelectorAll(".subnavhed");
 
+    subnavheds.forEach(subnavhed => {
+      subnavhed.addEventListener("click", () => {
+        document.querySelector(".active").classList.remove("active");
+        subnavhed.classList.add("active");
       });
 
-      function showattendedcontent(link) {
-        location.href = link.value;
+    });
 
-        document.getElementById("yourorganizedtours").style.display = "none";
-        document.getElementById("yourattendedtours").style.display = "flex";
-      } 
-      
-      function showorganizedcontent(link) {
-        location.href = link.value;
+    function showattendedcontent(link) {
+      location.href = link.value;
 
-        document.getElementById("yourattendedtours").style.display = "none";
-        document.getElementById("yourorganizedtours").style.display = "flex";
-      } 
+      document.getElementById("yourorganizedtours").style.display = "none";
+      document.getElementById("yourattendedtours").style.display = "flex";
+    }
 
-      function back(link) {
-        location.href = link.value;
-      }
-    </script>
-  </body>
-</html>
+    function showorganizedcontent(link) {
+      location.href = link.value;
+
+      document.getElementById("yourattendedtours").style.display = "none";
+      document.getElementById("yourorganizedtours").style.display = "flex";
+    }
+
+    function back(link) {
+      location.href = link.value;
+    }
+  </script>

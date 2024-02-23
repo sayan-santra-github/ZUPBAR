@@ -1,0 +1,102 @@
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/prepayment.css">
+
+
+  <div class="mainDiv">
+    <div class="fullcontentDiv">
+      <div class="topDiv">
+        <p onclick="history.back()">&lArr;</p>
+        <p>Kolkata to Puri Tour</p>
+      </div>
+      <div class="maincontentDiv">
+        <p><span>Seat Price : </span><span id="tour_package_rate_dash">/-</span></p>
+        <p><span>Seat Quantity : </span><span id="number_of_seats_dash"></span></p>
+        <p><span></span></p>
+        <p><span>Order Total : </span><span id="order_total_dash"></span></p>
+      </div>
+      <div class="disclaimer">
+        <p><strong>**&nbsp;&nbsp;</strong> Before making any payment please read our <a href="http://" target="_blank" rel="noopener noreferrer">Terms of use</a> and <a href="http://" target="_blank" rel="noopener noreferrer">Privacy Policy</a> carefully. If you are not satisfied with our <a href="http://" target="_blank" rel="noopener noreferrer">Terms of use</a> and <a href="http://" target="_blank" rel="noopener noreferrer">Privacy Policy</a> you can cancel your order and deny from making any type of payment and you can also informed us about your problem via email or mobile number, We are always happy to serve you.</p>
+        <p><strong>**&nbsp;&nbsp;</strong> After click<strong> pay now</strong> button, you will be redirect on Razorpay integrated payment page.</p>
+      </div>
+      <div class="btncontainer">
+        <button type="submit" id="pay_now_btn" name="pay_now_btn">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+    const tour_package_rate = localStorage.getItem('tour_package_rate')
+    const number_of_seats = localStorage.getItem('number_of_seats')
+    const order_total = tour_package_rate * number_of_seats;
+
+    document.getElementById('tour_package_rate_dash').innerText = tour_package_rate + '' + "/-"
+    document.getElementById('number_of_seats_dash').innerText = number_of_seats
+    document.getElementById('order_total_dash').innerText = order_total + '' + "/-"
+
+
+    $(document).ready(function() {
+
+      document.getElementById('pay_now_btn').onclick = async function(e) {
+
+        const obj = {}
+
+        var settings = {
+          "url": "/goforatour/details/prepayment/payments",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "data": JSON.stringify({
+            "tourPackage": tour_package_rate,
+            "numberSeats": number_of_seats
+          }),
+
+          success: function(data) {
+            console.log(data)
+            if (data.id) {
+
+              obj["order_id"] = data.id
+              obj["amount"] = data.amount
+
+            } else {
+              alert("Please create order in proper way !")
+            }
+          },
+          error: function(errorMessage) {
+            return;
+          },
+        };
+
+        await jQuery.ajax(settings)
+
+        console.log(obj)
+
+
+        var options = {
+          "key": "rzp_test_DRZ2l5e2BpzChh",
+          "amount": obj.amount,
+          "currency": "INR",
+          "name": "Acme Corp",
+          "description": "Test Transaction",
+          "image": "",
+          "order_id": obj.order_id,
+          "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+          "theme": {
+            "color": "#000000"
+          }
+        };
+
+        var rzp1 = new Razorpay(options);
+
+
+        rzp1.open();
+        e.preventDefault();
+      }
+
+    });
+  </script>

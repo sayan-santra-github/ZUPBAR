@@ -11,6 +11,7 @@ const auth = require("../middleware/auth");
 const { error, log } = require("console");
 const { request } = require("http");
 const Razorpay = require("razorpay");
+const randomstring = require("randomstring");
 
 // user profile picture upload
 
@@ -70,6 +71,48 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
         ', please click the link to <a target="_blank" href="http://localhost:8000/email-verify?id=' +
         user_id +
         '"> verify</a> your mail.</p>',
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been sent", +info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// sending mail for verification
+
+const sendresetmail = async (first_name, last_name, email, token) => {
+  try {
+    const transporter = await nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
+      },
+    });
+
+    const mailOptions = await {
+      from: "sayanssent@gmail.com",
+      to: email,
+      subject: "For Reset Password",
+      html:
+        "<p>Hello, " +
+        first_name +
+        " " +
+        last_name +
+        ', please click the link to <a target="_blank" href="http://localhost:8000/reset-password?token=' +
+        token +
+        '"> reset</a> your password.</p>',
     };
 
     await transporter.sendMail(mailOptions, function (error, info) {
@@ -216,7 +259,7 @@ const organize_trip = async (req, res) => {
         ifsc_code: req.body.ifsc_code,
         social_links_twt: req.body.social_links_twt,
         social_links_facebook: req.body.social_links_facebook,
-        social_links_insta: req.body.social_links_insta
+        social_links_insta: req.body.social_links_insta,
       });
 
       const tourorganized = await tourorganizer.save();
@@ -305,7 +348,7 @@ const myaccount = async (req, res) => {
 
 const goforatour_details_view = async (req, res) => {
   try {
-    const user = await user_data.findById({_id: req.session.user_id});
+    const user = await user_data.findById({ _id: req.session.user_id });
     const tripId = req.query.id;
     const trips = await trip_detail.findById({ _id: tripId });
     res.render("insidegettrip", { user, trips });
@@ -329,9 +372,9 @@ const trip_history_view = async (req, res) => {
 
 const registerYourVehicleView = async (req, res) => {
   try {
-    res.render("servicenotavailable")
+    res.render("servicenotavailable");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -453,7 +496,9 @@ const loginuser = async (req, res) => {
   try {
     const user_typed_email = req.body.login_email;
     const user_typed_password =
-      req.body.login_password || req.body.login_passwordForaldcft || req.body.login_password_smscr;
+      req.body.login_password ||
+      req.body.login_passwordForaldcft ||
+      req.body.login_password_smscr;
 
     const useremail = await user_data.findOne({ email: user_typed_email });
 
@@ -486,6 +531,97 @@ const loginuser = async (req, res) => {
   }
 };
 
+// Forgot Password View
+
+const forgotPassword_view = async (req, res) => {
+  try {
+    res.render("forgot_password");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Forgot Password
+
+const forgotPassword = async (req, res) => {
+  try {
+    const email = req.body.emailForReset;
+
+    const isemailfound = await user_data.findOne({ email: email });
+
+    if (isemailfound) {
+      if (isemailfound.email_isVerified) {
+        const randomString = randomstring.generate() + Date.now();
+
+        const updatedata = await user_data.updateOne(
+          { email: email },
+          { $set: { token: randomString } }
+        );
+
+        sendresetmail(
+          isemailfound.first_name,
+          isemailfound.last_name,
+          isemailfound.email,
+          randomString
+        );
+
+        res.render("forgot_password", {
+          msg: "Please check your mail to reset your password.",
+        });
+      } else {
+        res.send("your email is not verified");
+      }
+    } else {
+      res.render("forgot_password", { message: "Email Id is not found" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Reset Password View
+
+const resetPassword_view = async (req, res) => {
+  try {
+    const usertoken = req.query.token;
+    const tokenData = await user_data.findOne({ token: usertoken });
+    if (tokenData) {
+      res.render('reset_password', {user_id: tokenData._id})
+    } else {
+      res.redirect("/");
+      alert("Invalid token found!");
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+
+// Reset Password
+
+const resetPassword = async (req, res) => {
+  try {
+    const new_password = req.body.new_password;
+    const confirm_new_password = req.body.confirm_new_password;
+    const user_id = req.body.user_id;
+
+    if (new_password === confirm_new_password) {
+      const new_password_Payload = await bcrypt.hash(new_password, 10)
+      const confirm_new_password_Payload = await bcrypt.hash(confirm_new_password, 10)
+
+      await user_data.findByIdAndUpdate({ _id: user_id}, {$set: { password: new_password_Payload, confirm_password: confirm_new_password_Payload, token: ''}})
+
+      res.render('login', {homemsg: 'Password Updated !'})
+    } else {
+      res.render('reset_password', {message: "Password did not match !"})
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 // logout user
 
 const logoutUser = async (req, res) => {
@@ -498,35 +634,55 @@ const logoutUser = async (req, res) => {
   }
 };
 
+// booking view
+
+const booking_view = async (req, res) => {
+  try {
+    res.render("bookingPage");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Prepayment View
+
+const prepayment_view = async (req, res) => {
+  try {
+    res.render("prepayment");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //Payment Method
 
 const Payment = async (req, res) => {
   try {
-
     var instance = new Razorpay({
-      key_id: "rzp_test_PAvdEzSBZI90ek",
-      key_secret: "eVzJyo6RSA6Zku6rgTgP1Q6d",
+      key_id: "rzp_test_DRZ2l5e2BpzChh",
+      key_secret: "7oHTLeSmCN6ocJiT5a9OVixM",
     });
 
-    const body = req.body
-    console.log(Object.assign(body))
-    const amount = req.body.tourPackage * 100 * req.body.numberSeats;
+    const body = req.body;
+    console.log(Object.assign(body));
+    const amount =
+      Number(req.body.tourPackage) * 100 * Number(req.body.numberSeats);
+
+    console.log(amount);
 
     let options = {
       amount: amount,
       currency: "INR",
-      receipt:  "testorderhaifirverrorkyun"
+      receipt: "testorderhaifirverrorkyun",
     };
     instance.orders.create(options, function (err, order) {
-
       if (!err) {
         console.log(order);
-      res.json(order);
+        res.json(order);
       } else {
         const errobj = err;
-        console.log(Object.assign(errobj))
+        console.log(Object.assign(errobj));
       }
-      
     });
   } catch (error) {
     console.log(error);
@@ -550,10 +706,16 @@ module.exports = {
   insertuser,
   user_email_verify,
   loginuser,
+  forgotPassword_view,
+  forgotPassword,
+  resetPassword_view,
+  resetPassword,
   logoutUser,
   homeview,
   get_trip_view,
   Payment,
+  prepayment_view,
+  booking_view,
   organize_trip_view,
   organize_trip,
   trip_history_view,

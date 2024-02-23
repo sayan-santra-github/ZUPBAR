@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zupbar || get a trip</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-</head>
 <link rel="stylesheet" href="/css/insidegettrip.css" />
 <style data-styled="" data-styled-version="4.3.2"></style>
 
-<body>
 
   <form class="bodyDiv">
     <input type="hidden" name="tour_package_rate" id="tour_package_rate" value="<%= trips.tour_package_rate %>">
@@ -212,7 +205,7 @@
                 </div>
 
               </div>
-              <button type="button" class="book_seat_btn" id="bookSeats">Book Seats</button>
+              <button type="submit" class="book_seat_btn" id="bookSeats" onclick="openlink(this)" value="/goforatour/details/prepayment">Book Seats</button>
             </div>
           </div>
         </div>
@@ -221,60 +214,23 @@
   </form>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  
   <script>
+
     
-    axios.post("/goforatour/details/payments").then((info) => {
 
-      var options = {
-        "key": "rzp_test_PAvdEzSBZI90ek",
-        "name": "Acme Corp",
-        "description": "Test Transaction",
-        "image": "",
-        "order_id": info.data.id,
-        "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-        "prefill": {
-          "name": "Gaurav Kumar",
-          "email": "gaurav.kumar@example.com",
-          "contact": "9000090000"
-        },
-        "theme": {
-          "color": "#000000"
-        }
-      };
+    function openlink(link) {
+      location.href = link.value;
+    } 
 
-      var rzp1 = new Razorpay(options);
-      document.getElementById('bookSeats').onclick = function(e) {
-        rzp1.open();
-        e.preventDefault();
-      }
-
+    
+    document.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const number_of_seats = document.getElementById("number_of_seats").value;
+      const tour_package_rate = document.getElementById("tour_package_rate").value;
+      localStorage.setItem("tour_package_rate", tour_package_rate);
+      localStorage.setItem("number_of_seats", number_of_seats);
     })
 
-    $(document).ready(function() {
-      var settings = {
-        "url": "/goforatour/details/payments",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-          "tourPackage": document.getElementById("tour_package_rate").value,
-          "numberSeats": document.getElementById("number_of_seats").value
-        }),
-      };
-
-      $.ajax(settings).done(function(info) {
-        $("button").show();
-      });
-
-    });
 
   </script>
-
-
-</body>
-
-</html>

@@ -1,191 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap&family=Merriweather&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap&family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
 
-</head>
 
-<body>
     <div class="forBscr">
 
 
-        <button type="button" id="backbutton" onclick="history.back()"><strong>&#10005;</strong></button>
+      <button type="button" id="backbutton" onclick="history.back()"><strong>&#10005;</strong></button>
 
-        <div class="mainDiv">
+      <div class="mainDiv">
 
-            <form action="/login" class="signup-form-container" method="post">
-                <p class="CompTitl">
-                    <strong><i>Z</i></strong>upbar
-                </p>
+        <form action="/login" class="signup-form-container" method="post">
+          <p class="CompTitl">
+            <strong><i>Z</i></strong>upbar
+          </p>
 
-                <div class="cretantlale">
-                    Don't have an account?
+          <div class="cretantlale">
+            Don't have an account?
 
 
-                    <button class="cretantbtn" value="/createanaccount" onclick="showcreateaccount(this)" type="button">
-                        Create Account
-                    </button>
+            <button class="cretantbtn" value="/createanaccount" onclick="showcreateaccount(this)" type="button">
+              Create Account
+            </button>
 
+          </div>
+
+          <div class="lnepartion">
+          </div>
+
+          <div style="display: grid;" class="loinTtlDiv">
+            <h2 class="loinTtl">
+              Log in
+            </h2>
+
+          </div>
+
+          <div class="aldc">
+            <div class="gretimgDiv">
+              <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=740&t=st=1696497423~exp=1696498023~hmac=33a917bbee0c77b84c56dc40173933544442a603dbcc6827aaeb7a79dd85b59e" alt="" class="gretimg">
+
+            </div>
+
+            <div class="detailsDiv">
+              <div class="button-container_email">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="login_email" name="login_email" placeholder="name@example.com">
+                  <label for="login_email"><i class='bx bx-envelope'></i> Email address</label>
                 </div>
+              </div>
 
-                <div class="lnepartion">
+              <div class="button-container_password">
+                <div class="form-floating">
+                  <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password" value="">
+                  <label for="login_password"><i class='bx bx-lock-alt'></i> Password</label>
                 </div>
+                <p class="forgotpwdlik"><a href="/forgot-password" style="text-decoration: none;">Forgot Password ?</a></p>
 
-                <div style="display: grid;" class="loinTtlDiv">
-                    <h2 class="loinTtl">
-                        Log in
-                    </h2>
+                <button type="submit" class="btn btn-success Loinbtn">Log in</button>
 
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="aldcft">
+
+            <div class="welcomeNoteDiv">
+              <p>Welcome Back,</p>
+            </div>
+
+
+            <div class="mdc">
+              <div class="button-container_email">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="login_email" name="login_email" placeholder="name@example.com">
+                  <label for="login_email"><i class='bx bx-envelope'></i> Email address</label>
                 </div>
+              </div>
 
-                <div class="aldc">
-                    <div class="gretimgDiv">
-                        <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=740&t=st=1696497423~exp=1696498023~hmac=33a917bbee0c77b84c56dc40173933544442a603dbcc6827aaeb7a79dd85b59e"
-                            alt="" class="gretimg">
-
-                    </div>
-
-                    <div class="detailsDiv">
-                        <div class="button-container_email">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="login_email" name="login_email"
-                                    placeholder="name@example.com">
-                                <label for="login_email"><i class='bx bx-envelope'></i> Email address</label>
-                            </div>
-                        </div>
-
-                        <div class="button-container_password">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="login_password" name="login_password"
-                                    placeholder="Password" value="">
-                                <label for="login_password"><i class='bx bx-lock-alt'></i> Password</label>
-                            </div>
-                            <p class="forgotpwdlik"><a href="" style="text-decoration: none;">Forgot Password ?</a></p>
-
-                            <button type="submit" class="btn btn-success Loinbtn">Log in</button>
-
-
-                        </div>
-                    </div>
-
-
+              <div class="button-container_password">
+                <div class="form-floating">
+                  <input type="password" class="form-control" id="login_passwordForaldcft" name="login_passwordForaldcft" placeholder="Password">
+                  <label for="login_passwordForaldcft"><i class='bx bx-lock-alt'></i> Password</label>
                 </div>
-
-                <div class="aldcft">
-
-                    <div class="welcomeNoteDiv">
-                        <p>Welcome Back,</p>
-                    </div>
+              </div>
+            </div>
 
 
-                    <div class="mdc">
-                        <div class="button-container_email">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="login_email" name="login_email"
-                                    placeholder="name@example.com">
-                                <label for="login_email"><i class='bx bx-envelope'></i> Email address</label>
-                            </div>
-                        </div>
+            <div class="mfp">
+              <p class="forgotpwdlik">Cannot <a href="" style="text-decoration: none;">remember your
+                  password?</a></p>
 
-                        <div class="button-container_password">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="login_passwordForaldcft"
-                                    name="login_passwordForaldcft" placeholder="Password">
-                                <label for="login_passwordForaldcft"><i class='bx bx-lock-alt'></i> Password</label>
-                            </div>
-                        </div>
-                    </div>
+            </div>
 
+            <div class="mlb">
+              <button type="submit" class="btn btn-success Loinbtn">Log in</button>
 
-                    <div class="mfp">
-                        <p class="forgotpwdlik">Cannot <a href="" style="text-decoration: none;">remember your
-                                password?</a></p>
-
-                    </div>
-
-                    <div class="mlb">
-                        <button type="submit" class="btn btn-success Loinbtn">Log in</button>
-
-                    </div>
+            </div>
 
 
 
-                </div>
+          </div>
 
 
 
 
-            </form>
+        </form>
 
-        </div>
+      </div>
 
     </div>
 
 
 
     <form action="/login" method="post">
-        <div class="forSscr">
+      <div class="forSscr">
 
-            <div class="welcomenote">
-                <div class="welcometxt">
-                    <h2>Welcome Back,</h2>
-                </div>
-                <div class="greettxt">
-                    <p>we are glad to see you again</p>
-                </div>
-            </div>
-            <div class="inputfield">
-                <div class="email">
-                    <label for="login_email">Email</label>
-                    <input type="email" id="login_email" name="login_email" placeholder="name@example.com">
-                </div>
-                <div class="password">
-                    <label for="login_password_smscr">Password</label>
-                    <input type="password" id="login_password_smscr" name="login_password_smscr" placeholder="Password">
-                </div>
-            </div>
-            <div class="loginbtn">
-                <div class="subdivloginbtn">
-                    <button type="submit" class="btn btn-success Loinbtn">Log in</button>
-                </div>
-            </div>
-            <div class="linkdiv">
-                <div class="forgetlnk">
-                    <a href="">Forgot Password ?</a>
-                </div>
-                <div class="cretanaccountlnk">
-                    <p>Don't have an account ? <a href="">Register</a></p>
-                </div>
-            </div>
-
+        <div class="welcomenote">
+          <div class="welcometxt">
+            <h2>Welcome Back,</h2>
+          </div>
+          <div class="greettxt">
+            <p>we are glad to see you again</p>
+          </div>
         </div>
+        <div class="inputfield">
+          <div class="email">
+            <label for="login_email">Email</label>
+            <input type="email" id="login_email" name="login_email" placeholder="name@example.com">
+          </div>
+          <div class="password">
+            <label for="login_password_smscr">Password</label>
+            <input type="password" id="login_password_smscr" name="login_password_smscr" placeholder="Password">
+          </div>
+        </div>
+        <div class="loginbtn">
+          <div class="subdivloginbtn">
+            <button type="submit" class="btn btn-success Loinbtn">Log in</button>
+          </div>
+        </div>
+        <div class="linkdiv">
+          <div class="forgetlnk">
+            <a href="/forgot-password">Forgot Password ?</a>
+          </div>
+          <div class="cretanaccountlnk">
+            <p>Don't have an account ? <a href="">Register</a></p>
+          </div>
+        </div>
+
+      </div>
     </form>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
-
-
-    <script>
-        function showcreateaccount(link) {
-
-            location.href = link.value
-
-        }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
 
 
+    <script>
+      function showcreateaccount(link) {
 
-</body>
+        location.href = link.value
 
-</html>
+      }
+    </script>

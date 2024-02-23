@@ -35,6 +35,14 @@ router.get("/login", auth.islogout, connecttocontroller.loginuser_view);
 
 router.post("/login", connecttocontroller.loginuser);
 
+router.get("/forgot-password", auth.islogout, connecttocontroller.forgotPassword_view)
+
+router.post("/forgot-password", connecttocontroller.forgotPassword);
+
+router.get("/reset-password", auth.islogout, connecttocontroller.resetPassword_view);
+
+router.post("/reset-password", connecttocontroller.resetPassword)
+
 router.get("/logout", auth.isloggedin, connecttocontroller.logoutUser);
 
 router.get("/goforatour", connecttocontroller.get_trip_view);
@@ -65,7 +73,9 @@ router.get(
   connecttocontroller.goforatour_details_view
 );
 
-router.post("/goforatour/details/payments", connecttocontroller.Payment)
+router.get("/goforatour/details/prepayment", auth.isloggedin, connecttocontroller.prepayment_view)
+
+router.post("/goforatour/details/prepayment/payments", connecttocontroller.Payment)
 
 router.get("/approachus", connecttocontroller.approach_us_view);
 
