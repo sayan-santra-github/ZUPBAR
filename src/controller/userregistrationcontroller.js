@@ -588,7 +588,7 @@ const resetPassword_view = async (req, res) => {
     const usertoken = req.query.token;
     const tokenData = await user_data.findOne({ token: usertoken });
     if (tokenData) {
-      res.render('reset_password', {user_id: tokenData._id})
+      res.render('reset_password', {user_id: tokenData._id, user_email: tokenData.email})
     } else {
       res.redirect("/");
       alert("Invalid token found!");
