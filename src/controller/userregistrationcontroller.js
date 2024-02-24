@@ -675,7 +675,7 @@ const Payment = async (req, res) => {
     let options = {
       amount: amount * 100,
       currency: "INR",
-      receipt: req.session.user_id + "-" + Date.now() + "-" + amount,
+      receipt: req.session.user_id + "-" + Date.now().toString() ,
     };
     instance.orders.create(options, async function (err, order) {
       if (!err) {
@@ -704,6 +704,9 @@ const Payment = async (req, res) => {
 const PaymentVerification = async (req, res) => {
   try {
     const {razorpay_payment_id, razorpay_order_id, razorpay_signature} = req.body;
+
+    const body = req.body;
+    console.log(Object.assign(body));
 
     const bodyData = razorpay_order_id + '|' + razorpay_payment_id ;
 
