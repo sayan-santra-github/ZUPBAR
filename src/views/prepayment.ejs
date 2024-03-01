@@ -6,6 +6,7 @@
 
   <div class="mainDiv">
     <input type="hidden" name="trip_id" id="trip_id" value="">
+    <input type="hidden" name="user_id" id="user_id" value="<%= user_id %>">
     <div class="fullcontentDiv">
       <div class="topDiv">
         <p onclick="history.back()">&lArr;</p>
@@ -32,13 +33,17 @@
   <script>
     const tour_package_rate = localStorage.getItem('tour_package_rate')
     const number_of_seats = localStorage.getItem('number_of_seats')
-    const trip_id = localStorage.getItem('trip_id')
+    const common_trip_id = localStorage.getItem('common_trip_id')
     const order_total = tour_package_rate * number_of_seats;
 
     document.getElementById('tour_package_rate_dash').innerText = tour_package_rate + '' + "/-"
     document.getElementById('number_of_seats_dash').innerText = number_of_seats
     document.getElementById('order_total_dash').innerText = order_total + '' + "/-"
-    document.getElementById('trip_id').value = trip_id 
+    
+    const user_id = document.getElementById('user_id').value
+
+    localStorage.removeItem('tour_package_rate')
+    localStorage.removeItem('number_of_seats')
 
 
     $(document).ready(function() {
@@ -57,7 +62,7 @@
           "data": JSON.stringify({
             "tourPackage": tour_package_rate,
             "numberSeats": number_of_seats,
-            "trip_id": trip_id
+            "common_trip_id": common_trip_id
           }),
 
           success: function(data) {
@@ -89,7 +94,7 @@
           "description": "Test Transaction",
           "image": "",
           "order_id": obj.order_id,
-          "callback_url": "http://localhost:8000/goforatour/details/prepayment/payments/payment-verification",
+          "callback_url": `http://localhost:8000/goforatour/details/prepayment/payments/payment-verification?user_id=${user_id}&common_trip_id=${common_trip_id}`,
           "theme": {
             "color": "#000000"
           }

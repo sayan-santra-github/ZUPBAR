@@ -65,7 +65,7 @@ router.post(
   connecttocontroller.myaccount
 );
 
-router.get("/triphistory", connecttocontroller.trip_history_view);
+router.get("/triphistory", auth.isloggedin, connecttocontroller.trip_history_view);
 
 router.get(
   "/goforatour/details",

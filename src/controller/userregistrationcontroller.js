@@ -1,8 +1,8 @@
 const user_data = require("./../models/userregistrationsmodel");
-const trip_detail = require("./../models/organize_a_trip_model");
-const {order_details_model} = require("../models/order_details_model.js");
+const live_trip_detail = require("./../models/live_trip_detail_model");
+const { order_details_model } = require("../models/order_details_model.js");
 const bcrypt = require("bcryptjs");
-const crypto = require("crypto")
+const crypto = require("crypto");
 const path = require("path");
 const multer = require("multer");
 const jwt = require("jsonwebtoken");
@@ -145,7 +145,7 @@ const homeview = async (req, res) => {
 const get_trip_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
-    const trips = await trip_detail.find({});
+    const trips = await live_trip_detail.find({});
 
     res.render("goforatour", {
       user,
@@ -220,7 +220,8 @@ const organize_trip = async (req, res) => {
       account_number &&
       ifsc_code
     ) {
-      const tourorganizer = new trip_detail({
+      const tourorganizer = new live_trip_detail({
+        common_trip_id: Date.now() + "_" + randomstring.generate(),
         tour_created_userId: req.session.user_id,
         company_name: req.body.company_name,
         company_email: req.body.company_email,
@@ -352,7 +353,7 @@ const goforatour_details_view = async (req, res) => {
   try {
     const user = await user_data.findById({ _id: req.session.user_id });
     const tripId = req.query.id;
-    const trips = await trip_detail.findById({ _id: tripId });
+    const trips = await live_trip_detail.findById({ _id: tripId });
     res.render("insidegettrip", { user, trips });
   } catch (error) {
     console.log(error);
@@ -363,8 +364,27 @@ const goforatour_details_view = async (req, res) => {
 
 const trip_history_view = async (req, res) => {
   try {
-    const user = await user_data.findById(req.session.user_id);
-    res.render("trip_history", { user });
+    const user = await user_data.findById({_id: req.session.user_id});
+    const attendedTripsSalt = await user.trip_attended;
+    const organizedTripsForTripHit = await live_trip_detail.find({tour_created_userId: req.session.user_id});
+
+    const attendedTripsArr = [];
+
+    for (let i = 0; i < attendedTripsSalt.length; i++) {
+      var attendedTrips = attendedTripsSalt[i].trip;
+      attendedTripsArr.push(attendedTrips)
+    }
+
+    const attendTripsForTripHit = []
+
+    for (let i = 0; i < attendedTripsArr.length; i++) {
+      const element = attendedTripsArr[i];
+      const initialattendTripsForTripHit = await live_trip_detail.findOne({ common_trip_id: element})
+      attendTripsForTripHit.push(initialattendTripsForTripHit)
+    }
+
+    res.render("trip_history", { user, attendTripsForTripHit, organizedTripsForTripHit });
+
   } catch (error) {
     console.log(error.message);
   }
@@ -588,16 +608,18 @@ const resetPassword_view = async (req, res) => {
     const usertoken = req.query.token;
     const tokenData = await user_data.findOne({ token: usertoken });
     if (tokenData) {
-      res.render('reset_password', {user_id: tokenData._id, user_email: tokenData.email})
+      res.render("reset_password", {
+        user_id: tokenData._id,
+        user_email: tokenData.email,
+      });
     } else {
       res.redirect("/");
       alert("Invalid token found!");
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
-
 
 // Reset Password
 
@@ -608,21 +630,31 @@ const resetPassword = async (req, res) => {
     const user_id = req.body.user_id;
 
     if (new_password === confirm_new_password) {
-      const new_password_Payload = await bcrypt.hash(new_password, 10)
-      const confirm_new_password_Payload = await bcrypt.hash(confirm_new_password, 10)
+      const new_password_Payload = await bcrypt.hash(new_password, 10);
+      const confirm_new_password_Payload = await bcrypt.hash(
+        confirm_new_password,
+        10
+      );
 
-      await user_data.findByIdAndUpdate({ _id: user_id}, {$set: { password: new_password_Payload, confirm_password: confirm_new_password_Payload, token: ''}})
+      await user_data.findByIdAndUpdate(
+        { _id: user_id },
+        {
+          $set: {
+            password: new_password_Payload,
+            confirm_password: confirm_new_password_Payload,
+            token: "",
+          },
+        }
+      );
 
-      res.render('login', {homemsg: 'Password Updated !'})
+      res.render("login", { homemsg: "Password Updated !" });
     } else {
-      res.render('reset_password', {message: "Password did not match !"})
+      res.render("reset_password", { message: "Password did not match !" });
     }
-
   } catch (error) {
     console.log(error);
   }
-}
-
+};
 
 // logout user
 
@@ -636,21 +668,12 @@ const logoutUser = async (req, res) => {
   }
 };
 
-// booking view
-
-const booking_view = async (req, res) => {
-  try {
-    res.render("bookingPage");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 // Prepayment View
 
 const prepayment_view = async (req, res) => {
   try {
-    res.render("prepayment");
+    const user_id = req.session.user_id;
+    res.render("prepayment", { user_id });
   } catch (error) {
     console.log(error);
   }
@@ -667,24 +690,22 @@ const Payment = async (req, res) => {
 
     const body = req.body;
     console.log(Object.assign(body));
-    const amount =
-      Number(req.body.tourPackage) * Number(req.body.numberSeats);
+    const amount = Number(req.body.tourPackage) * Number(req.body.numberSeats);
 
     console.log(amount);
 
     let options = {
       amount: amount * 100,
       currency: "INR",
-      receipt: req.session.user_id + "-" + Date.now().toString() ,
+      receipt: req.session.user_id + "-" + Date.now().toString(),
     };
     instance.orders.create(options, async function (err, order) {
       if (!err) {
-
         await order_details_model.create({
           order_id: order.id,
-          trip_id: req.body.trip_id,
+          common_trip_id: req.body.common_trip_id,
           amount: amount,
-        })
+        });
 
         console.log(order);
         res.json(order);
@@ -698,61 +719,90 @@ const Payment = async (req, res) => {
   }
 };
 
-
 // Payment Verification
 
 const PaymentVerification = async (req, res) => {
   try {
-    const {razorpay_payment_id, razorpay_order_id, razorpay_signature} = req.body;
+    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
+      req.body;
+    const bodyData = razorpay_order_id + "|" + razorpay_payment_id;
 
-    const body = req.body;
-    console.log(Object.assign(body));
-
-    const bodyData = razorpay_order_id + '|' + razorpay_payment_id ;
-
-    const except_bodyData = crypto.createHmac('sha256', '7oHTLeSmCN6ocJiT5a9OVixM')
-    .update(bodyData).digest('hex');
+    const except_bodyData = crypto
+      .createHmac("sha256", "7oHTLeSmCN6ocJiT5a9OVixM")
+      .update(bodyData)
+      .digest("hex");
 
     const isValid = except_bodyData === razorpay_signature;
 
     if (isValid) {
+      await order_details_model.findOneAndUpdate(
+        { order_id: razorpay_order_id },
+        {
+          razorpay_payment_id,
+          razorpay_order_id,
+          razorpay_signature,
+        }
+      );
 
-        await order_details_model.findOneAndUpdate({order_id: razorpay_order_id}, {
-          razorpay_payment_id, razorpay_order_id, razorpay_signature
-        })
+      const user_id = req.query.user_id;
+      const common_trip_id = req.query.common_trip_id;
 
-      res.redirect(`http://localhost:8000/goforatour/details/prepayment/payments/payment-successful?payment_id= ${razorpay_payment_id}`)
+      console.log(common_trip_id);
+
+      console.log(randomstring.generate());
+
+      await user_data.findOneAndUpdate(
+        { _id: user_id },
+        {
+          $push: {
+            trip_attended: { trip: common_trip_id },
+          },
+        }
+      );
+
+      await live_trip_detail.findOneAndUpdate(
+        { common_trip_id: common_trip_id },
+        {
+          $push: {
+            trip_attendies: { user: user_id },
+          },
+        }
+      );
+
+      res.redirect(
+        `http://localhost:8000/goforatour/details/prepayment/payments/payment-successful?payment_id=${razorpay_payment_id}`
+      );
       return;
     } else {
-      res.redirect('http://localhost:8000/goforatour/details/prepayment/payments/payment-failed')
+      res.redirect(
+        "http://localhost:8000/goforatour/details/prepayment/payments/payment-failed"
+      );
       return;
     }
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-
-// Payment successful 
+// Payment successful
 
 const paymentSuccessful = async (req, res) => {
   try {
-    res.render('paymentsuccess')
+    res.render("paymentsuccess");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
-
-// Payment Failed 
+// Payment Failed
 
 const paymentFailed = async (req, res) => {
   try {
-    res.render('paymentfailed')
+    res.render("paymentfailed");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Not Found Page_view
 
@@ -783,7 +833,6 @@ module.exports = {
   paymentSuccessful,
   paymentFailed,
   prepayment_view,
-  booking_view,
   organize_trip_view,
   organize_trip,
   trip_history_view,

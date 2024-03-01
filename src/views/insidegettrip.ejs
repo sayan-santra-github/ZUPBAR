@@ -9,6 +9,7 @@
   <form class="bodyDiv">
     <input type="hidden" name="tour_package_rate" id="tour_package_rate" value="<%= trips.tour_package_rate %>">
     <input type="hidden" name="trip_id" id="trip_id" value="<%= trips._id %>">
+    <input type="hidden" name="common_trip_id" id="common_trip_id" value="<%= trips.common_trip_id %>">
     <div id="mainDiv">
       <div class="subdiv" style="overflow-y: scroll">
         <h3 class="section_heading">&rArr; Agenda</h3>
@@ -214,25 +215,22 @@
     </div>
   </form>
 
-
-  
   <script>
-
-    
 
     function openlink(link) {
       location.href = link.value;
     } 
 
-    
     document.addEventListener("submit", function(e) {
       e.preventDefault();
       const number_of_seats = document.getElementById("number_of_seats").value;
       const tour_package_rate = document.getElementById("tour_package_rate").value;
       const trip_id = document.getElementById("trip_id").value;
+      const common_trip_id = document.getElementById("common_trip_id").value;
       localStorage.setItem("tour_package_rate", tour_package_rate);
       localStorage.setItem("number_of_seats", number_of_seats);
       localStorage.setItem("trip_id", trip_id);
+      localStorage.setItem("common_trip_id", common_trip_id)
     })
 
 

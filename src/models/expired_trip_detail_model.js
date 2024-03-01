@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
-const organize_a_trip_schema = new mongoose.Schema(
+const expired_trip_details_schema = new mongoose.Schema(
   {
     tour_created_userId: {
       type: String,
@@ -170,6 +168,6 @@ const organize_a_trip_schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const trip_detail = new mongoose.model("trip_detail", organize_a_trip_schema);
+const expired_trip_details = new mongoose.model("expired_trip_details", expired_trip_details_schema);
 
-module.exports = trip_detail;
+module.exports = expired_trip_details;

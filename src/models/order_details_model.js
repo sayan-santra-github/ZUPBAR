@@ -1,7 +1,7 @@
 const mongoose =  require("mongoose")
 
 const order_details_schema = new mongoose.Schema({
-    trip_id : {
+    common_trip_id : {
         type: String,
     },
     amount: {

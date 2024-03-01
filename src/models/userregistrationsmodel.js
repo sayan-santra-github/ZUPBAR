@@ -64,13 +64,17 @@ const userregistrationschema = new mongoose.Schema(
       default: false,
     },
 
-    trip_attended: [
-      {
-        trip: {
-          type: String,
+    trip_attended: {
+      type: [
+        {
+          trip: {
+            type: String,
+            ref: "live_trip_detail",
+          },
         },
-      },
-    ],
+      ],
+      default: [],
+    },
 
     token: {
       type: String,
