@@ -383,8 +383,6 @@ const trip_history_view = async (req, res) => {
       attendTripsForTripHit.push(initialattendTripsForTripHit)
     }
 
-    console.log(attendTripsForTripHit)
-
     res.render("trip_history", { user, attendTripsForTripHit, organizedTripsForTripHit });
 
   } catch (error) {
