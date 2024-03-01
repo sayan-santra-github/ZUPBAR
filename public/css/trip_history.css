@@ -69,6 +69,7 @@
   position: relative;
   top: 3vw;
   left: 5%;
+  height: 31vw;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -100,6 +101,79 @@
   flex-direction: column;
   display: flex;
   justify-content: space-between;
+}
+
+.notripmainDiv{
+  font-family: Montserrat, sans-serif;
+  text-decoration: none;
+  position: relative;
+  width: 68vw;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgDiv{
+  display: flex;
+  justify-content: center;
+}
+
+.imgDiv img{
+  height: 22vw;
+}
+
+.msgDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.msgDiv span:first-child{
+  font-size: 2.3vw;
+}
+
+.msgDiv span:first-child span:first-child{
+  color: orange;
+}
+
+.msgDiv span:first-child span:nth-child(2){
+  color: rgb(30, 255, 0);
+}
+
+.msgDiv span:first-child span:nth-child(3){
+  color: rgb(0, 225, 255);
+}
+
+.msgDiv span:nth-child(2) a{
+  font-size: 1.9vw;
+}
+
+.msgDivfornotOrganize{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.msgDivfornotOrganize span:first-child{
+  font-size: 2.3vw;
+}
+
+.msgDivfornotOrganize span:first-child span:first-child{
+  color: rgb(123, 51, 123);
+}
+
+.msgDivfornotOrganize span:first-child span:nth-child(2){
+  color: rgb(133, 125, 30);
+}
+
+.msgDivfornotOrganize span:first-child span:nth-child(3){
+  color: rgb(0, 225, 255);
+}
+
+.msgDivfornotOrganize span:nth-child(2) a{
+  font-size: 1.9vw;
 }
 
 .route_details {

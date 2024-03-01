@@ -17,7 +17,15 @@
 
     <div id="yourattendedtours">
       <% if (attendTripsForTripHit.length === 0) { %>
-        <p>no trip</p>
+        <div class="notripmainDiv">
+          <div class="imgDiv">
+            <img src="/photos/noTripAtteded.jpg" alt="">
+          </div>
+          <div class="msgDiv">
+            <span><span>Still</span> you <span>didn't attend</span> any <span>trip</span></span>
+            <span><a href="">Browse for trips now</a></span>
+          </div>
+        </div>
         
         <% } else { %>
 
@@ -51,7 +59,15 @@
 
     <div id="yourorganizedtours">
       <% if (organizedTripsForTripHit.length === 0) { %>
-       <p>notrip</p>
+        <div class="notripmainDiv">
+          <div class="imgDiv">
+            <img src="/photos/noTripOrganized.jpg" alt="">
+          </div>
+          <div class="msgDivfornotOrganize">
+            <span><span>Still</span> you <span>didn't organized</span> any <span>trip</span></span>
+            <span><a href="">Organize a trip now</a></span>
+          </div>
+        </div>
 
        <% } else { %>
         
