@@ -170,6 +170,14 @@ const live_trip_details_schema = new mongoose.Schema(
       ref: 'user_data'}}],
       default: []
     },
+    token: {
+      type: String,
+      default: "",
+    },
+    isActivate: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 );

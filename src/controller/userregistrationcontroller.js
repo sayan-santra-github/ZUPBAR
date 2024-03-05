@@ -87,7 +87,7 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
   }
 };
 
-// sending mail for verification
+// sending mail for reset password
 
 const sendresetmail = async (first_name, last_name, email, token) => {
   try {
@@ -129,6 +129,299 @@ const sendresetmail = async (first_name, last_name, email, token) => {
   }
 };
 
+// sending mail for trip verification
+
+const sendtripVerificationmail = async (
+  token,
+  company_name,
+  company_email,
+  company_website,
+  tour_starting_place,
+  tour_started_date_day,
+  tour_started_date_month,
+  tour_started_date_year,
+  tour_started_time,
+  touring_destination,
+  tour_ended_date_day,
+  tour_ended_date_month,
+  tour_ended_date_year,
+  tour_ended_time,
+  tourRange_day,
+  tourRange_night,
+  tour_package_rate,
+  tour_package_include,
+  details_about_tour,
+  vehicle_type,
+  vehicle_seat_type,
+  vehicle_environment,
+  vehicle_model,
+  seat_cancellation,
+  seat_can_be_cancelled_options,
+  tandc_1,
+  tandc_2,
+  tandc_3,
+  tandc_4,
+  tandc_5,
+  tandc_6,
+  tandc_7,
+  tandc_8,
+  tandc_9,
+  tandc_other,
+  accountHolder_name,
+  account_number,
+  ifsc_code,
+  social_links_twt,
+  social_links_facebook,
+  social_links_insta
+) => {
+  try {
+    const transporter = await nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
+      },
+    });
+
+    const mailOptions = await {
+      from: "sayanssent@gmail.com",
+      to: company_email,
+      subject: "For Trip Verification",
+      html:
+        `<p>Hello, this is sayan from Diffroute. We found that ` +
+        company_name +
+        `want to organize a Trip. This is a <strong>Verification Mail</strong> from Diffroute, We request you to kindly click the link to <a target="_blank" href="http://localhost:8000/trip-verification?token=` +
+        token +
+        `"> verify</a> the e-mail associated with your company.</p><br/><br/>
+        <table style="border: 1px solid red">
+      <tr>
+        <td style="border: 1px solid black">Company Name</td>
+        <td style="border: 1px solid black">` +
+        company_name +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Company Email</td>
+        <td style="border: 1px solid black">` +
+        company_email +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Company Website</td>
+        <td style="border: 1px solid black">` +
+        company_website +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Starting Place</td>
+        <td style="border: 1px solid black">` +
+        tour_starting_place +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Started Date</td>
+        <td style="border: 1px solid black">` +
+        tour_started_date_day +
+        `/` +
+        tour_started_date_month +
+        `/` +
+        tour_started_date_year +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Started Time</td>
+        <td style="border: 1px solid black">` +
+        tour_started_time +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Touring Destination</td>
+        <td style="border: 1px solid black">` +
+        touring_destination +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Ended Date</td>
+        <td style="border: 1px solid black">` +
+        tour_ended_date_day +
+        `/` +
+        tour_ended_date_month +
+        `/` +
+        tour_ended_date_year +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Ended Time</td>
+        <td style="border: 1px solid black">` +
+        tour_ended_time +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Range(Day)</td>
+        <td style="border: 1px solid black">` +
+        tourRange_day +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Range(Night)</td>
+        <td style="border: 1px solid black">` +
+        tourRange_night +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Package Rate</td>
+        <td style="border: 1px solid black">` +
+        tour_package_rate +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Tour Package Include</td>
+        <td style="border: 1px solid black">` +
+        tour_package_include +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Details About Tour</td>
+        <td style="border: 1px solid black">` +
+        details_about_tour +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Vehicle Type</td>
+        <td style="border: 1px solid black">` +
+        vehicle_type +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Vehicle Seat Type</td>
+        <td style="border: 1px solid black">` +
+        vehicle_seat_type +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Vehicle Environment</td>
+        <td style="border: 1px solid black">` +
+        vehicle_environment +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Vehicle Model</td>
+        <td style="border: 1px solid black">` +
+        vehicle_model +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Seat Cancellation</td>
+        <td style="border: 1px solid black">` +
+        seat_cancellation +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Seat can be Cancelled</td>
+        <td style="border: 1px solid black">` +
+        seat_can_be_cancelled_options +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Terms and Conditions</td>
+        <td style="border: 1px solid black">
+        <ul>
+        <li>` +
+        tandc_1 +
+        `</li>
+        <li>` +
+        tandc_2 +
+        `</li>
+        <li>` +
+        tandc_3 +
+        `</li>
+        <li>` +
+        tandc_4 +
+        `</li>
+        <li>` +
+        tandc_5 +
+        `</li>
+        <li>` +
+        tandc_6 +
+        `</li>
+        <li>` +
+        tandc_7 +
+        `</li>
+        <li>` +
+        tandc_8 +
+        `</li>
+        <li>` +
+        tandc_9 +
+        `</li>
+        <li>` +
+        tandc_other +
+        `</li>
+        </ul>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Account Holder Name</td>
+        <td style="border: 1px solid black">` +
+        accountHolder_name +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Account Number</td>
+        <td style="border: 1px solid black">` +
+        account_number +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">IFSC Code</td>
+        <td style="border: 1px solid black">` +
+        ifsc_code +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Twitter(X)</td>
+        <td style="border: 1px solid black">` +
+        social_links_twt +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Facebook</td>
+        <td style="border: 1px solid black">` +
+        social_links_facebook +
+        `</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black">Instagram</td>
+        <td style="border: 1px solid black">` +
+        social_links_insta +
+        `</td>
+      </tr>
+        </table>
+        <br/><br/>
+        <p><strong>Please Note that your trip will not activated till you don't verify your e-mail id.</strong></p>
+        <br/><br/>
+        <p>If any details mentioned above is wrong or need to update then please don't verify the e-mail. We automatically delete the data from our database after 1 day. If you verify the e-mail id by mistake please contact us as soon as possible(within 1 day).</p>
+        <br/><br/>
+        <p>Thank You,</p>
+        <br/>
+        <p>Team Diffroute</p>`,
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been sent", +info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // home page view
 
 const homeview = async (req, res) => {
@@ -145,7 +438,7 @@ const homeview = async (req, res) => {
 const get_trip_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
-    const trips = await live_trip_detail.find({});
+    const trips = await live_trip_detail.find({ isActivate: true });
 
     res.render("goforatour", {
       user,
@@ -192,10 +485,10 @@ const organize_trip = async (req, res) => {
     const ifsc_code = req.body.ifsc_code;
 
     let tour_started_date_day = tour_started_date.getDate();
-    let tour_started_date_month = tour_started_date.getMonth();
+    let tour_started_date_month = Number(tour_started_date.getMonth()) + 1;
     let tour_started_date_year = tour_started_date.getFullYear();
     let tour_ended_date_day = tour_ended_date.getDate();
-    let tour_ended_date_month = tour_ended_date.getMonth();
+    let tour_ended_date_month = Number(tour_ended_date.getMonth()) + 1;
     let tour_ended_date_year = tour_ended_date.getFullYear();
 
     if (
@@ -228,12 +521,12 @@ const organize_trip = async (req, res) => {
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
         tour_started_date_day,
-        tour_started_date_month: tour_started_date_month + 1,
+        tour_started_date_month,
         tour_started_date_year,
         tour_started_time: req.body.tour_started_time,
         touring_destination: req.body.touring_destination,
         tour_ended_date_day,
-        tour_ended_date_month: tour_ended_date_month + 1,
+        tour_ended_date_month,
         tour_ended_date_year,
         tour_ended_time: req.body.tour_ended_time,
         tourRange_day: req.body.tourRange_day,
@@ -268,7 +561,56 @@ const organize_trip = async (req, res) => {
       const tourorganized = await tourorganizer.save();
 
       if (tourorganized) {
-        console.log("the page part is :" + tourorganized);
+        const randomToken = randomstring.generate();
+
+        await live_trip_detail.findByIdAndUpdate(
+          { _id: tourorganized._id },
+          { $set: { token: randomToken } }
+        );
+
+        await sendtripVerificationmail(
+          randomToken,
+          req.body.company_name,
+          req.body.company_email,
+          req.body.company_website,
+          req.body.tour_starting_place,
+          tour_started_date_day,
+          tour_ended_date_month,
+          tour_started_date_year,
+          req.body.tour_started_time,
+          req.body.touring_destination,
+          tour_ended_date_day,
+          tour_ended_date_month,
+          tour_ended_date_year,
+          req.body.tour_ended_time,
+          req.body.tourRange_day,
+          req.body.tourRange_night,
+          req.body.tour_package_rate,
+          req.body.tour_package_include,
+          req.body.details_about_tour,
+          req.body.vehicle_type,
+          req.body.vehicle_seat_type,
+          req.body.vehicle_environment,
+          req.body.vehicle_model,
+          req.body.seat_cancellation,
+          req.body.seat_can_be_cancelled_options,
+          req.body.tandc_1,
+          req.body.tandc_2,
+          req.body.tandc_3,
+          req.body.tandc_4,
+          req.body.tandc_5,
+          req.body.tandc_6,
+          req.body.tandc_7,
+          req.body.tandc_8,
+          req.body.tandc_9,
+          req.body.tandc_other,
+          req.body.accountHolder_name,
+          req.body.account_number,
+          req.body.ifsc_code,
+          req.body.social_links_twt,
+          req.body.social_links_facebook,
+          req.body.social_links_insta
+        );
         res.status(201).redirect("/");
       } else {
         res.redirect("back", {
@@ -283,6 +625,29 @@ const organize_trip = async (req, res) => {
     console.log(error.message);
   }
 };
+
+// Trip Verification
+
+const trip_verification = async (req, res) => {
+  try {
+    const token = req.query.token;
+    const istoken = await live_trip_detail.findOne({ token: token})
+
+    if (istoken) {
+      await live_trip_detail.findOneAndUpdate({ token: token}, {
+        $set: {
+          isActivate: true,
+          token: ""
+        }
+      })
+      res.render('trip_verified')
+    } else {
+      
+    }
+  } catch (error) {
+    
+  }
+}
 
 // myaccount view
 
@@ -364,27 +729,34 @@ const goforatour_details_view = async (req, res) => {
 
 const trip_history_view = async (req, res) => {
   try {
-    const user = await user_data.findById({_id: req.session.user_id});
+    const user = await user_data.findById({ _id: req.session.user_id });
     const attendedTripsSalt = await user.trip_attended;
-    const organizedTripsForTripHit = await live_trip_detail.find({tour_created_userId: req.session.user_id});
+    const organizedTripsForTripHit = await live_trip_detail.find({
+      tour_created_userId: req.session.user_id,
+    });
 
     const attendedTripsArr = [];
 
     for (let i = 0; i < attendedTripsSalt.length; i++) {
       var attendedTrips = attendedTripsSalt[i].trip;
-      attendedTripsArr.push(attendedTrips)
+      attendedTripsArr.push(attendedTrips);
     }
 
-    const attendTripsForTripHit = []
+    const attendTripsForTripHit = [];
 
     for (let i = 0; i < attendedTripsArr.length; i++) {
       const element = attendedTripsArr[i];
-      const initialattendTripsForTripHit = await live_trip_detail.findOne({ common_trip_id: element})
-      attendTripsForTripHit.push(initialattendTripsForTripHit)
+      const initialattendTripsForTripHit = await live_trip_detail.findOne({
+        common_trip_id: element,
+      });
+      attendTripsForTripHit.push(initialattendTripsForTripHit);
     }
 
-    res.render("trip_history", { user, attendTripsForTripHit, organizedTripsForTripHit });
-
+    res.render("trip_history", {
+      user,
+      attendTripsForTripHit,
+      organizedTripsForTripHit,
+    });
   } catch (error) {
     console.log(error.message);
   }
@@ -591,10 +963,12 @@ const forgotPassword = async (req, res) => {
           msg: "Please check your mail to reset your password.",
         });
       } else {
-        res.send("your email is not verified");
+        alert("Email is not found !")
+        res.render("forgot_password");
       }
     } else {
-      res.render("forgot_password", { message: "Email Id is not found" });
+      res.render("forgot_password");
+      alert("Email Id is not found");
     }
   } catch (error) {
     console.log(error);
@@ -835,6 +1209,7 @@ module.exports = {
   prepayment_view,
   organize_trip_view,
   organize_trip,
+  trip_verification,
   trip_history_view,
   registerYourVehicleView,
   myaccount_view,

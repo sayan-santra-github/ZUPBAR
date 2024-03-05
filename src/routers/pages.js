@@ -55,6 +55,8 @@ router.get(
 
 router.post("/organizeTrip", connecttocontroller.organize_trip);
 
+router.get("/trip-verification", connecttocontroller.trip_verification)
+
 router.get("/registeryourvehicle", connecttocontroller.registerYourVehicleView)
 
 router.get("/myaccount", auth.isloggedin, connecttocontroller.myaccount_view);
