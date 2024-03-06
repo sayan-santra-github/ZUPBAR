@@ -438,7 +438,16 @@ const homeview = async (req, res) => {
 const get_trip_view = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
-    const trips = await live_trip_detail.find({ isActivate: true });
+    let trips = await live_trip_detail.find({ isActivate: true });
+
+    for (let i = 0; i < trips.length; i++) {
+      const element = trips[i];
+      if (Date.now() >= element.tourInactiveDate) {
+        await element.updateOne({isActivate: false});
+      }
+    }
+
+    trips = await live_trip_detail.find({ isActivate: true });
 
     res.render("goforatour", {
       user,
@@ -520,6 +529,7 @@ const organize_trip = async (req, res) => {
         company_email: req.body.company_email,
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
+        tourInactiveDate: tour_started_date - (3 * 86400000),
         tour_started_date_day,
         tour_started_date_month,
         tour_started_date_year,
@@ -642,7 +652,7 @@ const trip_verification = async (req, res) => {
       })
       res.render('trip_verified')
     } else {
-      
+      res.send('Your Token is invalid. Please try again !!')
     }
   } catch (error) {
     
