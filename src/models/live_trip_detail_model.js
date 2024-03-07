@@ -58,6 +58,10 @@ const live_trip_details_schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    seat_allocated: {
+      type: Number,
+      required: true,
+    },
     tour_ended_date_day: {
       type: String,
       required: true,

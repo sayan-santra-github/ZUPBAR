@@ -478,6 +478,7 @@ const organize_trip = async (req, res) => {
     const tour_started_date = new Date(req.body.tour_started_date);
     const tour_started_time = req.body.tour_started_time;
     const touring_destination = req.body.touring_destination;
+    const seat_allocated = req.body.seat_allocated;
     const tour_ended_date = new Date(req.body.tour_ended_date);
     const tour_ended_time = req.body.tour_ended_time;
     const tourRange_day = req.body.tourRange_day;
@@ -509,6 +510,7 @@ const organize_trip = async (req, res) => {
       tour_started_date &&
       tour_started_time &&
       touring_destination &&
+      seat_allocated &&
       tourRange_day &&
       tourRange_night &&
       tour_package_rate &&
@@ -535,6 +537,7 @@ const organize_trip = async (req, res) => {
         tour_started_date_year,
         tour_started_time: req.body.tour_started_time,
         touring_destination: req.body.touring_destination,
+        seat_allocated: req.body.seat_allocated,
         tour_ended_date_day,
         tour_ended_date_month,
         tour_ended_date_year,
