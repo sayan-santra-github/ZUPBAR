@@ -21,18 +21,18 @@
 
 
       <% if (trips.length == 0 ) { %>
-        <div class="notfoundmain">
-          <div class="imgdiv">
-            <img src="photos/IMG_20240205_181118.jpg" alt="">
-          </div>
-  
-          <div class="txtdiv">
-            <p><span>Sorry</span>, there are no available <span>trips</span> right now.</p>
-          </div>
+      <div class="notfoundmain">
+        <div class="imgdiv">
+          <img src="photos/IMG_20240205_181118.jpg" alt="">
         </div>
 
-        <% } else { %>
-         
+        <div class="txtdiv">
+          <p><span>Sorry</span>, there are no available <span>trips</span> right now.</p>
+        </div>
+      </div>
+
+      <% } else { %>
+
 
       <% trips.forEach(trips => { %>
 
@@ -68,9 +68,6 @@
       <% }) %>
 
       <% } %>
-
-
-      
 
     </div>
   </div>

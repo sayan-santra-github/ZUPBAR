@@ -44,6 +44,7 @@
 
     localStorage.removeItem('tour_package_rate')
     localStorage.removeItem('number_of_seats')
+    localStorage.removeItem('common_trip_id')
 
 
     $(document).ready(function() {
@@ -94,7 +95,7 @@
           "description": "Test Transaction",
           "image": "",
           "order_id": obj.order_id,
-          "callback_url": `http://localhost:8000/goforatour/details/prepayment/payments/payment-verification?user_id=${user_id}&common_trip_id=${common_trip_id}`,
+          "callback_url": `http://localhost:8000/goforatour/details/prepayment/payments/payment-verification?user_id=${user_id}&common_trip_id=${common_trip_id}&number_of_seats=${number_of_seats}`,
           "theme": {
             "color": "#000000"
           }

@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const live_trip_details_schema = new mongoose.Schema(
   {
-    common_trip_id:{
+    common_trip_id: {
       type: String,
       require: true,
     },
-    
+
     tour_created_userId: {
       type: mongoose.Types.ObjectId,
     },
@@ -59,6 +59,10 @@ const live_trip_details_schema = new mongoose.Schema(
       required: true,
     },
     seat_allocated: {
+      type: Number,
+      required: true,
+    },
+    available_seats: {
       type: Number,
       required: true,
     },
@@ -175,9 +179,12 @@ const live_trip_details_schema = new mongoose.Schema(
       type: String,
     },
     trip_attendies: {
-      type: [{user: { type: mongoose.Schema.Types.ObjectId,
-      ref: 'user_data'}}],
-      default: []
+      type: [
+        { user: { type: mongoose.Schema.Types.ObjectId, ref: "user_data" },
+          number_of_seats: { type: Number }
+      },
+      ],
+      default: [],
     },
     token: {
       type: String,
@@ -185,8 +192,8 @@ const live_trip_details_schema = new mongoose.Schema(
     },
     isActivate: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   { timestamps: true }
 );

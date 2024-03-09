@@ -442,8 +442,8 @@ const get_trip_view = async (req, res) => {
 
     for (let i = 0; i < trips.length; i++) {
       const element = trips[i];
-      if (Date.now() >= element.tourInactiveDate) {
-        await element.updateOne({isActivate: false});
+      if (Date.now() >= element.tourInactiveDate || element.available_seats <= 0) {
+        await element.updateOne({ isActivate: false });
       }
     }
 
@@ -531,13 +531,14 @@ const organize_trip = async (req, res) => {
         company_email: req.body.company_email,
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
-        tourInactiveDate: tour_started_date - (3 * 86400000),
+        tourInactiveDate: tour_started_date - 3 * 86400000,
         tour_started_date_day,
         tour_started_date_month,
         tour_started_date_year,
         tour_started_time: req.body.tour_started_time,
         touring_destination: req.body.touring_destination,
         seat_allocated: req.body.seat_allocated,
+        available_seats: req.body.seat_allocated,
         tour_ended_date_day,
         tour_ended_date_month,
         tour_ended_date_year,
@@ -644,23 +645,24 @@ const organize_trip = async (req, res) => {
 const trip_verification = async (req, res) => {
   try {
     const token = req.query.token;
-    const istoken = await live_trip_detail.findOne({ token: token})
+    const istoken = await live_trip_detail.findOne({ token: token });
 
     if (istoken) {
-      await live_trip_detail.findOneAndUpdate({ token: token}, {
-        $set: {
-          isActivate: true,
-          token: ""
+      await live_trip_detail.findOneAndUpdate(
+        { token: token },
+        {
+          $set: {
+            isActivate: true,
+            token: "",
+          },
         }
-      })
-      res.render('trip_verified')
+      );
+      res.render("trip_verified");
     } else {
-      res.send('Your Token is invalid. Please try again !!')
+      res.send("Your Token is invalid. Please try again !!");
     }
-  } catch (error) {
-    
-  }
-}
+  } catch (error) {}
+};
 
 // myaccount view
 
@@ -976,7 +978,7 @@ const forgotPassword = async (req, res) => {
           msg: "Please check your mail to reset your password.",
         });
       } else {
-        alert("Email is not found !")
+        alert("Email is not found !");
         res.render("forgot_password");
       }
     } else {
@@ -1133,10 +1135,7 @@ const PaymentVerification = async (req, res) => {
 
       const user_id = req.query.user_id;
       const common_trip_id = req.query.common_trip_id;
-
-      console.log(common_trip_id);
-
-      console.log(randomstring.generate());
+      const number_of_seats = Number(req.query.number_of_seats);
 
       await user_data.findOneAndUpdate(
         { _id: user_id },
@@ -1151,8 +1150,20 @@ const PaymentVerification = async (req, res) => {
         { common_trip_id: common_trip_id },
         {
           $push: {
-            trip_attendies: { user: user_id },
+            trip_attendies: { user: user_id, number_of_seats: number_of_seats },
           },
+        }
+      );
+
+      const currentTrips = await live_trip_detail.findOne({
+        common_trip_id: common_trip_id,
+      });
+      const available_seats = currentTrips.available_seats;
+
+      await live_trip_detail.findOneAndUpdate(
+        { common_trip_id: common_trip_id },
+        {
+          available_seats: available_seats - number_of_seats,
         }
       );
 
