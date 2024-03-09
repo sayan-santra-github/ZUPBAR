@@ -18,7 +18,6 @@ const live_trip_details_schema = new mongoose.Schema(
 
     company_email: {
       type: String,
-      unique: true,
       require: true,
     },
 
