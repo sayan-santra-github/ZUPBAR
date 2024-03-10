@@ -194,7 +194,7 @@ const sendtripVerificationmail = async (
       html:
         `<p>Hello, this is sayan from Diffroute. We found that ` +
         company_name +
-        `want to organize a Trip. This is a <strong>Verification Mail</strong> from Diffroute, We request you to kindly click the link to <a target="_blank" href="http://localhost:8000/trip-verification?token=` +
+        ` want to organize a Trip. This is a <strong>Verification Mail</strong> from Diffroute, We request you to kindly click the link to <a target="_blank" href="http://localhost:8000/trip-verification?token=` +
         token +
         `"> verify</a> the e-mail associated with your company.</p><br/><br/>
         <table style="border: 1px solid red">
