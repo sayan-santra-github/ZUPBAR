@@ -25,13 +25,13 @@
   height: 56vh;
   position: relative;
   top: 6.5vh;
-  margin-left: 44px;
-  margin-right: 44px;
+  margin-left: 3.4vw;
+  margin-right: 3.4vw;
   background-color: white;
 }
 
 .summary {
-  padding-top: 1.5em;
+  padding-top: 1.3vw;
   position: relative;
   flex-grow: 1;
   flex-basis: 0;
@@ -39,11 +39,13 @@
 .summary .summary_body {
   border: 1px solid #dedede;
   border-radius: 1vw;
+  position: fixed;
+  width: 29%;
 }
 .summary .summary_body .package_name {
-  padding: 1em 1.5em 0;
+  padding: 1vw 1.5vw 0;
   color: #3e3d53;
-  font-size: 16px;
+  font-size: 1.3vw;
   font-weight: bold;
 }
 
@@ -56,9 +58,9 @@
   display: flex;
   flex-direction: column;
   text-transform: capitalize;
-  font-size: 0.875em;
+  font-size: 1.1vw;
   color: #34495e;
-  padding-right: 1em;
+  padding-right: 1vw;
   border-right: 1px solid #dedede;
   align-items: center;
 }
@@ -68,7 +70,7 @@
 .summary .summary_body .generic_section .journey_date .date {
   font-weight: bold;
   background: rgb(251, 255, 251);
-  padding: 8px 12px;
+  padding: 0.7vw 0.9vw;
 }
 .summary .summary_body .generic_section .includes {
   display: flex;
@@ -78,8 +80,9 @@
   width: 70%;
 }
 .summary .summary_body .generic_section .includes .pkg_incl_label {
-  font-size: 0.875em;
-  margin-bottom: 8px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  margin-bottom: 0.2vw;
 }
 .summary .summary_body .generic_section .includes .pkg_includes {
   list-style-type: none;
@@ -88,23 +91,12 @@
 }
 .summary .summary_body .generic_section .includes .pkg_includes .benefits {
   display: flex;
-  /* flex-direction: row; */
-  /* flex-grow: 1; */
   align-items: center;
-  margin: 6px 0;
-  /* flex-wrap: wrap; */
+  margin: 0.4vw 0;
   flex-basis: 1;
   flex: 1 0 30%;
 }
-.summary
-  .summary_body
-  .generic_section
-  .includes
-  .pkg_includes
-  .benefits
-  .icon {
-  font-size: 1.5em;
-}
+
 .summary
   .summary_body
   .generic_section
@@ -112,20 +104,20 @@
   .pkg_includes
   .benefits
   .text {
-  font-size: 0.75em;
-  margin-left: 0.5em;
+  font-size: 0.9vw;
+  margin-left: 0.8vw;
 }
 .summary .summary_body .select_seat {
-  margin-top: 1.5em;
+  margin-top: 1.4vw;
   border-top: 1px solid #dedede;
-  padding: 1.5em;
+  padding: 1.5vw;
   display: flex;
   flex-direction: column;
 }
-.select_seat_upcontainer{
+.select_seat_upcontainer {
   display: flex;
 }
-.sela-bt-cont{
+.sela-bt-cont {
   width: fit-content;
 }
 .lnepartion {
@@ -133,18 +125,18 @@
   border: 1px solid rgba(60, 58, 58, 0.353);
   margin-left: 1vw;
 }
-.slseno-cont{
+.slseno-cont {
   margin-left: 2vw;
   display: flex;
   flex-direction: column;
 }
-.slseno-cont label{
+.slseno-cont label {
   margin-left: 1vw;
   font-size: 1.3vw;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.728);
 }
-#number_of_seats{
+#number_of_seats {
   width: 3.6vw;
   height: 2vw;
   position: relative;
@@ -159,29 +151,28 @@
 }
 .summary .summary_body .select_seat .select_label {
   color: #3e3d53;
-  font-size: 1em;
+  font-size: 1.2vw;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 0.8vw;
 }
 .summary .summary_body .select_seat .bus_travels {
   color: #7e7e8d;
 }
 .summary .summary_body .select_seat .bus_travels > span:first-child {
-  font-size: 0.875em;
+  font-size: 1.45vw;
   font-weight: bold;
-  text-transform: capitalize;
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5vw;
 }
 .summary .summary_body .select_seat .bus_travels > span:last-child {
-  font-size: 0.75em;
+  font-size: 1.1vw;
   text-transform: initial;
 }
 .summary .summary_body .select_seat .book_seat_btn {
-  border-radius: 7px;
+  border-radius: 0.6vw;
   background-color: #000000;
   color: #ffffff;
-  font-size: 1em;
+  font-size: 1.4vw;
   font-weight: bold;
   text-align: center;
   letter-spacing: 2px;
@@ -201,27 +192,17 @@
   width: 29%;
 }
 
-.fixed_summary_new {
-  position: relative !important;
-  width: 97% !important;
-  display: block;
-  margin-top: 97em;
-}
-
-.fixed_summary_new_height {
-  position: relative !important;
-  width: 97% !important;
-  display: block;
-  margin-top: 225em;
-}
-
 .section_heading {
   color: #000000;
-  font-size: 4vh;
+  font-size: 2vw;
   font-weight: 600;
   margin: 0;
   margin-left: 2vw;
-  margin-top: 7vh;
+  margin-top: 2vw;
+}
+
+#agendaCompanyname {
+  font-size: 1.5vw;
 }
 
 .activityCard {
@@ -229,42 +210,15 @@
   margin-left: 2vw;
 }
 
-.activityCard .date {
-  color: #4a4a4a;
-  font-size: 13px;
-  font-weight: bold;
-  padding-left: 24px;
-}
-
-.activityCard .time {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: #3e3d53;
-  font-size: 13px;
-  text-transform: uppercase;
-  position: relative;
-  left: 20px;
-  display: flex;
-  align-items: center;
-}
-
-div.cardContainer {
+.cardContainer {
   padding-left: 24px;
 }
 
 .activityCard .card {
-  margin-top: 5px;
-  padding-bottom: 16px;
+  margin-top: 0.5vw;
+  padding-bottom: 1.3vw;
   background: #fff;
   border-bottom: 1px solid #d1d1d8;
-}
-
-.activityCard .activityName {
-  color: #1fd2437e;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 8px 0px;
 }
 
 .activityCard .card .card_detail {
@@ -285,6 +239,7 @@ div.cardContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1vw;
 }
 
 .activityCard .card .card_detail .card_content .card_header .cardSubHeading {
@@ -313,41 +268,8 @@ div.cardContainer {
   margin-bottom: 0.5em;
 }
 
-.activityCard .card .cardLine {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.activityCard .card .card_detail .card_content .card_body .section_detail_link {
-  color: #1034d9;
-  font-size: 0.875em;
-  letter-spacing: 0.3px;
-  text-decoration: none;
-  right: 0;
-  bottom: 0;
-  text-transform: capitalize;
-  font-weight: bold;
-  display: block;
-  text-align: right;
-}
-
-a,
-a:hover,
-a:visited {
-  text-decoration: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .cancellationContainer {
-  font-size: 22px;
+  font-size: 2vw;
   color: #3e3d53;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -355,7 +277,7 @@ a:-webkit-any-link {
 
 .cancellationContainer td {
   border: 1px solid #dddddd;
-  font-size: 12px;
+  font-size: 1vw;
   line-height: 2;
   letter-spacing: normal;
   color: #3e3d53;
@@ -371,7 +293,7 @@ a:-webkit-any-link {
 }
 
 .cancellationHeader {
-  font-size: 22px;
+  font-size: 2vw;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.26;
@@ -382,7 +304,7 @@ a:-webkit-any-link {
 }
 
 .header_cancellation {
-  font-size: 14px;
+  font-size: 1.2vw;
   box-sizing: border-box;
   border: 1px solid #dddddd;
 }
@@ -415,6 +337,287 @@ a:-webkit-any-link {
 }
 
 .tncDescription .termsCondition {
-  font-size: 0.75em;
-  padding: 0px 0px 1em;
+  font-size: 0.9vw;
+  padding: 0px 0px 1vw;
+}
+
+/* Media Quaries */
+
+@media screen and (max-width: 900px) {
+  .summary .summary_body .package_name {
+    font-size: 1.8vw;
+  }
+
+  .summary .summary_body .generic_section .journey_date {
+    font-size: 1.4vw;
+  }
+
+  .summary .summary_body .generic_section .includes .pkg_incl_label {
+    font-size: 1.4vw;
+    margin-bottom: 0.3vw;
+  }
+
+  .summary
+    .summary_body
+    .generic_section
+    .includes
+    .pkg_includes
+    .benefits
+    .text {
+    font-size: 1.2vw;
+  }
+
+  .summary .summary_body {
+    width: 34%;
+  }
+
+  .summary .summary_body .select_seat .select_label {
+    font-size: 1.5vw;
+  }
+
+  .summary .summary_body .select_seat .bus_travels > span:first-child {
+    font-size: 1.7vw;
+    margin-bottom: 0.7vw;
+  }
+
+  .summary .summary_body .select_seat .bus_travels > span:last-child {
+    font-size: 1.2vw;
+  }
+
+  .lnepartion {
+    height: 7vw;
+    margin-left: 1.5vw;
+  }
+
+  .slseno-cont label {
+    margin-left: 0.7vw;
+    font-size: 1.7vw;
+  }
+
+  #number_of_seats {
+    width: 3.8vw;
+    height: 2.2vw;
+    font-size: 1.7vw;
+  }
+}
+
+@media screen and (max-width: 724px) {
+  .summary {
+    padding-top: 6vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #mainDiv {
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    top: 4;
+    left: 5vw;
+    height: 98vh;
+    width: 90vw;
+  }
+
+  .subdiv {
+    top: 4.5vh;
+    width: 80vw;
+  }
+
+  #mainDiv .subdiv:nth-child(1) {
+    border-bottom: 3px solid rgb(232, 229, 229);
+  }
+
+  #mainDiv .subdiv:nth-child(2) {
+    margin-top: 6vw;
+    position: static;
+    overflow-y: scroll;
+  }
+
+  .summary {
+    padding-top: 0;
+  }
+
+  .section_heading {
+    font-size: 4.5vw;
+  }
+
+  #agendaCompanyname {
+    font-size: 3.5vw;
+  }
+
+  .activityCard {
+    margin-top: 2vw;
+  }
+
+  .activityCard .card .cardLine {
+    font-size: 2.5vw;
+  }
+
+  .header_cancellation {
+    font-size: 2.5vw;
+  }
+
+  .cancellationContainer td {
+    font-size: 2vw;
+  }
+
+  .tncDescription .termsCondition {
+    font-size: 2.3vw;
+  }
+
+  .summary .summary_body {
+    width: 70%;
+    margin-left: 4vw;
+    margin-top: 6vw;
+  }
+
+  .summary .summary_body .package_name {
+    font-size: 3.5vw;
+  }
+
+  .summary .summary_body .generic_section .journey_date {
+    font-size: 2.3vw;
+  }
+
+  .summary .summary_body .generic_section .includes .pkg_incl_label {
+    font-size: 2.3vw;
+  }
+
+  .summary
+    .summary_body
+    .generic_section
+    .includes
+    .pkg_includes
+    .benefits
+    .text {
+    font-size: 1.8vw;
+  }
+
+  .summary .summary_body .select_seat .select_label {
+    font-size: 2.2vw;
+  }
+
+  .summary .summary_body .select_seat .bus_travels > span:first-child {
+    font-size: 2.2vw;
+    margin-bottom: 0.7vw;
+  }
+
+  .summary .summary_body .select_seat .bus_travels > span:last-child {
+    font-size: 1.9vw;
+  }
+
+  .slseno-cont label {
+    font-size: 2.5vw;
+  }
+
+  #number_of_seats {
+    width: 5vw;
+    height: 3.5vw;
+    font-size: 2.7vw;
+  }
+
+  .summary .summary_body .select_seat .book_seat_btn {
+    font-size: 2.2vw;
+    letter-spacing: 1.7px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #mainDiv {
+    position: static;
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .subdiv {
+    top: 4.5vh;
+    width: 98vw;
+  }
+
+  .section_heading {
+    font-size: 6vw;
+  }
+
+  #agendaCompanyname {
+    font-size: 4vw;
+  }
+
+  .header_cancellation {
+    font-size: 2.9vw;
+  }
+
+  .cancellationContainer td {
+    font-size: 2.5vw;
+  }
+
+  .tncDescription .termsCondition {
+    font-size: 2.5vw;
+  }
+
+  .summary .summary_body {
+    margin-top: 15vw;
+    margin-left: 6vw;
+    width: 85%;
+  }
+
+  .summary .summary_body .package_name {
+    font-size: 5vw;
+  }
+
+  .summary .summary_body .generic_section {
+    padding: 1em 1.9em 0;
+    display: flex;
+    color: #3e3d53;
+  }
+
+  .summary .summary_body .generic_section .journey_date {
+    font-size: 3.5vw;
+  }
+
+  .summary .summary_body .generic_section .includes .pkg_incl_label {
+    font-size: 3.5vw;
+  }
+
+  .summary
+    .summary_body
+    .generic_section
+    .includes
+    .pkg_includes
+    .benefits
+    .text {
+    font-size: 2.8vw;
+  }
+
+  .summary .summary_body .select_seat .bus_travels > span:first-child {
+    font-size: 3.2vw;
+}
+
+  .summary .summary_body .select_seat .bus_travels > span:last-child {
+    font-size: 2.8vw;
+}
+
+  .summary .summary_body .select_seat .select_label {
+    font-size: 3.5vw;
+  }
+
+  .slseno-cont label {
+    font-size: 4vw;
+  }
+
+  #number_of_seats {
+    width: 10vw;
+    height: 6vw;
+    font-size: 5vw;
+  }
+
+  .lnepartion {
+    height: 15vw;
+}
+
+  .summary .summary_body .select_seat .book_seat_btn {
+    font-size: 3.7vw;
+    letter-spacing: 1.5px;
+    margin-top: 3vw;
+  }
 }

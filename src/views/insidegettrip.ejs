@@ -21,7 +21,7 @@
                   <div class="card_header">
                     <div class="cardLine"></div>
                     <div class="cardLine">
-                      <span class="cardheading" style="font-size: 3vh">
+                      <span id="agendaCompanyname">
                         <%= trips.company_name %>
                       </span>
                     </div>
@@ -50,19 +50,19 @@
                   <div class="card_header">
                     <div class="cardLine"></div>
                     <div class="cardLine">
-                      <span class="cardheading">&#11043; <%= trips.vehicle_type %></span>
+                      <span>&#11043; <%= trips.vehicle_type %></span>
                     </div>
                     <br />
                     <div class="cardLine">
-                      <span class="cardheading">&#11043; <%= trips.vehicle_seat_type %></span>
+                      <span>&#11043; <%= trips.vehicle_seat_type %></span>
                     </div>
                     <br />
                     <div class="cardLine">
-                      <span class="cardheading">&#11043; <%= trips.vehicle_environment %></span>
+                      <span>&#11043; <%= trips.vehicle_environment %></span>
                     </div>
                     <br />
                     <div class="cardLine">
-                      <span class="cardheading">&#11043; <%= trips.vehicle_model %></span>
+                      <span>&#11043; <%= trips.vehicle_model %></span>
                     </div>
                   </div>
                 </div>
@@ -204,7 +204,6 @@
         <div class="tncDescription ">
           <h3 class="section_heading">&rArr; Terms and Conditions</h3>
           <br>
-          <br>
           <div class="termsCondition">
             * &nbsp;<%= trips.tandc_1 %>
           </div>
@@ -255,7 +254,7 @@
       </div>
       <div class="subdiv">
         <div class="summary">
-          <div class="summary_body fixed_summary" id="fixed_summary_cont" style="position: fixed; width: 29%">
+          <div class="summary_body fixed_summary" id="fixed_summary_cont">
             <div class="package_name"><%= trips.tour_starting_place %> to <%= trips.touring_destination %> Tour</div>
             <div class="generic_section">
               <div class="journey_date">
@@ -329,7 +328,6 @@
                   <label for="number_of_seats">Select Seats :</label>
                   <input type="number" name="number_of_seats" id="number_of_seats" value="1" min="1" max="20">
                 </div>
-
               </div>
               <button type="submit" class="book_seat_btn" id="bookSeats" onclick="openlink(this)" value="/goforatour/details/prepayment">Book Seats</button>
             </div>
