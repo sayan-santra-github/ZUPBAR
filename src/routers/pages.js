@@ -69,6 +69,8 @@ router.post(
 
 router.get("/triphistory", auth.isloggedin, connecttocontroller.trip_history_view);
 
+router.get("/triphistory/cancelmytrip", auth.isloggedin, connecttocontroller.cancelmytrip);
+
 router.get(
   "/goforatour/details",
   auth.isloggedin,

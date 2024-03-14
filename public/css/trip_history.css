@@ -69,7 +69,6 @@
   position: relative;
   top: 3vw;
   left: 5%;
-  height: 31vw;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -203,6 +202,14 @@
   font-size: 1.4vw;
 }
 
+.route_details > a {
+  background-color: rgb(208 70 26);
+  height: fit-content;
+  border-radius: 4px;
+  color: white;
+  display: none;
+}
+
 .fare {
   color: #1d1d1d;
   margin: 0;
@@ -229,4 +236,12 @@
   color: #747474;
   font-weight: 500;
   font-size: 1.2vw;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }

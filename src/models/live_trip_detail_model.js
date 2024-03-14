@@ -35,6 +35,11 @@ const live_trip_details_schema = new mongoose.Schema(
       required: true,
     },
 
+    tour_canBeCancelled_date: {
+      type: String,
+      required: true,
+    },
+
     tour_started_date_day: {
       type: String,
       required: true,

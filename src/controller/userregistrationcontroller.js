@@ -532,6 +532,7 @@ const organize_trip = async (req, res) => {
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
         tourInactiveDate: tour_started_date - 3 * 86400000,
+        tour_canBeCancelled_date: tour_started_date - (Number(req.body.seat_can_be_cancelled_options[8]) * 86400000),
         tour_started_date_day,
         tour_started_date_month,
         tour_started_date_year,
@@ -1202,6 +1203,27 @@ const paymentFailed = async (req, res) => {
   }
 };
 
+// cancel my trip page
+
+const cancelmytrip = async (req, res) => {
+  try {
+    const trips = await live_trip_detail.findById({_id: req.query.id});
+    const trip_attendies = trips.trip_attendies;
+    const user = req.session.user_id;
+    let number_of_seats;
+
+    for (let i = 0; i < trip_attendies.length; i++) {
+      const element = trip_attendies[i];
+      if (element.user == user) {
+        number_of_seats = element.number_of_seats
+      }
+    }
+    res.render('cancelmytrip', {user, trips, number_of_seats});
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Not Found Page_view
 
 const notfoundPage = async (req, res) => {
@@ -1243,5 +1265,6 @@ module.exports = {
   approach_us_view,
   loginuser_view,
   insertuser_view,
+  cancelmytrip,
   notfoundPage,
 };

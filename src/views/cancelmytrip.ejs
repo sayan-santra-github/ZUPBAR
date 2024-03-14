@@ -1,0 +1,337 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zupbar || get a trip</title>
+
+<link rel="stylesheet" href="/css/cancelmytrip.css" />
+<style data-styled="" data-styled-version="4.3.2"></style>
+
+
+<div class="bodyDiv">
+  <input type="hidden" name="tour_package_rate" id="tour_package_rate" value="<%= trips.tour_package_rate %>">
+  <input type="hidden" name="trip_id" id="trip_id" value="<%= trips._id %>">
+  <input type="hidden" name="common_trip_id" id="common_trip_id" value="<%= trips.common_trip_id %>">
+  <div id="mainDiv">
+    <div class="subdiv" style="overflow-y: scroll">
+      <h3 class="section_heading">&rArr; Agenda</h3>
+      <div class="activityCard">
+        <div class="cardContainer">
+          <div class="card">
+            <div class="card_detail">
+              <div class="card_content">
+                <div class="card_header">
+                  <div class="cardLine"></div>
+                  <div class="cardLine">
+                    <span id="agendaCompanyname">
+                      <%= trips.company_name %>
+                    </span>
+                  </div>
+                </div>
+                <div class="card_body">
+                  <div class="card_description">
+                    <div class="cardLine">Board the bus from <%= trips.tour_starting_place %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="section_heading">&rArr; Bus Details</h3>
+      <div class="activityCard">
+        <div class="cardContainer">
+          <div class="card">
+            <div class="card_detail">
+              <div class="card_content">
+                <div class="card_header">
+                  <div class="cardLine"></div>
+                  <div class="cardLine">
+                    <span>&#11043; <%= trips.vehicle_type %></span>
+                  </div>
+                  <br />
+                  <div class="cardLine">
+                    <span>&#11043; <%= trips.vehicle_seat_type %></span>
+                  </div>
+                  <br />
+                  <div class="cardLine">
+                    <span>&#11043; <%= trips.vehicle_environment %></span>
+                  </div>
+                  <br />
+                  <div class="cardLine">
+                    <span>&#11043; <%= trips.vehicle_model %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cancellationContainer ">
+        <h3 class="section_heading">&rArr; Cancellation Policies</h3>
+        <br />
+        <% if (trips.seat_cancellation === 'Booked seat can be cancelled') { %>
+
+        <table>
+          <tbody>
+            <tr class="header_cancellation">
+              <th class="time_cancellation_text">Time of Cancellation</th>
+              <th class="percentage_deduction_cancellation">
+                Deduction Percentage
+              </th>
+              <th class="percentage_cancellation_charges">
+                Cancellation Charges
+              </th>
+            </tr>
+            <% if (trips.seat_can_be_cancelled_options === "before 10 days of boarding") { %>
+            <tr>
+              <td class="durationTd">Before 25th Nov 07:30 AM</td>
+              <td class="deduction_percentage">15%</td>
+              <td>₹105</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 25th Nov 07:30 AM Until 26th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">30%</td>
+              <td>₹210</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 07:30 AM Until 26th Nov 09:30 PM
+              </td>
+              <td class="deduction_percentage">50%</td>
+              <td>₹350</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <% } else if (trips.seat_can_be_cancelled_options === "before 7 days of boarding") { %>
+            <tr>
+              <td class="durationTd">
+                From 25th Nov 07:30 AM Until 26th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">30%</td>
+              <td>₹210</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 07:30 AM Until 26th Nov 09:30 PM
+              </td>
+              <td class="deduction_percentage">50%</td>
+              <td>₹350</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <% } else if (trips.seat_can_be_cancelled_options === "before 6 days of boarding") { %>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 07:30 AM Until 26th Nov 09:30 PM
+              </td>
+              <td class="deduction_percentage">50%</td>
+              <td>₹350</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <% } else if (trips.seat_can_be_cancelled_options === "before 4 days of boarding") { %>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <% } else if (trips.seat_can_be_cancelled_options === "before 3 days of boarding") { %>
+            <tr>
+              <td class="durationTd">
+                From 26th Nov 09:30 PM Until 27th Nov 07:30 AM
+              </td>
+              <td class="deduction_percentage">100%</td>
+              <td>₹700</td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <p>Booked seat cannot be cancelled </p>
+        <% } %>
+      </div>
+      <div class="tncDescription ">
+        <h3 class="section_heading">&rArr; Terms and Conditions</h3>
+        <br>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_1 %>
+        </div>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_2 %>
+        </div>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_3 %>
+        </div>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_4 %>
+        </div>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_5 %>
+        </div>
+
+        <% if (trips.tandc_6) { %>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_6 %>
+        </div>
+        <% } %>
+
+        <% if (trips.tandc_7) { %>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_7 %>
+        </div>
+        <% } %>
+
+        <% if (trips.tandc_8) { %>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_8 %>
+        </div>
+        <% } %>
+
+        <% if (trips.tandc_9) { %>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_9 %>
+        </div>
+        <% } %>
+
+        <% if (trips.tandc_other) { %>
+        <div class="termsCondition">
+          * &nbsp;<%= trips.tandc_other %>
+        </div>
+        <% } %>
+
+      </div>
+    </div>
+    <div class="subdiv">
+      <div class="summary">
+        <div class="summary_body fixed_summary" id="fixed_summary_cont">
+          <div class="package_name"><%= trips.tour_starting_place %> to <%= trips.touring_destination %> Tour</div>
+          <div class="generic_section">
+            <div class="journey_date">
+              <span class="date_label">Boarding date</span>
+              <span class="date"><%= trips.tour_started_date_day %> <% if (trips.tour_started_date_month == 1) { %>
+                Jan
+                <% } %>
+                <% if (trips.tour_started_date_month == 2) { %>
+                Feb
+                <% } %>
+                <% if (trips.tour_started_date_month == 3) { %>
+                Mar
+                <% } %>
+                <% if (trips.tour_started_date_month == 4) { %>
+                April
+                <% } %>
+                <% if (trips.tour_started_date_month == 5) { %>
+                May
+                <% } %>
+                <% if (trips.tour_started_date_month == 6) { %>
+                June
+                <% } %>
+                <% if (trips.tour_started_date_month == 7) { %>
+                July
+                <% } %>
+                <% if (trips.tour_started_date_month == 8) { %>
+                Aug
+                <% } %>
+                <% if (trips.tour_started_date_month == 9) { %>
+                Sept
+                <% } %>
+                <% if (trips.tour_started_date_month == 10) { %>
+                Oct
+                <% } %>
+                <% if (trips.tour_started_date_month == 11) { %>
+                Nov
+                <% } %>
+                <% if (trips.tour_started_date_month == 12) { %>
+                Dec
+                <% } %>, <%= trips.tour_started_date_year %></span>
+            </div>
+            <div class="includes">
+              <div class="pkg_incl_label">Package Inclusions</div>
+              <ul class="pkg_includes">
+                <li class="benefits">
+                  <span class="text"><%= trips.tour_package_include[0] %></span>
+                </li>
+                <li class="benefits">
+                  <span class="text"><%= trips.tour_package_include[1] %></span>
+                </li>
+                <li class="benefits">
+                  <span class="text"><%= trips.tour_package_include[2] %></span>
+                </li>
+                <li class="benefits">
+                  <span class="text"><%= trips.tour_package_include[3] %></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="select_seat">
+            <div class="select_seat_upcontainer">
+              <div class="sela-bt-cont">
+                <div class="bus_travels">
+                  <span><%= trips.company_name %></span>
+                  <span><%= trips.vehicle_type %> &nbsp;<%= trips.vehicle_seat_type %></span>
+                </div>
+              </div>
+              <div class="lnepartion"></div>
+              <div class="slseno-cont">
+                <label for="number_of_seats">Selected Seats :</label>
+                <input type="number" readonly name="number_of_seats" id="number_of_seats" value="<%= number_of_seats %>">
+              </div>
+            </div>
+            <% if (trips.seat_cancellation == "Booked seat can be cancelled") { %>
+            <% if (Date.now() < trips.tour_canBeCancelled_date){ %>
+            <button type="button" class="book_seat_btn" id="bookSeats" onclick="openlink(this)" value="/goforatour/details/prepayment">cancel trip</button>
+            <% } %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

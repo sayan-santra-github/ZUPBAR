@@ -2,7 +2,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="/css/trip_history.css">
+<script src="/js/trip_history.js"></script>
 
 <div class="bodyDiv">
   <button type="button" id="backbutton" onclick="back(this)" value="/">
@@ -17,89 +19,89 @@
 
     <div id="yourattendedtours">
       <% if (attendTripsForTripHit.length === 0) { %>
-        <div class="notripmainDiv">
-          <div class="imgDiv">
-            <img src="/photos/noTripAtteded.jpg" alt="">
-          </div>
-          <div class="msgDiv">
-            <span><span>Still</span> you <span>didn't attend</span> any <span>trip</span></span>
-            <span><a href="">Browse for trips now</a></span>
-          </div>
+      <div class="notripmainDiv">
+        <div class="imgDiv">
+          <img src="/photos/noTripAtteded.jpg" alt="">
         </div>
-        
-        <% } else { %>
+        <div class="msgDiv">
+          <span><span>Still</span> you <span>didn't attend</span> any <span>trip</span></span>
+          <span><a href="">Browse for trips now</a></span>
+        </div>
+      </div>
 
-         <% attendTripsForTripHit.forEach(element => { %>
-          <div class="trips">
-            <div class="route_details">
-              <p class="route"><%= element.tour_starting_place %> to <%= element.touring_destination %></p>
-              <p>
-                <span>Package Rate &nbsp;</span>
-                <span class="fare">INR <%= element.tour_package_rate %> /-</span>
-              </p>
-            </div>
-    
-            <div class="row2">
-              <span class="totalRoutes"> <%= element.tourRange_day %> Days, <%= element.tourRange_night %> Nights </span>
-              <span class="totalRoutes">From :
-                <strong><%= element.tour_started_date_day %>/<%= element.tour_started_date_month %>/<%= element.tour_started_date_year %></strong>
-              </span>
-              <span class="totalRoutes">To :
-                <strong><%= element.tour_ended_date_day %>/<%= element.tour_ended_date_month %>/<%= element.tour_ended_date_year %></strong>
-              </span>
-              <span class="book_now" id="time-btn-61"><a href="" style="text-decoration: none; color: rgba(0, 0, 0, 0.813)">BOOK NOW</a></span>
-            </div>
-          </div>
-        <% }) %>
+      <% } else { %>
+
+      <% attendTripsForTripHit.forEach(element => { %>
+      <div class="trips" onmouseenter="document.getElementById('cancelTrip').style.display = 'inline-block';" onmouseleave="document.getElementById('cancelTrip').style.display = 'none';">
+        <div class="route_details">
+          <p class="route"><a href="/triphistory/cancelmytrip?id=<%= element._id %>" style="color: black; text-decoration: none;"><%= element.tour_starting_place %> to <%= element.touring_destination %></a></p>
+          <p>
+            <span>Package Rate &nbsp;</span>
+            <span class="fare">INR <%= element.tour_package_rate %> /-</span>
+          </p>
+        </div>
+
+        <div class="row2">
+          <span class="totalRoutes"> <%= element.tourRange_day %> Days, <%= element.tourRange_night %> Nights </span>
+          <span class="totalRoutes">From :
+            <strong><%= element.tour_started_date_day %>/<%= element.tour_started_date_month %>/<%= element.tour_started_date_year %></strong>
+          </span>
+          <span class="totalRoutes">To :
+            <strong><%= element.tour_ended_date_day %>/<%= element.tour_ended_date_month %>/<%= element.tour_ended_date_year %></strong>
+          </span>
+          <span class="book_now" id="time-btn-61"><a href="" style="text-decoration: none; color: rgba(0, 0, 0, 0.813)">BOOK NOW</a></span>
+        </div>
+      </div>
+      <% }) %>
       <% } %>
-      
-      
+
+
 
     </div>
 
     <div id="yourorganizedtours">
       <% if (organizedTripsForTripHit.length === 0) { %>
-        <div class="notripmainDiv">
-          <div class="imgDiv">
-            <img src="/photos/noTripOrganized.jpg" alt="">
-          </div>
-          <div class="msgDivfornotOrganize">
-            <span><span>Still</span> you <span>didn't organized</span> any <span>trip</span></span>
-            <span><a href="">Organize a trip now</a></span>
-          </div>
+      <div class="notripmainDiv">
+        <div class="imgDiv">
+          <img src="/photos/noTripOrganized.jpg" alt="">
+        </div>
+        <div class="msgDivfornotOrganize">
+          <span><span>Still</span> you <span>didn't organized</span> any <span>trip</span></span>
+          <span><a href="">Organize a trip now</a></span>
+        </div>
+      </div>
+
+      <% } else { %>
+
+      <% organizedTripsForTripHit.forEach(element => { %>
+      <div class="trips">
+        <div class="route_details">
+          <p class="route"><%= element.tour_starting_place %> to <%= element.touring_destination %></p>
+          <p>
+            <span>Created at : &nbsp;</span>
+            <span class="fare">INR 2000 /-</span>
+          </p>
+          <p>
+            <span>Package Rate &nbsp;</span>
+            <span class="fare">INR <%= element.tour_package_rate %> /-</span>
+          </p>
         </div>
 
-       <% } else { %>
-        
-        <% organizedTripsForTripHit.forEach(element => { %>
-          <div class="trips">
-            <div class="route_details">
-              <p class="route"><%= element.tour_starting_place %> to <%= element.touring_destination %></p>
-              <p>
-                <span>Created at : &nbsp;</span>
-                <span class="fare">INR 2000 /-</span>
-              </p>
-              <p>
-                <span>Package Rate &nbsp;</span>
-                <span class="fare">INR <%= element.tour_package_rate %> /-</span>
-              </p>
-            </div>
-    
-            <div class="row2">
-              <span class="totalRoutes"> <%= element.tourRange_day %> Days, <%= element.tourRange_night %> Nights </span>
-              <span class="totalRoutes">From :
-                <strong><%= element.tour_started_date_day %>/<%= element.tour_started_date_month %>/<%= element.tour_started_date_year %></strong>
-              </span>
-              <span class="totalRoutes">To :
-                <strong><%= element.tour_ended_date_day %>/<%= element.tour_ended_date_month %>/<%= element.tour_ended_date_year %></strong>
-              </span>
-              <span class="book_now" id="time-btn-61"> <a href="" style="text-decoration: none; color: rgba(0, 0, 0, 0.813)">BOOK NOW</a> </span>
-            </div>
-          </div>
-        <% }) %>
-        
+        <div class="row2">
+          <span class="totalRoutes"> <%= element.tourRange_day %> Days, <%= element.tourRange_night %> Nights </span>
+          <span class="totalRoutes">From :
+            <strong><%= element.tour_started_date_day %>/<%= element.tour_started_date_month %>/<%= element.tour_started_date_year %></strong>
+          </span>
+          <span class="totalRoutes">To :
+            <strong><%= element.tour_ended_date_day %>/<%= element.tour_ended_date_month %>/<%= element.tour_ended_date_year %></strong>
+          </span>
+          <span class="book_now" id="time-btn-61"> <a href="" style="text-decoration: none; color: rgba(0, 0, 0, 0.813)">BOOK NOW</a> </span>
+        </div>
+      </div>
+      <% }) %>
+
       <% } %>
-      
+
     </div>
   </div>
 
