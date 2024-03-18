@@ -33,7 +33,7 @@
   <script>
     const tour_package_rate = localStorage.getItem('tour_package_rate')
     const number_of_seats = localStorage.getItem('number_of_seats')
-    const common_trip_id = localStorage.getItem('common_trip_id')
+    const trip_id = localStorage.getItem('trip_id')
     const order_total = tour_package_rate * number_of_seats;
 
     document.getElementById('tour_package_rate_dash').innerText = tour_package_rate + '' + "/-"
@@ -44,7 +44,7 @@
 
     localStorage.removeItem('tour_package_rate')
     localStorage.removeItem('number_of_seats')
-    localStorage.removeItem('common_trip_id')
+    localStorage.removeItem('trip_id')
 
 
     $(document).ready(function() {
@@ -63,7 +63,7 @@
           "data": JSON.stringify({
             "tourPackage": tour_package_rate,
             "numberSeats": number_of_seats,
-            "common_trip_id": common_trip_id
+            "trip_id": trip_id
           }),
 
           success: function(data) {
@@ -95,7 +95,7 @@
           "description": "Test Transaction",
           "image": "",
           "order_id": obj.order_id,
-          "callback_url": `http://localhost:8000/goforatour/details/prepayment/payments/payment-verification?user_id=${user_id}&common_trip_id=${common_trip_id}&number_of_seats=${number_of_seats}`,
+          "callback_url": `http://localhost:8000/goforatour/details/prepayment/payments/payment-verification?user_id=${user_id}&trip_id=${trip_id}&number_of_seats=${number_of_seats}`,
           "theme": {
             "color": "#000000"
           }

@@ -422,6 +422,48 @@ const sendtripVerificationmail = async (
   }
 };
 
+// sending mail for cancel trip
+
+const sendmailfortripCancellation = async (first_name, last_name, email, tour_starting_place, touring_destination, token) => {
+  try {
+    const transporter = await nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
+      },
+    });
+
+    const mailOptions = await {
+      from: "sayanssent@gmail.com",
+      to: email,
+      subject: "For Trip Cancellation Verification",
+      html:
+        "<p>Hello, " +
+        first_name +
+        " " +
+        last_name +
+        `, we are sorry that we couldn't provide you the trip that you enjoy, please click the link to <a target="_blank" href="http://localhost:8000/tripcancelled?token=` +
+        token +
+        '"> verify and cancel</a> your ' + tour_starting_place + ' to ' + touring_destination + ' trip</p><p>Thank You,</p>',
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been sent", +info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // home page view
 
 const homeview = async (req, res) => {
@@ -525,7 +567,6 @@ const organize_trip = async (req, res) => {
       ifsc_code
     ) {
       const tourorganizer = new live_trip_detail({
-        common_trip_id: Date.now() + "_" + randomstring.generate(),
         tour_created_userId: req.session.user_id,
         company_name: req.body.company_name,
         company_email: req.body.company_email,
@@ -763,10 +804,12 @@ const trip_history_view = async (req, res) => {
     for (let i = 0; i < attendedTripsArr.length; i++) {
       const element = attendedTripsArr[i];
       const initialattendTripsForTripHit = await live_trip_detail.findOne({
-        common_trip_id: element,
+        _id: element,
       });
       attendTripsForTripHit.push(initialattendTripsForTripHit);
     }
+
+    console.log(attendTripsForTripHit);
 
     res.render("trip_history", {
       user,
@@ -1093,7 +1136,7 @@ const Payment = async (req, res) => {
       if (!err) {
         await order_details_model.create({
           order_id: order.id,
-          common_trip_id: req.body.common_trip_id,
+          trip_id: req.body.trip_id,
           amount: amount,
         });
 
@@ -1135,20 +1178,20 @@ const PaymentVerification = async (req, res) => {
       );
 
       const user_id = req.query.user_id;
-      const common_trip_id = req.query.common_trip_id;
+      const trip_id = req.query.trip_id;
       const number_of_seats = Number(req.query.number_of_seats);
 
       await user_data.findOneAndUpdate(
         { _id: user_id },
         {
           $push: {
-            trip_attended: { trip: common_trip_id },
+            trip_attended: { trip: trip_id },
           },
         }
       );
 
-      await live_trip_detail.findOneAndUpdate(
-        { common_trip_id: common_trip_id },
+      await live_trip_detail.findByIdAndUpdate(
+        { _id: trip_id },
         {
           $push: {
             trip_attendies: { user: user_id, number_of_seats: number_of_seats },
@@ -1156,13 +1199,13 @@ const PaymentVerification = async (req, res) => {
         }
       );
 
-      const currentTrips = await live_trip_detail.findOne({
-        common_trip_id: common_trip_id,
+      const currentTrips = await live_trip_detail.findById({
+        _id: trip_id,
       });
       const available_seats = currentTrips.available_seats;
 
       await live_trip_detail.findOneAndUpdate(
-        { common_trip_id: common_trip_id },
+        { trip_id: trip_id },
         {
           available_seats: available_seats - number_of_seats,
         }
@@ -1179,7 +1222,7 @@ const PaymentVerification = async (req, res) => {
       return;
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 
@@ -1205,7 +1248,7 @@ const paymentFailed = async (req, res) => {
 
 // cancel my trip page
 
-const cancelmytrip = async (req, res) => {
+const historyTripDetails = async (req, res) => {
   try {
     const trips = await live_trip_detail.findById({_id: req.query.id});
     const trip_attendies = trips.trip_attendies;
@@ -1218,7 +1261,58 @@ const cancelmytrip = async (req, res) => {
         number_of_seats = element.number_of_seats
       }
     }
-    res.render('cancelmytrip', {user, trips, number_of_seats});
+    res.render('historyTripDetailsView', {user, trips, number_of_seats});
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const cancelmytripemailverify = async (req, res) => {
+  try {
+    const tokenforcanceltrip = randomstring.generate()
+    const user = await user_data.findById({_id: req.query.user_id})
+    const trip = await live_trip_detail.findById({_id: req.query.trip_id})
+    
+    await user_data.findByIdAndUpdate({_id: req.query.user_id}, {
+      $set:{token: tokenforcanceltrip}
+    })
+    await live_trip_detail.findByIdAndUpdate({_id: req.query.trip_id}, {
+      $set:{token: tokenforcanceltrip}
+    })
+    sendmailfortripCancellation(user.first_name, user.last_name, user.email, trip.tour_starting_place, trip.touring_destination, tokenforcanceltrip)
+    res.render('cancelMyTripemailverify')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const tripcancelled = async (req, res) => {
+  try {
+    const token = req.query.token;
+    const istriptoken = await live_trip_detail.findOne({ token: token });
+    const isusertoken = await user_data.findOne({ token: token });
+
+    if (istriptoken && isusertoken) {
+      await live_trip_detail.findOneAndUpdate(
+        { token: token },
+        {
+          $pull:{trip_attendies:{user: isusertoken._id}},
+          $set:{token: ""}
+        }
+      );
+
+      await user_data.findOneAndUpdate(
+        { token: token },
+        {
+          $pull:{trip_attended:{trip: istriptoken._id}},
+          $set:{token: ""}
+        }
+      );
+
+      res.render("tripisnowcancelled");
+    } else {
+      res.send("Your Token is invalid. Please try again !!");
+    }
   } catch (error) {
     console.log(error)
   }
@@ -1265,6 +1359,8 @@ module.exports = {
   approach_us_view,
   loginuser_view,
   insertuser_view,
-  cancelmytrip,
+  historyTripDetails,
+  cancelmytripemailverify,
+  tripcancelled,
   notfoundPage,
 };

@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 const live_trip_details_schema = new mongoose.Schema(
   {
-    common_trip_id: {
-      type: String,
-      require: true,
-    },
-
     tour_created_userId: {
       type: mongoose.Types.ObjectId,
     },

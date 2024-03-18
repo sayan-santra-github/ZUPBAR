@@ -1,15 +1,38 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Zupbar || get a trip</title>
-
-<link rel="stylesheet" href="/css/cancelmytrip.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@400;500&family=Open+Sans&family=Roboto+Condensed:wght@600&family=Truculenta:opsz,wght@12..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/historyTripDetailsView.css" />
 <style data-styled="" data-styled-version="4.3.2"></style>
-
 
 <div class="bodyDiv">
   <input type="hidden" name="tour_package_rate" id="tour_package_rate" value="<%= trips.tour_package_rate %>">
   <input type="hidden" name="trip_id" id="trip_id" value="<%= trips._id %>">
-  <input type="hidden" name="common_trip_id" id="common_trip_id" value="<%= trips.common_trip_id %>">
+  <div class="popupmain" id="popupmain">
+    <p>Cancel My Trip</p>
+    <div class="maincontent">
+      <div>
+        <p>"If you cancel your trip you will <strong>miss</strong> the opertunity to explore the world and make new friend, connections."</p>
+      </div>
+      <div>
+        <ul>
+          <li>After click <strong>Drop</strong> button your trip cancellation process will be start.</li>
+          <li>If you cancel the trip, you will be removed from trip attendies list and your cancelled trip will not shown in your trip history page.</li>
+          <li>After click <strong>Drop</strong> button you will receive an email in your registerd email id.</li>
+          <li>If you really want to cancel your trip then please verify that it's you by click the link you received via email.</li>
+          <li>If you would not receive any email from us then please try to cancel the trip again.</li>
+          <li>After cancel the trip you will be refunded as per cancellation Policies within 10 working days.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="buttonDiv">
+      <button type="button" onclick="hide_cancelMyTrip()">Cancel</button>
+      <button type="button" onclick="location.href = this.value" value="/triphistory/tripdetails/cancelmytripemailverify?trip_id=<%= trips._id %>&user_id=<%= user %>">Drop</button>
+    </div>
+  </div>
+
   <div id="mainDiv">
     <div class="subdiv" style="overflow-y: scroll">
       <h3 class="section_heading">&rArr; Agenda</h3>
@@ -326,7 +349,7 @@
             </div>
             <% if (trips.seat_cancellation == "Booked seat can be cancelled") { %>
             <% if (Date.now() < trips.tour_canBeCancelled_date){ %>
-            <button type="button" class="book_seat_btn" id="bookSeats" onclick="openlink(this)" value="/goforatour/details/prepayment">cancel trip</button>
+            <button type="button" class="book_seat_btn" id="bookSeats" onclick="show_cancelMyTrip()">cancel trip</button>
             <% } %>
             <% } %>
           </div>
@@ -335,3 +358,16 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  function show_cancelMyTrip() {
+    document.getElementById('popupmain').style.display = 'block';
+    document.getElementById('mainDiv').style.display = 'none';
+  }
+
+  function hide_cancelMyTrip() {
+    document.getElementById('popupmain').style.display = 'none';
+    document.getElementById('mainDiv').style.display = 'flex';
+  }
+</script>
