@@ -75,6 +75,12 @@ router.get("/triphistory/tripdetails/cancelmytripemailverify", auth.isloggedin, 
 
 router.get("/tripcancelled", connecttocontroller.tripcancelled)
 
+router.get("/triphistory/organizedtripdetails", auth.isloggedin, connecttocontroller.historyorganizedtripdetailsView)
+
+router.post("/triphistory/organizedtripdetails", connecttocontroller.historyorganizedtripdetails)
+
+router.get("/organizedtripcancelled", connecttocontroller.organizedtripcancelled)
+
 router.get(
   "/goforatour/details",
   auth.isloggedin,

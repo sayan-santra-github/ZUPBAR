@@ -177,6 +177,12 @@ const live_trip_details_schema = new mongoose.Schema(
     social_links_insta: {
       type: String,
     },
+    why_dropTrip_option: {
+      type: String,
+    },
+    why_dropTrip_thoughts: {
+      type: String,
+    },
     trip_attendies: {
       type: [
         { user: { type: mongoose.Schema.Types.ObjectId, ref: "user_data" },

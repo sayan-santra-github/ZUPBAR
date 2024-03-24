@@ -1,0 +1,327 @@
+body {
+    background: #f5f5f5;
+    margin-top: 20px;
+  }
+
+  .popupmain {
+    background-color: rgb(255, 255, 255);
+    width: 25%;
+    position: absolute;
+    top: 7%;
+    left: 37.5%;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .popupmain p {
+    margin-top: 1vw;
+    margin-left: 2vw;
+    margin-bottom: 2.5vw;
+    font-size: 1.8vw;
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .popupmain .maincontent {
+    display: flex;
+    flex-direction: column;
+    line-height: 3vw;
+    justify-content: center;
+    width: 90%;
+  }
+
+  .popupmain .maincontent div{
+    margin-left: 1vw;
+    font-size: 1.2vw;
+  }
+  
+  .popupmain .maincontent input {
+    accent-color: red;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    font-size: 1.2vw;
+  }
+    
+  .popupmain .buttonDiv {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1vw;
+    margin-top: 0.5vw;
+  }
+  
+  .popupmain .buttonDiv button {
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.1vw;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    width: 25%;
+    height: 2.3vw;
+  }
+  
+  .popupmain .buttonDiv button:nth-child(2) {
+    background-color: #b61515;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .ui-w-80 {
+    width: 80px !important;
+    height: auto;
+  }
+  
+  .btn-default {
+    border-color: rgba(24, 28, 33, 0.1);
+    background: rgba(0, 0, 0, 0);
+    color: #4e5155;
+  }
+  
+  label.btn {
+    margin-bottom: 0;
+  }
+  
+  .btn-outline-primary {
+    border-color: #26b4ff;
+    background: transparent;
+    color: #26b4ff;
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
+  
+  .text-light {
+    color: #babbbc !important;
+  }
+  
+  .btn-facebook {
+    border-color: rgba(0, 0, 0, 0);
+    background: #3b5998;
+    color: #fff;
+  }
+  
+  .btn-instagram {
+    border-color: rgba(0, 0, 0, 0);
+    background: #000;
+    color: #fff;
+  }
+  
+  .card {
+    background-clip: padding-box;
+    box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+  }
+  
+  .row-bordered {
+    overflow: hidden;
+  }
+  
+  .tour_details_picture-fileinput {
+    position: absolute;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  
+  .account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+  }
+  
+  html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+  }
+  
+  .account-settings-multiselect ~ .select2-container {
+    width: 100% !important;
+  }
+  
+  .light-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+  }
+  
+  .light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+  }
+  
+  .material-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+  }
+  
+  .material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+  }
+  
+  .dark-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+  }
+  
+  .dark-style .account-settings-links .list-group-item.active {
+    color: #fff !important;
+  }
+  
+  .light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+  }
+  
+  .light-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+  }
+  
+  .tsandpp {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1vw;
+  }
+  
+  /* Media Queries */
+
+  @media screen and (max-width: 1024px) {
+    .popupmain {
+      width: 35%;
+      top: 25%;
+      left: 32.5%;
+    }
+    
+    .popupmain p {
+      font-size: 2.5vw;
+    }
+
+    .popupmain .maincontent div{
+      margin-left: 2vw;
+      font-size: 1.6vw;
+    }
+    
+    .popupmain .maincontent input {
+      font-size: 1.6vw;
+    }
+    
+    .popupmain .buttonDiv button {
+      font-size: 1.3vw;
+      height: 2.5vw;
+    }
+    
+  }
+  
+  @media only screen and (max-width: 910px) {
+    #tourRange_day {
+      width: 7vw;
+    }
+    #tourRange_night {
+      width: 7vw;
+    }
+    .tsandpp {
+      font-size: 1.2vw;
+    }
+  }
+
+
+  @media screen and (max-width: 770px) {
+    .popupmain {
+      width: 50%;
+      left: 25%;
+    }
+    
+    .popupmain p {
+      font-size: 3.5vw;
+    }
+      
+    .popupmain .buttonDiv button {
+      font-size: 1.8vw;
+      height: 3.5vw;
+    }
+    
+  }
+
+  
+  @media screen and (max-width: 600px) {
+    .popupmain {
+      width: 70%;
+      top: 20%;
+      left: 15%;
+    }
+    
+    .popupmain p {
+      font-size: 4.5vw;
+    }
+
+    .popupmain .maincontent{
+      line-height: 5vw;
+    }
+
+    .popupmain .maincontent div{
+      font-size: 2.5vw;
+    }
+    
+    .popupmain .maincontent input {
+      font-size: 2.5vw;
+    }
+    
+    .popupmain .buttonDiv button {
+      font-size: 2.3vw;
+      height: 4.5vw;
+    }
+  }
+
+
+  
+  @media only screen and (max-width: 450px) {
+    .popupmain p {
+      font-size: 7.5vw;
+    }
+
+    .popupmain .maincontent{
+      line-height: 7vw;
+    }
+
+    .popupmain .maincontent div{
+      font-size: 3.8vw;
+    }
+    
+    .popupmain .maincontent input {
+      font-size: 3.8vw;
+    }
+        
+    .popupmain .buttonDiv {
+      margin-bottom: 2vw;
+    }
+    
+    .popupmain .buttonDiv button {
+      font-size: 3.2vw;
+      height: 6.5vw;
+    }
+    .tsandpp {
+      font-size: 1.5vw;
+    }
+  }
+  
+
+  @media screen and (max-width: 380px) {
+    .popupmain {
+      width: 90%;
+      top: 20%;
+      left: 5%;
+    }
+  
+    .popupmain p {
+      margin-bottom: 5vw;
+    }
+      
+    .popupmain .buttonDiv button {
+      font-size: 4vw;
+      height: 7.5vw;
+    }
+    
+  }
+  

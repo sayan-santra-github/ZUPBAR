@@ -464,6 +464,52 @@ const sendmailfortripCancellation = async (first_name, last_name, email, tour_st
   }
 }
 
+// sending mail for stop trip casting
+
+const sendmailforstopcastingtrip = async (company_name, company_email, token, why_cancel_trip_option, why_cancel_trip_thoughts) => {
+  try {
+    const transporter = await nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
+      },
+    });
+
+    const mailOptions = await {
+      from: "sayanssent@gmail.com",
+      to: company_email,
+      subject: "For Trip Cancellation Verification",
+      html:
+        "<p>Team " +
+        company_name +
+        `, we hope you got a satisfied service from us and now, you want to stop casting your trip on our webpage with an satisfied result. </p>
+        <br/>
+        <p>To stop casting your trip please <a target="_blank" href="http://localhost:8000/organizedtripcancelled?token=` +
+        token +
+        '&why_cancel_trip_option=' +
+        why_cancel_trip_option + 
+        '&why_cancel_trip_thoughts=' + 
+        why_cancel_trip_thoughts + 
+        '">click here</a>.</p> <br> <p>Thanks for trusting us,</p>',
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been sent", +info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // home page view
 
 const homeview = async (req, res) => {
@@ -1318,6 +1364,36 @@ const tripcancelled = async (req, res) => {
   }
 }
 
+// stop casting my organized trip
+
+const historyorganizedtripdetailsView = async (req, res) => {
+  try {
+    const trips = await live_trip_detail.findById({_id: req.query.id})
+    res.render("historyorganizedtripdetails", {trips})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const historyorganizedtripdetails = async (req, res) => {
+  try {
+    const tokenforstopTripCasting = randomstring.generate()
+    await sendmailforstopcastingtrip(req.body.company_name, req.body.company_email, tokenforstopTripCasting, req.body.why_cancel_trip_option, req.body.why_cancel_trip_thoughts)
+
+    res.send('check your email to drop your trip')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const organizedtripcancelled = async (req, res) => {
+  try {
+    res.send('trip cancelled')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Not Found Page_view
 
 const notfoundPage = async (req, res) => {
@@ -1359,6 +1435,9 @@ module.exports = {
   approach_us_view,
   loginuser_view,
   insertuser_view,
+  historyorganizedtripdetailsView,
+  historyorganizedtripdetails,
+  organizedtripcancelled,
   historyTripDetails,
   cancelmytripemailverify,
   tripcancelled,
