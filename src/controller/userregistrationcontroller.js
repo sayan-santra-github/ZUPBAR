@@ -1378,7 +1378,10 @@ const historyorganizedtripdetails = async (req, res) => {
 
 const organizedtripcancelled = async (req, res) => {
   try {
-    res.send('trip cancelled')
+    await live_trip_detail.findOneAndUpdate({token: req.query.token}, {
+      $set: {token: '', isActivate: false, why_cancel_trip_option: req.query.why_cancel_trip_option, why_cancel_trip_thoughts: req.query.why_cancel_trip_thoughts},
+    })
+    res.render('tripcastingstopped')
   } catch (error) {
     console.log(error)
   }
