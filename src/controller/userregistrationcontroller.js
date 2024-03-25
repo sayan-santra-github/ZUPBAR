@@ -1322,9 +1322,6 @@ const cancelmytripemailverify = async (req, res) => {
     await user_data.findByIdAndUpdate({_id: req.query.user_id}, {
       $set:{token: tokenforcanceltrip}
     })
-    await live_trip_detail.findByIdAndUpdate({_id: req.query.trip_id}, {
-      $set:{token: tokenforcanceltrip}
-    })
     sendmailfortripCancellation(user.first_name, user.last_name, user.email, trip.tour_starting_place, trip.touring_destination, tokenforcanceltrip)
     res.render('cancelMyTripemailverify')
   } catch (error) {
@@ -1335,18 +1332,9 @@ const cancelmytripemailverify = async (req, res) => {
 const tripcancelled = async (req, res) => {
   try {
     const token = req.query.token;
-    const istriptoken = await live_trip_detail.findOne({ token: token });
     const isusertoken = await user_data.findOne({ token: token });
 
-    if (istriptoken && isusertoken) {
-      await live_trip_detail.findOneAndUpdate(
-        { token: token },
-        {
-          $pull:{trip_attendies:{user: isusertoken._id}},
-          $set:{token: ""}
-        }
-      );
-
+    if (isusertoken) {
       await user_data.findOneAndUpdate(
         { token: token },
         {
@@ -1378,9 +1366,11 @@ const historyorganizedtripdetailsView = async (req, res) => {
 const historyorganizedtripdetails = async (req, res) => {
   try {
     const tokenforstopTripCasting = randomstring.generate()
+    await live_trip_detail.findByIdAndUpdate({_id: req.body.id}, {
+      $set: {token: tokenforstopTripCasting}
+    })
     await sendmailforstopcastingtrip(req.body.company_name, req.body.company_email, tokenforstopTripCasting, req.body.why_cancel_trip_option, req.body.why_cancel_trip_thoughts)
-
-    res.send('check your email to drop your trip')
+    res.render('stopcastingtripmailverify')
   } catch (error) {
     console.log(error)
   }
