@@ -985,7 +985,7 @@ const insertuser = async (req, res) => {
         if (req.file) {
           var initial_profile_picture = req.file.filename;
         } else {
-          initial_profile_picture = "user-regular-24.png";
+          initial_profile_picture = "defaultUser.png";
         }
         const registeruser = new user_data({
           profile_picture_url: initial_profile_picture,
