@@ -79,7 +79,7 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Email has been sent", +info.response);
+        console.log("Email has been sent", info.response);
       }
     });
   } catch (error) {
@@ -121,7 +121,7 @@ const sendresetmail = async (first_name, last_name, email, token) => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Email has been sent", +info.response);
+        console.log("Email has been sent", info.response);
       }
     });
   } catch (error) {
@@ -402,7 +402,7 @@ const sendtripVerificationmail = async (
         </table>
         <br/><br/>
         <p><strong>Please Note that your trip will not activated till you don't verify your e-mail id.</strong></p>
-        <br/><br/>
+        <br/>
         <p>If any details mentioned above is wrong or need to update then please don't verify the e-mail. We automatically delete the data from our database after 1 day. If you verify the e-mail id by mistake please contact us as soon as possible(within 1 day).</p>
         <br/><br/>
         <p>Thank You,</p>
@@ -414,7 +414,7 @@ const sendtripVerificationmail = async (
       if (error) {
         console.log(error);
       } else {
-        console.log("Email has been sent", +info.response);
+        console.log("Email has been sent", info.response);
       }
     });
   } catch (error) {
@@ -456,7 +456,7 @@ const sendmailfortripCancellation = async (first_name, last_name, email, tour_st
       if (error) {
         console.log(error);
       } else {
-        console.log("Email has been sent", +info.response);
+        console.log("Email has been sent", info.response);
       }
     });
   } catch (error) {
@@ -488,7 +488,6 @@ const sendmailforstopcastingtrip = async (company_name, company_email, token, wh
         "<p>Team " +
         company_name +
         `, we hope you got a satisfied service from us and now, you want to stop casting your trip on our webpage with an satisfied result. </p>
-        <br/>
         <p>To stop casting your trip please <a target="_blank" href="http://localhost:8000/organizedtripcancelled?token=` +
         token +
         '&why_cancel_trip_option=' +
@@ -502,7 +501,53 @@ const sendmailforstopcastingtrip = async (company_name, company_email, token, wh
       if (error) {
         console.log(error);
       } else {
-        console.log("Email has been sent", +info.response);
+        console.log("Email has been sent", info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+// sending mail after purchase seat 
+
+const sendmailafterseatpurchase = async (email, first_name, tour_starting_place, touring_destination) => {
+  try {
+    const transporter = await nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
+      },
+    });
+
+    const mailOptions = await {
+      from: "sayanssent@gmail.com",
+      to: email,
+      subject: "Order confirmation from Diffroute",
+      html:
+        "<p style='font-size: 1.5vw;'>Hey " +
+        first_name +
+        `,</p>
+        <p style='font-size: 1.5vw;'>This is just a quick email to say we've received your order.</p>
+        <p style='font-size: 1.5vw;'>You just order your <span style='font-weight: 600;'>` + tour_starting_place + ` to ` + touring_destination + `</span> trip You will find it on your trip history page</p>
+        <p style='font-size: 1.5vw;'>Before bording date we will send you your ticket through email.</p>
+        <p style='font-size: 1.5vw;'>You can give us your feedback in our approach us section</p
+        <p style='font-size: 1.5vw;'>We will send you some latest trips notification through email, so that you will be get in touch with us.</p>
+        <p style='font-size: 1.5vw;'>Thank You <span style='color: #b50808;'>&#9829;</span></p>
+        `,
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been sent ", info);
       }
     });
   } catch (error) {
@@ -1227,6 +1272,9 @@ const PaymentVerification = async (req, res) => {
       const trip_id = req.query.trip_id;
       const number_of_seats = Number(req.query.number_of_seats);
 
+      const user = await user_data.findById({_id: user_id})
+      const trips = await live_trip_detail.findById({_id: trip_id})
+
       await user_data.findOneAndUpdate(
         { _id: user_id },
         {
@@ -1256,6 +1304,8 @@ const PaymentVerification = async (req, res) => {
           available_seats: available_seats - number_of_seats,
         }
       );
+
+      await sendmailafterseatpurchase(user.email, user.first_name, trips.tour_starting_place, trips.touring_destination)
 
       res.redirect(
         `http://localhost:8000/goforatour/details/prepayment/payments/payment-successful?payment_id=${razorpay_payment_id}`
