@@ -1,40 +1,31 @@
-/* css reset */
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-/* navigation bar design */
-
 .navbar {
   height: fit-content;
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  background: rgba(10, 10, 10, 0.899);
+  position: fixed;
+  background: rgb(239 239 239 / 90%);
   display: flex;
+  z-index: 99999;
   justify-content: space-between;
 }
 
-/* logo design */
-
-.logo {
-  font-size: 2rem;
-  margin-top: 0.5vh;
+.nav-logo {
+  margin-top: 0.5vw;
   margin-bottom: 0vh;
   margin-right: 1vw;
-  margin-left: 1vw;
+  margin-left: 0.4vw;
 }
 
-.logo a,
-.navigation-items ul li a,
-.join a {
-  color: rgb(255, 255, 255);
+.nav-logo img {
+  height: 4vw;
+}
+
+.nav-logo a,
+.navigation-items ul li a {
+  color: rgba(10, 10, 10, 0.899);
   text-decoration: none;
 }
-
-/* navigation items design */
 
 .navigation-items {
   width: 25vw;
@@ -45,46 +36,23 @@
   list-style-type: none;
   display: flex;
   justify-content: space-between;
-  font-size: 1.29rem;
-  margin-top: 2.2vh;
-}
-
-/* divider properties */
-
-.divider {
-  height: 10vh;
-  width: 1px;
-  border-right: 1px solid rgb(210, 209, 209);
-  transform: translateX(18vw);
-}
-
-/* join button design */
-
-.join a {
-  font-size: 1.5rem;
+  font-size: 1.6vw;
+  margin-top: 1vw;
+  margin-bottom: 2vw;
 }
 
 .join {
-  margin-top: 0.2vh;
   margin-left: 1vw;
   margin-right: 5vw;
+  margin-top: 1vw;
 }
-
-.join-userIMG {
-  margin-top: 0.2vh;
-  margin-left: 1vw;
-  margin-right: 5vw;
-  display: none;
-}
-
-/* sub menu design */
 
 .sub-menu-wrap {
   float: right;
   background: #eceaff;
   border-radius: 10%;
   margin-right: 2.5vw;
-  margin-top: 1.5vh;
+  margin-top: 12vh;
   overflow: hidden;
   z-index: 999;
   max-height: 0px;
@@ -117,390 +85,114 @@
   color: black;
 }
 
-/* use media qua... */
+/* media quaries */
 
 @media only screen and (max-width: 1090px) {
-  /* navigation items design */
+  .nav-logo {
+    margin-top: 0.5vw;
+  }
 
+  .nav-logo img {
+    height: 4.8vw;
+  }
   .navigation-items {
-    width: 30vw;
-    transform: translateX(20vw);
+    width: 27vw;
+    transform: translateX(22vw);
   }
 
   .navigation-items ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.3rem;
-    margin-top: 2vh;
+    margin-top: 1.6vw;
+    font-size: 1.9vw;
+    margin-bottom: 2vw;
   }
 
-  /* divider properties */
-
-  .divider {
-    height: 100;
-    width: 1px;
-    border-right: 0.1px solid white;
-    transform: translateX(15.5vw);
+  .navigation-items ul li a {
+    margin-left: 3vw;
   }
 }
 
-@media only screen and (max-width: 930px) {
-  /* navigation items design */
-
-  .navigation-items {
-    width: 35vw;
-    transform: translateX(15vw);
+@media only screen and (max-width: 900px) {
+  .nav-logo {
+    margin-top: 0.5vw;
   }
 
   .navigation-items ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    margin-top: 3vh;
+    font-size: 2.1vw;
+    margin-bottom: 2vw;
   }
 
-  /* divider properties */
-
-  .divider {
-    height: 100;
-    width: 1px;
-    border-right: 0.1px solid white;
-    transform: translateX(13vw);
+  .navigation-items {
+    transform: translateX(14vw);
   }
 
-  /* join button design */
+  .navigation-items ul li a {
+    margin-left: 4vw;
+  }
+}
 
-  .join a {
-    font-size: 1.3rem;
+@media screen and (max-width: 800px) {
+  .nav-logo {
+    margin-top: 0.5vw;
+  }
+
+  .nav-logo img {
+    height: 5.3vw;
+  }
+
+  .navigation-items {
+    transform: translateX(8vw);
+  }
+
+  .navigation-items ul {
+    font-size: 2.4vw;
+    margin-bottom: 2vw;
+  }
+
+  .navigation-items ul li a {
+    margin-left: 5vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .nav-logo {
+    margin-top: 1vw;
+  }
+
+  .nav-logo img {
+    height: 5.7vw;
+  }
+
+  .navigation-items ul {
+    font-size: 2.7vw;
+    margin-top: 2vw;
+  }
+
+  .navigation-items ul li a {
+    margin-left: 3.8vw;
+  }
+
+  .navigation-items {
+    transform: translateX(3vw);
   }
 
   .join {
-    margin-top: 3vh;
-    margin-left: 1vw;
-    margin-right: 5vw;
+    margin-top: 1.5vw;
+    height: 4.5vw;
   }
 }
 
-@media only screen and (max-width: 730px) {
-  /* logo design */
-
-  .logo {
-    font-size: 1.8rem;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
-
-  .navigation-items {
-    width: 35vw;
-    transform: translateX(18vw);
-  }
-
+@media only screen and (max-width: 500px) {
   .navigation-items ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    margin-top: 3vh;
+    font-size: 3.3vw;
+    margin-top: 3vw;
+    margin-bottom: 2vw;
   }
 
-  /* divider properties */
-
-  .divider {
-    height: 100;
-    width: 1px;
-    border-right: 0.1px solid white;
-    transform: translateX(11vw);
+  .navigation-items ul li a {
+    margin-left: 4vw;
   }
-
-  /* join button design */
-
-  .join a {
-    font-size: 1.2rem;
-  }
-
-  .join {
-    margin-top: 3vh;
-    margin-left: 1vw;
-    margin-right: 5vw;
-  }
-}
-
-@media only screen and (max-width: 620px) {
-  /* logo design */
-
-  .logo {
-    font-size: 1.6rem;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
 
   .navigation-items {
-    width: 40vw;
-    transform: translateX(16vw);
-  }
-
-  .navigation-items ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    margin-top: 2vh;
-  }
-
-  /* divider properties */
-
-  .divider {
-    height: 100;
-    width: 0.1px;
-    border-right: 0.1px solid white;
-    transform: translateX(9vw);
-  }
-
-  /* join button design */
-
-  .join a {
-    font-size: 1.15rem;
-  }
-
-  .join {
-    margin-top: 2vh;
-    margin-left: 1vw;
-    margin-right: 4vw;
-  }
-}
-
-@media only screen and (max-width: 540px) {
-  /* logo design */
-
-  .logo {
-    font-size: 1.4rem;
-    margin-top: 1.2vh;
-    margin-bottom: 1vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
-
-  .navigation-items {
-    width: 40vw;
-    transform: translateX(15vw);
-  }
-
-  .navigation-items ul {
-    font-size: 0.9rem;
-    margin-top: 2.5vh;
-  }
-
-  /* divider properties */
-
-  .divider {
-    transform: translateX(9vw);
-  }
-
-  /* join button design */
-
-  .join a {
-    font-size: 0.9rem;
-  }
-
-  .join {
-    margin-top: 2.5vh;
-    margin-left: 1vw;
-    margin-right: 3vw;
-  }
-}
-
-@media only screen and (max-width: 430px) {
-  /* logo design */
-
-  .logo {
-    font-size: 1.2rem;
-    margin-top: 1.2vh;
-    margin-bottom: 1vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
-
-  .navigation-items {
-    width: 48vw;
-    transform: translateX(13vw);
-  }
-
-  .navigation-items ul {
-    font-size: 0.75rem;
-    margin-top: 2vh;
-  }
-
-  /* divider properties */
-
-  .divider {
-    display: none;
-  }
-
-  /* join button design */
-
-  .join a {
-    display: none;
-  }
-
-  .join-userIMG {
-    display: block !important;
-    color: wheat;
-    margin-top: 1vh;
-    margin-right: 3vw;
-  }
-}
-
-@media only screen and (max-width: 340px) {
-  /* logo design */
-
-  .logo {
-    font-size: 0.8rem;
-    margin-top: 1.2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
-
-  .navigation-items {
-    width: 43vw;
-    transform: translateX(18vw);
-  }
-
-  .navigation-items ul {
-    font-size: 0.5rem;
-    margin-top: 2vh;
-    margin-bottom: 0;
-  }
-
-  /* divider properties */
-
-  .divider {
-    display: none;
-  }
-
-  /* join button design */
-
-  .join a {
-    display: none;
-  }
-
-  .join-userIMG {
-    display: block;
-    color: rgb(255, 255, 255);
-    height: 20px;
-    margin-top: 1vh;
-    margin-right: 3vw;
-  }
-}
-
-@media only screen and (max-width: 240px) {
-  /* logo design */
-
-  .logo {
-    font-size: 0.8rem;
-    margin-top: 1.2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
-
-  .navigation-items {
-    width: 45vw;
-    transform: translateX(15vw);
-  }
-
-  .navigation-items ul {
-    font-size: 0.5rem;
-    margin-top: 2vh;
-    margin-bottom: 0;
-  }
-
-  /* divider properties */
-
-  .divider {
-    display: none;
-  }
-
-  /* join button design */
-
-  .join a {
-    display: none;
-  }
-
-  .join-userIMG {
-    display: block;
-    color: rgb(255, 255, 255);
-    height: 20px;
-    margin-top: 1vh;
-    margin-right: 3vw;
-  }
-}
-
-@media only screen and (max-width: 200px) {
-  /* navigation items design */
-
-  .navigation-items {
-    width: 53vw;
-    transform: translateX(5vw);
-  }
-}
-
-@media only screen and (max-width: 180px) {
-  /* logo design */
-
-  .logo {
-    font-size: 0.5rem;
-    margin-top: 1.2vh;
-    margin-right: 1vw;
-    margin-left: 1vw;
-  }
-
-  /* navigation items design */
-
-  .navigation-items {
-    width: 50vw;
-    transform: translateX(5vw);
-  }
-
-  .navigation-items ul {
-    font-size: 0.2rem;
-    margin-top: 3vh;
-    margin-bottom: 0;
-  }
-
-  /* divider properties */
-
-  .divider {
-    display: none;
-  }
-
-  /* join button design */
-
-  .join a {
-    display: none;
-  }
-
-  .join-userIMG {
-    display: block;
-    color: rgb(255, 255, 255);
-    height: 20px;
-    margin-top: 0vh;
-    margin-right: 1vw;
+    transform: translateX(-12vw);
   }
 }
