@@ -84,29 +84,32 @@
 .servicedivcontent {
   font-size: 1.8vw;
   text-decoration: none;
+  color: #4b6877;
   position: relative;
   top: 1vw;
   left: 3vw;
 }
 
-
 /* MEDIA QUARIES */
 
 @media only screen and (max-width: 1220px) {
   #firsthome {
-    background-size: 46vw 60vh;
+    height: 38rem;
+    background-size: 45vw 23rem;
   }
 }
 
 @media only screen and (max-width: 1115px) {
   #firsthome {
-    background-size: 38vw 55vh;
+    height: 38rem;
+    background-size: 39vw 21rem;
   }
 }
 
 @media only screen and (max-width: 1030px) {
   #firsthome {
-    background-size: 42vw 55vh;
+    height: 35rem;
+    background-size: 44vw 21rem;
   }
 
   #homepagegreet {
@@ -116,7 +119,8 @@
 
 @media only screen and (max-width: 920px) {
   #firsthome {
-    background-size: 386px 55vh;
+    height: 32rem;
+    background-size: 50vw 23rem;
   }
 
   #homepagegreet {
@@ -126,8 +130,8 @@
 
 @media only screen and (max-width: 835px) {
   #firsthome {
-    height: 90vh;
-    background-size: 370px 55vh;
+    height: 31rem;
+    background-size: 49vw 18rem;
   }
 
   #homePageGreetDiv {
@@ -141,8 +145,8 @@
 
 @media only screen and (max-width: 760px) {
   #firsthome {
-    height: 80vh;
-    background-size: 350px 55vh;
+    height: 26rem;
+    background-size: 50vw 16rem;
   }
 
   #homePageGreetDiv {
@@ -156,8 +160,8 @@
 
 @media only screen and (max-width: 680px) {
   #firsthome {
-    height: 65vh;
-    background-size: 300px 35vh;
+    height: 22rem;
+    background-size: 50vw 13rem;
   }
 
   #homePageGreetDiv {
@@ -166,6 +170,15 @@
 
   #homepagegreet {
     font-size: 1.3rem;
+  }
+
+  .servicediv {
+    height: 35vw;
+    width: 35vw;
+  }
+
+  .servicediv img {
+    height: 25vw;
   }
 
   #services :nth-child(2) {
@@ -195,6 +208,10 @@
     left: 0vw;
   }
 
+  .servicedivcontent {
+    font-size: 2.8vw;
+  }
+
   #services {
     height: 120vw;
   }
@@ -202,8 +219,8 @@
 
 @media only screen and (max-width: 590px) {
   #firsthome {
-    height: 55vh;
-    background-size: 300px 35vh;
+    height: 19rem;
+    background-size: 60vw 13rem;
     opacity: 0.7;
   }
 
@@ -219,7 +236,7 @@
 
 @media only screen and (max-width: 430px) {
   #firsthome {
-    height: 45vh;
+    height: 36vh;
     background: url("../photos/bb.jpg") no-repeat center;
     background-size: 100% 30vh;
     background-color: black;
@@ -234,32 +251,14 @@
     color: rgb(255, 255, 255);
     font-size: 1.1rem;
   }
-
-  .servicediv {
-    height: 35vw;
-    width: 35vw;
-  }
-
-  .servicediv img {
-    height: 25vw;
-  }
-
-  .servicedivcontent {
-    font-size: 2.8vw;
-    text-decoration: none;
-    position: relative;
-    top: 1vw;
-    left: 3vw;
-  }
 }
 
 @media only screen and (max-width: 255px) {
   #firsthome {
-    height: 40vh;
+    height: 27vh;
     background: url("../photos/bb.jpg") no-repeat center;
     background-size: 100% 30vh;
     background-color: black;
-    /* opacity: 0.7; */
   }
 
   #homePageGreetDiv {
@@ -274,13 +273,9 @@
 
   .servicedivcontent {
     font-size: 2.6vw;
-    text-decoration: none;
-    position: relative;
-    top: 1vw;
-    left: 3vw;
   }
 
-  .servicediv img{
+  .servicediv img {
     height: 23vw;
   }
 }
