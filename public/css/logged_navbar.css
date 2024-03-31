@@ -51,8 +51,9 @@
   float: right;
   background: #eceaff;
   border-radius: 10%;
-  margin-right: 2.5vw;
-  margin-top: 12vh;
+  position: absolute;
+  right: 2.5vw;
+  top: 12vh;
   overflow: hidden;
   z-index: 999;
   max-height: 0px;
