@@ -1437,6 +1437,17 @@ const organizedtripcancelled = async (req, res) => {
   }
 }
 
+// Privacy Policy Page
+
+const privacyPolicy = async (req, res) => {
+  try {
+    const user = await user_data.findById(req.session.user_id);
+    res.render('privacyPolicy', { user })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Not Found Page_view
 
 const notfoundPage = async (req, res) => {
@@ -1484,5 +1495,6 @@ module.exports = {
   historyTripDetails,
   cancelmytripemailverify,
   tripcancelled,
+  privacyPolicy,
   notfoundPage,
 };
