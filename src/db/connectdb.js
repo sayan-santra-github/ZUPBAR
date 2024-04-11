@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/User_Database')
+mongoose.connect('mongodb+srv://sayan-santra:JEug3zHSsNZG3DTp@zupbar-database-cluster.7e93bqx.mongodb.net/?retryWrites=true&w=majority&appName=ZUPBAR-DATABASE-CLUSTER')
 .then(()=>{
     console.log('Connection sucssful....')
 })
