@@ -5,7 +5,7 @@
 
 .mainDiv{
     position: absolute;
-    top: 6vw;
+    top: 7vw;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -46,6 +46,7 @@
 
 .subheading{
     color: #4A4A4A;
+    font-size: 150%;
     margin-top: 2vw;
     margin-bottom: 1.1vw;
 }
@@ -62,7 +63,6 @@ ol li {
     padding: 1% 0 0;
 }
 
-/* use media quaries */
 
 @media screen and (max-width: 1024px) {
     .mainDiv{

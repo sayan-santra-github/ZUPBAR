@@ -101,6 +101,8 @@ router.get("/approachus", connecttocontroller.approach_us_view);
 
 router.get("/privacypolicy", connecttocontroller.privacyPolicy)
 
+router.get('/termsofservice', connecttocontroller.termsofservice)
+
 router.get("*", connecttocontroller.notfoundPage)
 
 module.exports = router;
