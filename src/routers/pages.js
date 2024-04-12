@@ -103,6 +103,8 @@ router.get("/privacypolicy", connecttocontroller.privacyPolicy)
 
 router.get('/termsofservice', connecttocontroller.termsofservice)
 
+router.get('/aboutus', connecttocontroller.aboutUs)
+
 router.get("*", connecttocontroller.notfoundPage)
 
 module.exports = router;

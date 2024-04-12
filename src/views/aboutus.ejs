@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZUPBAR || About Us</title>
+  <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/aboutus.css">
+</head>
+
+<body>
+  <% if (user) { %>
+  <%-include('partials/logged_navbar')%>
+  <% } else { %>
+  <%-include('partials/navbar')%>
+  <% } %>
+
+  <div class="mainDiv">
+    <div class="heading">
+      <span>About Us</span>
+    </div>
+
+    <div class="mainContent">
+      <p class="paragraph">
+        ZUPBAR is tour booking platform that has transformed offline tour booking
+        into digital tour booking service that bringing ease and convenience to millions of
+        tourist who love travel. Founded in 2024, ZUPBAR bring a revolutionary technology of world's travel industry.
+        ZUPBAR has served customers with <strong>zero commision</strong> for its own maintanance.
+      </p>
+      <div class="heading" style="margin-top: 15px;">
+        <span>Our Team</span>
+      </div>
+      <p class="paragraph">
+        We don't have a big team. This company is managed by a person, named <strong>Sayan Santra, </strong>
+        our CEO. 
+      </p>
+      <p class="paragraph subheading"><strong>&rArr; Our CEO</strong></p>
+      <p class="paragraph">
+        Sayan Santra has been Chief Executive Officer of ZUPBAR since May 2024, starting of ZUPBAR. 
+        He is a high school pass out. After compliting high school Sayan founded his first startup 
+        <strong>ZUPBAR .</strong> 
+      </p>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1459,6 +1459,17 @@ const termsofservice = async (req, res) => {
   }
 }
 
+// About Us
+
+const aboutUs = async (req, res) => {
+  try {
+    const user = await user_data.findById(req.session.user_id)
+    res.render('aboutus', { user })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // Not Found Page_view
 
 const notfoundPage = async (req, res) => {
@@ -1508,5 +1519,6 @@ module.exports = {
   tripcancelled,
   privacyPolicy,
   termsofservice,
+  aboutUs,
   notfoundPage,
 };
