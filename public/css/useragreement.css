@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.mainDiv{
+    position: absolute;
+    top: 7vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading span:first-child{
+    font-size: 2vw;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+}
+
+.heading span:nth-child(2) {
+    margin-top: 1.5vw;
+    font-size: 1.3vw;
+    font-family: "Open Sans", "sans-serif";
+}
+
+.mainContent{
+    width: 77%;
+    margin-top: 4vw;
+}
+
+.paragraph {
+    margin-top: 1%;
+    color: #4A4D4A;
+    font-size: 95%;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.8rem;
+}
+
+.subheading{
+    color: #4A4A4A;
+    font-size: 150%;
+    margin-top: 2vw;
+    margin-bottom: 1.1vw;
+}
+
+ol{
+    padding-left: 5%;
+    margin-bottom: 1%;
+    color: #4A4D4A;
+    font-size: 80%;
+    font-family: "Montserrat", sans-serif;
+}
+
+ol li {
+    padding: 1% 0 0;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .mainDiv{
+        top: 8vw;
+    }
+
+    .heading span:first-child{
+        font-size: 3vw;
+       
+    }
+    
+    .heading span:nth-child(2) {
+        margin-top: 1.7vw;
+        font-size: 1.7vw;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .mainDiv{
+        top: 12vw;
+    }
+
+    .heading span:first-child{
+        font-size: 4vw;
+       
+    }
+    
+    .heading span:nth-child(2) {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .mainDiv{
+        top: 15vw;
+    }
+
+    .heading span:first-child{
+        font-size: 6vw;
+       
+    }
+    
+    .heading span:nth-child(2) {
+        margin-top: 2vw;
+        font-size: 2.5vw;
+    }
+}

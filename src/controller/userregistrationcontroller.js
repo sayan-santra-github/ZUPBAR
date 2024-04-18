@@ -1459,6 +1459,17 @@ const termsofservice = async (req, res) => {
   }
 }
 
+// User Agreement
+
+const userAgreement = async (req, res) => {
+  try {
+    const user = await user_data.findById(req.session.user_id)
+    res.render('useragreement', { user });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // About Us
 
 const aboutUs = async (req, res) => {
@@ -1519,6 +1530,7 @@ module.exports = {
   tripcancelled,
   privacyPolicy,
   termsofservice,
+  userAgreement,
   aboutUs,
   notfoundPage,
 };
