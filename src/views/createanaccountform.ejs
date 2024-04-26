@@ -1,292 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zupbar || create an account</title>
+  <title>ZUPBAR || Create an account</title>
   <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/createanaccountform.css">
+</head>
 
-<style>
-  body {
-    background: #f5f5f5;
-    margin-top: 20px;
-  }
-
-  .ui-w-80 {
-    width: 80px !important;
-    height: auto;
-  }
-
-  .btn-default {
-    border-color: rgba(24, 28, 33, 0.1);
-    background: rgba(0, 0, 0, 0);
-    color: #4E5155;
-  }
-
-  label.btn {
-    margin-bottom: 0;
-  }
-
-  .btn-outline-primary {
-    border-color: #26B4FF;
-    background: transparent;
-    color: #26B4FF;
-  }
-
-  .btn {
-    cursor: pointer;
-  }
-
-  .text-light {
-    color: #babbbc !important;
-  }
-
-  .btn-facebook {
-    border-color: rgba(0, 0, 0, 0);
-    background: #3B5998;
-    color: #fff;
-  }
-
-  .btn-instagram {
-    border-color: rgba(0, 0, 0, 0);
-    background: #000;
-    color: #fff;
-  }
-
-  .card {
-    background-clip: padding-box;
-    box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-  }
-
-  .row-bordered {
-    overflow: hidden;
-  }
-
-  .account-settings-fileinput {
-    position: absolute;
-    visibility: hidden;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-  }
-
-  .account-settings-links .list-group-item.active {
-    font-weight: bold !important;
-  }
-
-  html:not(.dark-style) .account-settings-links .list-group-item.active {
-    background: transparent !important;
-  }
-
-  .account-settings-multiselect~.select2-container {
-    width: 100% !important;
-  }
-
-  .light-style .account-settings-links .list-group-item {
-    padding: 0.85rem 1.5rem;
-    border-color: rgba(24, 28, 33, 0.03) !important;
-  }
-
-  .light-style .account-settings-links .list-group-item.active {
-    color: #4e5155 !important;
-  }
-
-  .material-style .account-settings-links .list-group-item {
-    padding: 0.85rem 1.5rem;
-    border-color: rgba(24, 28, 33, 0.03) !important;
-  }
-
-  .material-style .account-settings-links .list-group-item.active {
-    color: #4e5155 !important;
-  }
-
-  .dark-style .account-settings-links .list-group-item {
-    padding: 0.85rem 1.5rem;
-    border-color: rgba(255, 255, 255, 0.03) !important;
-  }
-
-  .dark-style .account-settings-links .list-group-item.active {
-    color: #fff !important;
-  }
-
-  .light-style .account-settings-links .list-group-item.active {
-    color: #4E5155 !important;
-  }
-
-  .light-style .account-settings-links .list-group-item {
-    padding: 0.85rem 1.5rem;
-    border-color: rgba(24, 28, 33, 0.03) !important;
-  }
-
-  .genders {
-    margin: 0 2%;
-    margin-bottom: 13px;
-    display: flex;
-    align-items: center;
-    color: rgb(106, 106, 106);
-    width: 20%;
-  }
-
-  .tsandpp {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 1vw;
-  }
-
-
-  /* Media Quaries */
-
-
-  @media only screen and (max-width: 900px) {
-    .tsandpp {
-      font-size: 1.2vw;
-    }
-  }
-
-
-  @media only screen and (max-width: 450px) {
-    .tsandpp {
-      font-size: 1.5vw;
-    }
-  }
-</style>
-
-
-
-  <% if (locals.message) { %>
-  <div class="container">
-    <p class="alert alert-danger mt-4" role="alert">! Alert : <%= locals.message %></p>
-  </div>
-  <% } %>
-
-
-  <form action="/createanaccount" method="post" enctype="multipart/form-data">
-    <div class="container light-style flex-grow-1 container-p-y">
-      <h4 class="font-weight-bold py-3 mb-4" style="font-family: Roboto, sans-serif;
-      font-weight: 100;
-      font-style: normal;">
-        Create Account
-      </h4>
-      <div class="card overflow-hidden">
-        <div class="row no-gutters row-bordered row-border-light">
-          <div class="col-md-3 pt-0">
-            <div class="list-group list-group-flush account-settings-links">
-              <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">General</a>
-              <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Info</a>
-              <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Password</a>
-            </div>
+<body>
+  <div class="bodyDiv">
+    <div class="heading">
+      <img src="/photos/zupbar_logo_nav.png" alt="ZUPBAR">
+      <p><a href="/login">sign in</a></p>
+    </div>
+    <% if (locals.message) { %>
+    <div class="alertDiv" id="alertDiv">
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;<%= locals.message %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <% } %>
+    <div class="mainContent">
+      <form class="signupContent" method="post" enctype="multipart/form-data" action="/createanaccount" id="form">
+        <div id="email_page">
+          <div class="emailDiv">
+            <label for="email">What is your email id ?</label>
+            <input type="text" name="email" id="email">
           </div>
-          <div class="col-md-9">
-            <div class="tab-content">
-              <div class="tab-pane fade active show" id="account-general">
-                <div class="card-body media align-items-center">
-                  <img src="user-regular-24.png" class="d-block ui-w-80" id="profilepic">
-                  <div class="media-body ml-4">
-                    <label class="btn btn-outline-primary" for="profile_picture_upload">
-                      Upload Profile Photo
-                      <input type="file" class="account-settings-fileinput" id="profile_picture_upload" name="profile_picture_upload" accept="image/jpeg, image/png, image/jpg">
-                    </label> &nbsp;
-                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
-                    <div class="text-light small mt-1">Allowed jpg, jpeg or png</div>
-                  </div>
-                </div>
-                <hr class="border-light m-0">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label class="form-label" for="first_name">First Name</label>
-                    <input type="text" class="form-control mb-1" name="first_name" id="first_name" placeholder="Enter Your First Name" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="last_name">Last Name</label>
-                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Your Last Name" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">Gender :</label>
-                    <label for="male" class="genders">
-                      <input type="radio" name="gender" id="male" value="Male">Male
-                    </label>
-
-                    <label for="female" class="genders">
-                      <input type="radio" name="gender" id="female" value="Female">Female
-                    </label>
-                  </div>
-
-                </div>
-              </div>
-              <div class="tab-pane fade" id="account-change-password">
-                <div class="card-body pb-2">
-                  <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="conpassword">Confirm password</label>
-                    <input type="password" class="form-control" name="conpassword" id="conpassword" placeholder="Re-enter your password">
-                  </div>
-                  <div class="tsandpp">
-                    <p>By click submit button you will agree with our <a href="">Terms of Service</a> and <a href="">privacy policy</a></p>
-                  </div>
-                  <div class="text-right mt-3">
-                    <button type="submit" class="btn btn-primary" value="Submit">Submit</button>&nbsp;
-                    <button type="button" class="btn btn-default" onclick="history.back()">Cancel</button>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="account-info">
-                <div class="card-body pb-2">
-                  <div class="form-group">
-                    <label class="form-label" for="country">Country</label>
-                    <select class="custom-select" name="country" id="country" required>
-                      <option selected>INDIA</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="state">State</label>
-                    <select class="custom-select" name="state" id="state" required>
-                      <option selected>WEST BENGAL</option>
-                    </select>
-                  </div>
-                </div>
-                <hr class="border-light m-0">
-                <div class="card-body pb-2">
-                  <h6 class="mb-4">Contacts</h6>
-                  <div class="form-group">
-                    <label class="form-label" for="phone">Phone</label>
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your mobile number" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="email">E-mail</label>
-                    <input type="text" class="form-control mb-1" name="email" id="email" placeholder="Enter your Email id" required>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="invldem"><span>Please provide a valid email id</span></div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="noemMsg"><span>Please enter your email</span></div>
+          <div class="btnDiv1">
+            <button type="button" id="btn1">Continue</button>
+          </div>
+          <div class="orDiv">
+            <span>___________________&nbsp;</span>
+            <span>or</span>
+            <span>&nbsp;___________________</span>
+          </div>
+          <div class="googlesignupDiv">
+            <button type="button"><span>G</span>&nbsp;&nbsp;<span>sign up with Google</span></button>
+          </div>
+          <div class="tandcDiv">
+            <span>
+              By proceeding, you consent to get calls, WhatsApp or SMS messages, email from ZUPBAR and you consent that you accept our <a href="/termsofservice">terms of service</a> and <a href="/privacypolicy">privacy policy</a> and <a href="/useragreement">user agreement</a>.
+            </span>
           </div>
         </div>
-      </div>
+        <div id="personal_details">
+          <div class="fname">
+            <label for="first_name">What is your First Name ?</label>
+            <input type="text" name="first_name" id="first_name">
+          </div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="nofnameMsg"><span>Please enter your first name</span></div>
+          <div class="lname">
+            <label for="last_name">You can enter your Last Name</label>
+            <input type="text" name="last_name" id="last_name">
+          </div>
+          <div class="gender">
+            <label for="last_name">Select your gender</label>
+            <select name="gender" id="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="btnDiv2">
+            <button type="button" id="btn2">Next</button>
+          </div>
+        </div>
+        <div id="demogra_details">
+          <div class="country">
+            <label for="country">What country are you from ?</label>
+            <select type="text" name="country" id="country">
+              <option value="India">India</option>
+            </select>
+          </div>
+          <div class="state">
+            <label for="state">What state are you from ?</label>
+            <select type="text" name="state" id="state">
+              <option value="West Bengal">West Bengal</option>
+            </select>
+          </div>
+          <div class="phone">
+            <label for="phone">Please enter your mobile number</label>
+            <input type="number" name="phone" id="phone">
+          </div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="invldmob"><span>Please provide a valid mobile number</span></div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="nomobMsg"><span>Please enter your mobile number</span></div>
+          <div class="btnDiv3">
+            <button type="button" id="btn3">Next</button>
+          </div>
+        </div>
+        <div id="security">
+          <div class="password">
+            <label for="password">You have to enter a password to keep your account safe</label>
+            <div>
+              <input type="password" name="password" id="password">
+              <img src="/photos/show-regular-24.png" alt="" id="passwordIMG" onclick="showHidepassword()">
+            </div>
+          </div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="nopassMsg"><span>Please enter a password</span></div>
+          <div class="conpassword">
+            <label for="conpassword">Please confirm your password</label>
+            <div>
+              <input type="password" name="conpassword" id="conpassword">
+              <img src="/photos/show-regular-24.png" alt="" id="conpasswordIMG" onclick="showHideconpassword()">
+            </div>
+          </div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="invldconpass"><span>Password does not match</span></div>
+          <div style="display: none; justify-content: center; color: rgb(201, 5, 5); font-size: 1rem;" id="noconpassMsg"><span>Please confirm your password</span></div>
+          <div class="btnDiv4">
+            <button type="button" id="btn4">Set Profile Picture</button>
+          </div>
+        </div>
+
+        <div id="profile_picture">
+          <div class="ppDiv">
+            <img src="/adduserphoto.png" id="profilepic">
+          </div>
+          <div class="addpicDiv">
+            <label for="profile_picture_upload">Add Profile Picture</label>
+            <input type="file" id="profile_picture_upload" name="profile_picture_upload" accept="image/jpeg, image/png, image/jpg">
+          </div>
+          <div class="btnDiv5">
+            <button type="submit" id="btn5">Done</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 
-  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    setTimeout(function() {
+      $('#alertDiv').fadeOut('fast');
+    }, 5000);
+  </script>
+  <script>
+    const btn1 = document.getElementById('btn1')
+    const email = document.getElementById('email')
+    const first_name = document.getElementById('first_name')
+    const last_name = document.getElementById('last_name')
+    const btn2 = document.getElementById('btn2')
+    const phone = document.getElementById('phone')
+    const btn3 = document.getElementById('btn3')
+    const password = document.getElementById('password')
+    const conpassword = document.getElementById('conpassword')
+    const btn4 = document.getElementById('btn4')
 
+    function btn1Fync() {
+      document.getElementById('email_page').style.display = 'none';
+      document.getElementById('personal_details').style.display = 'flex';
+    }
 
+    function btn2Fync() {
+      document.getElementById('personal_details').style.display = 'none';
+      document.getElementById('demogra_details').style.display = 'flex';
+    }
 
+    function btn3Fync() {
+      document.getElementById('demogra_details').style.display = 'none';
+      document.getElementById('security').style.display = 'flex';
+    }
 
+    function btn4Fync() {
+      document.getElementById('security').style.display = 'none';
+      document.getElementById('profile_picture').style.display = 'flex';
+    }
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript">
+    const isValidemail = email => {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
 
+    email.addEventListener('input', (e) => {
+      validateEmail()
+    })
+
+    first_name.addEventListener('input', (e) => {
+      validateform2()
+    })
+
+    phone.addEventListener('input', (e) => {
+      validateform3()
+    })
+
+    password.addEventListener('input', (e) => {
+      validateform4()
+    })
+
+    conpassword.addEventListener('input', (e) => {
+      validateform4()
+    });
+
+    btn1.addEventListener('click', (e) => {
+      validateEmail()
+    })
+
+    btn2.addEventListener('click', (e) => {
+      validateform2()
+    })
+
+    btn3.addEventListener('click', (e) => {
+      validateform3()
+    })
+
+    btn4.addEventListener('click', (e) => {
+      validateform4()
+    })
+
+    function validateEmail() {
+      const emailValue = email.value.trim();
+
+      if (emailValue === '') {
+        document.getElementById('invldem').style.display = 'none';
+        document.getElementById('noemMsg').style.display = 'flex';
+
+        document.getElementById('btn1').removeEventListener('click', btn1Fync)
+      } else if (!isValidemail(emailValue)) {
+        document.getElementById('noemMsg').style.display = 'none'
+        document.getElementById('invldem').style.display = 'flex'
+
+        document.getElementById('btn1').removeEventListener('click', btn1Fync)
+      } else {
+        document.getElementById('invldem').style.display = 'none';
+        document.getElementById('noemMsg').style.display = 'none'
+
+        document.getElementById('btn1').addEventListener('click', btn1Fync)
+      }
+    }
+
+    function validateform2() {
+      const first_nameValue = first_name.value.trim()
+
+      if (first_nameValue === '') {
+        document.getElementById('nofnameMsg').style.display = 'flex';
+
+        document.getElementById('btn2').removeEventListener('click', btn2Fync)
+      } else {
+        document.getElementById('nofnameMsg').style.display = 'none';
+
+        document.getElementById('btn2').addEventListener('click', btn2Fync)
+      }
+    }
+
+    function validateform3() {
+      const phoneValue = phone.value.trim();
+
+      if (phoneValue === '') {
+        document.getElementById('nomobMsg').style.display = 'flex';
+        document.getElementById('invldmob').style.display = 'none';
+
+        document.getElementById('btn3').removeEventListener('click', btn3Fync)
+      } else if (phoneValue.length != 10) {
+        document.getElementById('nomobMsg').style.display = 'none';
+        document.getElementById('invldmob').style.display = 'flex';
+
+        document.getElementById('btn3').removeEventListener('click', btn3Fync)
+      } else {
+        document.getElementById('nomobMsg').style.display = 'none';
+        document.getElementById('invldmob').style.display = 'none';
+
+        document.getElementById('btn3').addEventListener('click', btn3Fync)
+      }
+    }
+
+    function validateform4() {
+      const passwordValue = password.value.trim();
+      const conpasswordValue = conpassword.value.trim();
+
+      if (passwordValue === '') {
+        document.getElementById('nopassMsg').style.display = 'flex';
+        document.getElementById('noconpassMsg').style.display = 'none';
+        document.getElementById('invldconpass').style.display = 'none';
+
+        document.getElementById('btn4').removeEventListener('click', btn4Fync)
+      }
+      else if (conpasswordValue === '') {
+        document.getElementById('noconpassMsg').style.display = 'flex';
+        document.getElementById('nopassMsg').style.display = 'none';
+        document.getElementById('invldconpass').style.display = 'none';
+
+        document.getElementById('btn4').removeEventListener('click', btn4Fync)
+      } else if (passwordValue != conpasswordValue) {
+        document.getElementById('noconpassMsg').style.display = 'none';
+        document.getElementById('nopassMsg').style.display = 'none';
+        document.getElementById('invldconpass').style.display = 'flex';
+
+        document.getElementById('btn4').removeEventListener('click', btn4Fync)
+      } else {
+        document.getElementById('noconpassMsg').style.display = 'none';
+        document.getElementById('nopassMsg').style.display = 'none';
+        document.getElementById('invldconpass').style.display = 'none';
+
+        document.getElementById('btn4').addEventListener('click', btn4Fync)
+      }
+    }
   </script>
 
   <script>
-    let profilepic = document.getElementById("profilepic")
-    let profile_picture_upload = document.getElementById("profile_picture_upload")
-
-
-    profile_picture_upload.onchange = function() {
-      profilepic.src = URL.createObjectURL(profile_picture_upload.files[0])
+    const passwordIMG = document.getElementById('passwordIMG')
+    const conpasswordIMG = document.getElementById('conpasswordIMG')
+    const showHidepassword = () => {
+      if (password.type === 'password') {
+        password.type = 'text'
+        passwordIMG.src = 'hide-regular-24.png'
+      } else {
+        password.type = 'password'
+        passwordIMG.src = 'show-regular-24.png'
+      }
+    }
+    const showHideconpassword = () => {
+      if (conpassword.type === 'password') {
+        conpassword.type = 'text'
+        conpasswordIMG.src = 'hide-regular-24.png'
+      } else {
+        conpassword.type = 'password'
+        conpasswordIMG.src = 'show-regular-24.png'
+      }
     }
   </script>
+  <script>
+    let profilepic = document.getElementById("profilepic")
+        let profile_picture_upload = document.getElementById("profile_picture_upload")
+
+
+        profile_picture_upload.onchange = function () {
+            profilepic.src = URL.createObjectURL(profile_picture_upload.files[0])
+        }
+  </script>
+</body>
+
+</html>

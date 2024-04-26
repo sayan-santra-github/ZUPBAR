@@ -1,0 +1,889 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .bodyDiv {
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .heading {
+    width: 100%;
+    height: 4rem;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .heading img {
+    height: 4rem;
+  }
+  
+  .heading p {
+    color: white;
+    margin-top: 20px;
+    margin-right: 50px;
+  }
+  
+  .heading p a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 13%;
+    padding: 3px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+  
+  .mainContent {
+    height: 93.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .alertDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .alertDiv span{
+    height: 2rem;
+    font-size: 1.3rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+    background-color: rgb(208, 2, 2);
+  }
+  
+  .signupContent {
+    height: 95%;
+    width: 30%;
+  }
+  
+  #email_page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .emailDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .emailDiv label {
+    width: 80%;
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .emailDiv input {
+    width: 86.5%;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  .btnDiv1 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .btnDiv1 button {
+    width: 86.5%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 1rem;
+  }
+  
+  .btnDiv1 button:hover {
+    transition: 300ms;
+    background-color: rgba(0, 0, 0, 0.773);
+  }
+  
+  .orDiv {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .orDiv span {
+    opacity: 0.4;
+  }
+  
+  .googlesignupDiv {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .googlesignupDiv button {
+    width: 86.5%;
+    background-color: rgb(233, 227, 227);
+    color: black;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .googlesignupDiv button span:first-child {
+    font-size: 1.5rem;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .googlesignupDiv button span:nth-child(2) {
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .googlesignupDiv button:hover {
+    transition: 300ms;
+    background-color: rgb(218, 215, 215);
+  }
+  
+  .tandcDiv {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tandcDiv span {
+    width: 90%;
+    color: rgb(164 175 185);
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .tandcDiv span a {
+    text-decoration: none;
+    color: rgba(45, 53, 217, 0.757);
+  }
+  
+  #personal_details {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .fname {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .fname label {
+    width: 75%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .fname input {
+    width: 70%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  .lname {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .lname label {
+    width: 75%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .lname input {
+    width: 70%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  .gender {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .gender label {
+    width: 70%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .gender select {
+    width: 70%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  .btnDiv2 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .btnDiv2 button {
+    width: 86.5%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 1rem;
+  }
+  
+  .btnDiv2 button:hover {
+    transition: 300ms;
+    background-color: rgba(0, 0, 0, 0.773);
+  }
+  
+  #demogra_details {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .country {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .country label {
+    width: 70%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .country select {
+    width: 70%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  .state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .state label {
+    width: 70%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .state select {
+    width: 70%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  .phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .phone label {
+    width: 70%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .phone input {
+    width: 70%;
+    margin-top: 1rem;
+    letter-spacing: 10px;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .btnDiv3 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .btnDiv3 button {
+    width: 86.5%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 1rem;
+  }
+  
+  .btnDiv3 button:hover {
+    transition: 300ms;
+    background-color: rgba(0, 0, 0, 0.773);
+  }
+  
+  #security{
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .password label {
+    width: 70%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .password div{
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+    margin-top: 1rem;
+    width: fit-content;
+  }
+  
+  .password input {
+    width: 23rem;
+    letter-spacing: 10px;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    background-color: transparent;
+  }
+  
+  .password img{
+    position: relative;
+    top: 5px;
+  }
+  
+  .conpassword {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .conpassword label {
+    width: 70%;
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .conpassword div{
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgba(228, 226, 223, 0.613);
+    margin-top: 1rem;
+    width: fit-content;
+  }
+  
+  .conpassword input {
+    width: 23rem;
+    letter-spacing: 10px;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    background-color: transparent;
+  }
+  
+  .conpassword img{
+    position: relative;
+    top: 5px;
+  }
+  
+  ::-moz-selection {
+    color: rgba(255, 255, 255, 0.863);
+    background: rgb(49, 49, 49);
+  }
+  
+  ::selection {
+    color: rgba(255, 255, 255, 0.863);
+    background: rgb(49, 49, 49);
+  }
+  
+  .btnDiv4 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .btnDiv4 button {
+    width: 86.5%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 1rem;
+  }
+  
+  .btnDiv4 button:hover {
+    transition: 300ms;
+    background-color: rgba(0, 0, 0, 0.773);
+  }
+
+  #profile_picture {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .ppDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ppDiv img{
+    height: 20rem;
+    width: 22rem;
+    border-radius: 0%;
+  }
+  
+  .addpicDiv{
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .addpicDiv label{
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(146, 145, 145);
+    border: 1px solid black;
+    border-radius: 1rem;
+    outline: none;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .addpicDiv label:hover{
+    transition: 300ms;
+    background-color: black;
+    color: white;
+    border: none;
+  }
+  
+  .addpicDiv input{
+    display: none;
+  }
+  
+  .btnDiv5{
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .btnDiv5 button{
+    width: 86.5%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 1rem;
+  }
+  
+  /* media quaries */
+  
+  @media screen and (max-width: 1720px) {
+    .mainContent {
+      height: 90%;
+    }
+    .password input{
+      width: 20rem;
+    }
+    .conpassword input{
+      width: 20rem;
+    }
+  }
+  
+  @media screen and (max-width: 1150px) {
+    .signupContent {
+      width: 40%;
+      height: 70%;
+    }
+    .password div{
+      margin-right: 2.2rem;
+    }
+    .password input{
+      width: 15.5rem;
+    }
+    .conpassword div{
+      margin-right: 2.2rem;
+    }
+    .conpassword input{
+      width: 15.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 1050px) {
+    .password div{
+      margin-right: 1.8rem;
+    }
+    .password input{
+      width: 14rem;
+    }
+    .conpassword div{
+      margin-right: 1.8rem;
+    }
+    .conpassword input{
+      width: 14rem;
+    }
+  }
+  
+  @media screen and (max-width: 850px) {
+    .signupContent {
+      width: 61%;
+    }
+    .password div{
+      margin-right: 2.2rem;
+    }
+    .password input{
+      width: 15.5rem;
+    }
+    .conpassword div{
+      margin-right: 2.2rem;
+    }
+    .conpassword input{
+      width: 15.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .signupContent {
+      width: 90%;
+    }
+    .emailDiv label {
+      font-size: 2.5rem;
+    }
+    .lname{
+      margin-top: 2rem;
+    }
+    .gender{
+      margin-top: 2rem;
+    }
+    .btnDiv2{
+      margin-top: 2rem;
+    }
+    .state{
+      margin-top: 2rem;
+    }
+    .phone{
+      margin-top: 2rem;
+    }
+    .btnDiv3{
+      margin-top: 2rem;
+    }
+    .conpassword{
+      margin-top: 2rem;
+    }
+    .btnDiv4{
+      margin-top: 2rem;
+    }
+    .password div{
+      margin-right: 1.8rem;
+    }
+    .password input{
+      width: 18rem;
+    }
+    .conpassword div{
+      margin-right: 1.8rem;
+    }
+    .conpassword input{
+      width: 18rem;
+    }
+  }
+  
+  @media screen and (max-height: 740px) {
+    .signupContent {
+      height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .ppDiv img{
+      height: 15rem;
+      width: 18rem;
+    }
+  }
+  
+  @media screen and (max-width: 420px) {
+    .password div{
+      margin-right: 1rem;
+    }
+    .password input{
+      width: 13rem;
+    }
+    .conpassword div{
+      margin-right: 1rem;
+    }
+    .conpassword input{
+      width: 13rem;
+    }
+  }
+  
+  @media screen and (max-width: 350px) {
+    .heading {
+      height: 3rem;
+    }
+    .heading img {
+      height: 3rem;
+    }
+    .heading p {
+      margin-top: 15px;
+      margin-right: 25px;
+    }
+    .heading p a {
+      font-size: 1rem;
+    }
+    .emailDiv label {
+      font-size: 1.7rem;
+    }
+    .emailDiv input {
+      width: 80%;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+    }
+    .orDiv span {
+      font-size: 0.8rem;
+    }
+    .fname label {
+      font-size: 1.2rem;
+    }
+    .fname input {
+      font-size: 1rem;
+    }
+    .lname label {
+      font-size: 1.2rem;
+    }
+    .lname input {
+      font-size: 1rem;
+    }
+    .gender label {
+      font-size: 1.2rem;
+    }
+    .gender select {
+      font-size: 1rem;
+    }
+    .country label {
+      font-size: 1.2rem;
+    }
+    .country select {
+      font-size: 1rem;
+    }
+    .state label {
+      font-size: 1.2rem;
+    }
+    .state select {
+      font-size: 1rem;
+    }
+    .phone label {
+      font-size: 1.2rem;
+    }
+    .phone input {
+      font-size: 1rem;
+    }
+    .password label {
+      font-size: 1.2rem;
+    }
+    .password input {
+      font-size: 1rem;
+    }
+    .conpassword label {
+      font-size: 1.2rem;
+    }
+    .conpassword input {
+      font-size: 1rem;
+    }
+    .password div{
+      margin-right: 0.4rem;
+    }
+    .password input{
+      width: 10rem;
+    }
+    .conpassword div{
+      margin-right: 0.4rem;
+    }
+    .conpassword input{
+      width: 10rem;
+    }
+    .ppDiv img{
+      height: 12rem;
+      width: 14rem;
+    }
+  }
+  

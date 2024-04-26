@@ -424,7 +424,14 @@ const sendtripVerificationmail = async (
 
 // sending mail for cancel trip
 
-const sendmailfortripCancellation = async (first_name, last_name, email, tour_starting_place, touring_destination, token) => {
+const sendmailfortripCancellation = async (
+  first_name,
+  last_name,
+  email,
+  tour_starting_place,
+  touring_destination,
+  token
+) => {
   try {
     const transporter = await nodemailer.createTransport({
       service: "gmail",
@@ -449,7 +456,11 @@ const sendmailfortripCancellation = async (first_name, last_name, email, tour_st
         last_name +
         `, we are sorry that we couldn't provide you the trip that you enjoy, please click the link to <a target="_blank" href="http://localhost:8000/tripcancelled?token=` +
         token +
-        '"> verify and cancel</a> your ' + tour_starting_place + ' to ' + touring_destination + ' trip</p><p>Thank You,</p>',
+        '"> verify and cancel</a> your ' +
+        tour_starting_place +
+        " to " +
+        touring_destination +
+        " trip</p><p>Thank You,</p>",
     };
 
     await transporter.sendMail(mailOptions, function (error, info) {
@@ -460,13 +471,19 @@ const sendmailfortripCancellation = async (first_name, last_name, email, tour_st
       }
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // sending mail for stop trip casting
 
-const sendmailforstopcastingtrip = async (company_name, company_email, token, why_cancel_trip_option, why_cancel_trip_thoughts) => {
+const sendmailforstopcastingtrip = async (
+  company_name,
+  company_email,
+  token,
+  why_cancel_trip_option,
+  why_cancel_trip_thoughts
+) => {
   try {
     const transporter = await nodemailer.createTransport({
       service: "gmail",
@@ -490,10 +507,10 @@ const sendmailforstopcastingtrip = async (company_name, company_email, token, wh
         `, we hope you got a satisfied service from us and now, you want to stop casting your trip on our webpage with an satisfied result. </p>
         <p>To stop casting your trip please <a target="_blank" href="http://localhost:8000/organizedtripcancelled?token=` +
         token +
-        '&why_cancel_trip_option=' +
-        why_cancel_trip_option + 
-        '&why_cancel_trip_thoughts=' + 
-        why_cancel_trip_thoughts + 
+        "&why_cancel_trip_option=" +
+        why_cancel_trip_option +
+        "&why_cancel_trip_thoughts=" +
+        why_cancel_trip_thoughts +
         '">click here</a>.</p> <br> <p>Thanks for trusting us,</p>',
     };
 
@@ -505,14 +522,18 @@ const sendmailforstopcastingtrip = async (company_name, company_email, token, wh
       }
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
+// sending mail after purchase seat
 
-// sending mail after purchase seat 
-
-const sendmailafterseatpurchase = async (email, first_name, tour_starting_place, touring_destination) => {
+const sendmailafterseatpurchase = async (
+  email,
+  first_name,
+  tour_starting_place,
+  touring_destination
+) => {
   try {
     const transporter = await nodemailer.createTransport({
       service: "gmail",
@@ -535,7 +556,11 @@ const sendmailafterseatpurchase = async (email, first_name, tour_starting_place,
         first_name +
         `,</p>
         <p style='font-size: 1.5vw;'>This is just a quick email to say we've received your order.</p>
-        <p style='font-size: 1.5vw;'>You just order your <span style='font-weight: 600;'>` + tour_starting_place + ` to ` + touring_destination + `</span> trip You will find it on your trip history page</p>
+        <p style='font-size: 1.5vw;'>You just order your <span style='font-weight: 600;'>` +
+        tour_starting_place +
+        ` to ` +
+        touring_destination +
+        `</span> trip You will find it on your trip history page</p>
         <p style='font-size: 1.5vw;'>Before bording date we will send you your ticket through email.</p>
         <p style='font-size: 1.5vw;'>You can give us your feedback in our approach us section</p
         <p style='font-size: 1.5vw;'>We will send you some latest trips notification through email, so that you will be get in touch with us.</p>
@@ -551,9 +576,9 @@ const sendmailafterseatpurchase = async (email, first_name, tour_starting_place,
       }
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // home page view
 
@@ -575,7 +600,10 @@ const get_trip_view = async (req, res) => {
 
     for (let i = 0; i < trips.length; i++) {
       const element = trips[i];
-      if (Date.now() >= element.tourInactiveDate || element.available_seats <= 0) {
+      if (
+        Date.now() >= element.tourInactiveDate ||
+        element.available_seats <= 0
+      ) {
         await element.updateOne({ isActivate: false });
       }
     }
@@ -664,7 +692,9 @@ const organize_trip = async (req, res) => {
         company_website: req.body.company_website,
         tour_starting_place: req.body.tour_starting_place,
         tourInactiveDate: tour_started_date - 3 * 86400000,
-        tour_canBeCancelled_date: tour_started_date - (Number(req.body.seat_can_be_cancelled_options[8]) * 86400000),
+        tour_canBeCancelled_date:
+          tour_started_date -
+          Number(req.body.seat_can_be_cancelled_options[8]) * 86400000,
         tour_started_date_day,
         tour_started_date_month,
         tour_started_date_year,
@@ -961,7 +991,6 @@ const uploading_profile_picture_controller = upload.single(
 const insertuser = async (req, res) => {
   try {
     const first_name = req.body.first_name;
-    const last_name = req.body.last_name;
     const gender = req.body.gender;
     const country = req.body.country;
     const state = req.body.state;
@@ -972,7 +1001,6 @@ const insertuser = async (req, res) => {
 
     if (
       first_name &&
-      last_name &&
       gender &&
       country &&
       state &&
@@ -982,31 +1010,33 @@ const insertuser = async (req, res) => {
       conpassword
     ) {
       if (password === conpassword) {
+        let initial_profile_picture;
         if (req.file) {
-          var initial_profile_picture = req.file.filename;
+          initial_profile_picture = req.file.filename;
         } else {
           initial_profile_picture = "defaultUser.png";
         }
+
         const registeruser = new user_data({
           profile_picture_url: initial_profile_picture,
-          first_name: req.body.first_name,
+          first_name: first_name,
           last_name: req.body.last_name,
-          gender: req.body.gender,
-          country: req.body.country,
-          state: req.body.state,
-          phone: req.body.phone,
-          email: req.body.email,
-          password: req.body.password,
-          confirm_password: req.body.conpassword,
+          gender: gender,
+          country: country,
+          state: state,
+          phone: phone,
+          email: email,
+          password: password,
+          confirm_password: conpassword,
         });
 
         const user_registerd = await registeruser.save();
 
         if (user_registerd) {
           await sendverificationmail(
-            req.body.first_name,
+            first_name,
             req.body.last_name,
-            req.body.email,
+            email,
             user_registerd._id
           );
           res.status(201).redirect("/");
@@ -1024,8 +1054,9 @@ const insertuser = async (req, res) => {
       });
     }
   } catch (error) {
-    res.render("createanaccountform", { message: "User already registered" });
-    console.log(error);
+    res.render("createanaccountform", {
+      message: "user already registered",
+    });
   }
 };
 
@@ -1272,8 +1303,8 @@ const PaymentVerification = async (req, res) => {
       const trip_id = req.query.trip_id;
       const number_of_seats = Number(req.query.number_of_seats);
 
-      const user = await user_data.findById({_id: user_id})
-      const trips = await live_trip_detail.findById({_id: trip_id})
+      const user = await user_data.findById({ _id: user_id });
+      const trips = await live_trip_detail.findById({ _id: trip_id });
 
       await user_data.findOneAndUpdate(
         { _id: user_id },
@@ -1305,7 +1336,12 @@ const PaymentVerification = async (req, res) => {
         }
       );
 
-      await sendmailafterseatpurchase(user.email, user.first_name, trips.tour_starting_place, trips.touring_destination)
+      await sendmailafterseatpurchase(
+        user.email,
+        user.first_name,
+        trips.tour_starting_place,
+        trips.touring_destination
+      );
 
       res.redirect(
         `http://localhost:8000/goforatour/details/prepayment/payments/payment-successful?payment_id=${razorpay_payment_id}`
@@ -1346,7 +1382,7 @@ const paymentFailed = async (req, res) => {
 
 const historyTripDetails = async (req, res) => {
   try {
-    const trips = await live_trip_detail.findById({_id: req.query.id});
+    const trips = await live_trip_detail.findById({ _id: req.query.id });
     const trip_attendies = trips.trip_attendies;
     const user = req.session.user_id;
     let number_of_seats;
@@ -1354,30 +1390,40 @@ const historyTripDetails = async (req, res) => {
     for (let i = 0; i < trip_attendies.length; i++) {
       const element = trip_attendies[i];
       if (element.user == user) {
-        number_of_seats = element.number_of_seats
+        number_of_seats = element.number_of_seats;
       }
     }
-    res.render('historyTripDetailsView', {user, trips, number_of_seats});
+    res.render("historyTripDetailsView", { user, trips, number_of_seats });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const cancelmytripemailverify = async (req, res) => {
   try {
-    const tokenforcanceltrip = randomstring.generate()
-    const user = await user_data.findById({_id: req.query.user_id})
-    const trip = await live_trip_detail.findById({_id: req.query.trip_id})
-    
-    await user_data.findByIdAndUpdate({_id: req.query.user_id}, {
-      $set:{token: tokenforcanceltrip}
-    })
-    sendmailfortripCancellation(user.first_name, user.last_name, user.email, trip.tour_starting_place, trip.touring_destination, tokenforcanceltrip)
-    res.render('cancelMyTripemailverify')
+    const tokenforcanceltrip = randomstring.generate();
+    const user = await user_data.findById({ _id: req.query.user_id });
+    const trip = await live_trip_detail.findById({ _id: req.query.trip_id });
+
+    await user_data.findByIdAndUpdate(
+      { _id: req.query.user_id },
+      {
+        $set: { token: tokenforcanceltrip },
+      }
+    );
+    sendmailfortripCancellation(
+      user.first_name,
+      user.last_name,
+      user.email,
+      trip.tour_starting_place,
+      trip.touring_destination,
+      tokenforcanceltrip
+    );
+    res.render("cancelMyTripemailverify");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const tripcancelled = async (req, res) => {
   try {
@@ -1388,8 +1434,8 @@ const tripcancelled = async (req, res) => {
       await user_data.findOneAndUpdate(
         { token: token },
         {
-          $pull:{trip_attended:{trip: istriptoken._id}},
-          $set:{token: ""}
+          $pull: { trip_attended: { trip: istriptoken._id } },
+          $set: { token: "" },
         }
       );
 
@@ -1398,88 +1444,105 @@ const tripcancelled = async (req, res) => {
       res.send("Your Token is invalid. Please try again !!");
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // stop casting my organized trip
 
 const historyorganizedtripdetailsView = async (req, res) => {
   try {
-    const trips = await live_trip_detail.findById({_id: req.query.id})
-    res.render("historyorganizedtripdetails", {trips})
+    const trips = await live_trip_detail.findById({ _id: req.query.id });
+    res.render("historyorganizedtripdetails", { trips });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const historyorganizedtripdetails = async (req, res) => {
   try {
-    const tokenforstopTripCasting = randomstring.generate()
-    await live_trip_detail.findByIdAndUpdate({_id: req.body.id}, {
-      $set: {token: tokenforstopTripCasting}
-    })
-    await sendmailforstopcastingtrip(req.body.company_name, req.body.company_email, tokenforstopTripCasting, req.body.why_cancel_trip_option, req.body.why_cancel_trip_thoughts)
-    res.render('stopcastingtripmailverify')
+    const tokenforstopTripCasting = randomstring.generate();
+    await live_trip_detail.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        $set: { token: tokenforstopTripCasting },
+      }
+    );
+    await sendmailforstopcastingtrip(
+      req.body.company_name,
+      req.body.company_email,
+      tokenforstopTripCasting,
+      req.body.why_cancel_trip_option,
+      req.body.why_cancel_trip_thoughts
+    );
+    res.render("stopcastingtripmailverify");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const organizedtripcancelled = async (req, res) => {
   try {
-    await live_trip_detail.findOneAndUpdate({token: req.query.token}, {
-      $set: {token: '', isActivate: false, why_cancel_trip_option: req.query.why_cancel_trip_option, why_cancel_trip_thoughts: req.query.why_cancel_trip_thoughts},
-    })
-    res.render('tripcastingstopped')
+    await live_trip_detail.findOneAndUpdate(
+      { token: req.query.token },
+      {
+        $set: {
+          token: "",
+          isActivate: false,
+          why_cancel_trip_option: req.query.why_cancel_trip_option,
+          why_cancel_trip_thoughts: req.query.why_cancel_trip_thoughts,
+        },
+      }
+    );
+    res.render("tripcastingstopped");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Privacy Policy Page
 
 const privacyPolicy = async (req, res) => {
   try {
     const user = await user_data.findById(req.session.user_id);
-    res.render('privacyPolicy', { user })
+    res.render("privacyPolicy", { user });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Terms of Service
 
 const termsofservice = async (req, res) => {
   try {
-    const user = await user_data.findById(req.session.user_id)
-    res.render('termsofservice', { user })
+    const user = await user_data.findById(req.session.user_id);
+    res.render("termsofservice", { user });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // User Agreement
 
 const userAgreement = async (req, res) => {
   try {
-    const user = await user_data.findById(req.session.user_id)
-    res.render('useragreement', { user });
+    const user = await user_data.findById(req.session.user_id);
+    res.render("useragreement", { user });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // About Us
 
 const aboutUs = async (req, res) => {
   try {
-    const user = await user_data.findById(req.session.user_id)
-    res.render('aboutus', { user })
+    const user = await user_data.findById(req.session.user_id);
+    res.render("aboutus", { user });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Not Found Page_view
 
