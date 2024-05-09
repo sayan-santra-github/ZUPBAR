@@ -1,12 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.alertDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.alertDiv span{
+  height: 2rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: white;
+  background-color: rgb(208, 2, 2);
+}
+
 .forBscr {
   height: 100%;
   width: 100%;
   background-color: rgb(243, 235, 235);
 }
 
-.forSscr {
+/* .forSscr {
   display: none;
-}
+} */
 
 #backbutton {
   color: black;
@@ -39,12 +63,15 @@
 }
 
 .CompTitl {
-  font-size: 2vw;
-  padding: 1vw 2vw;
+  padding: 1vw;
   height: fit-content;
   width: fit-content;
   grid-row: 1 / 3;
   grid-column: 1 / 3;
+}
+
+.CompTitl img {
+  height: 3rem;
 }
 
 .cretantlale {
@@ -93,135 +120,6 @@
   font-size: 2.5vw;
 }
 
-/* .gretimg {
-  height: 28vw;
-  margin-left: 4vw;
-  grid-column: 2/2;
-  grid-row: 2 /3;
-}
-
-.button-container_email {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  margin: 1% 0;
-  margin-right: 8vw;
-  height: 5vw;
-  width: 52vw;
-  position: relative;
-  top: 3vw;
-}
-
-.button-container_password {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  margin: 6% 27%;
-  margin-right: 8vw;
-  height: 5vw;
-  width: 52vw;
-}
-
-.forgotpwdlik {
-  font-size: 1vw;
-  text-decoration: none;
-  position: relative;
-  top: 0.3vw;
-  left: 6vw;
-}
-
-input {
-  border: none;
-  outline: none;
-  background: inherit;
-  color: #84848d;
-  width: 20vw !important;
-  font-size: 1.5vw !important;
-  height: 4vw !important;
-}
-
-.Loinbtn {
-  width: 20vw !important;
-  position: relative;
-  top: 1.5vw;
-  right: 0vw;
-}
-
-@media only screen and (max-width: 1058px) {
-  .button-container_email {
-    top: 2vw;
-  }
-}
-
-@media only screen and (max-width: 830px) {
-  .button-container_email {
-    top: -4vw;
-  }
-
-  .button-container_password {
-    margin: -4% 27%;
-  }
-
-  .button-container_email label {
-    font-size: 1.8vw;
-  }
-
-  .button-container_password label {
-    font-size: 1.8vw;
-  }
-
-  .Loinbtn{
-    top: 0vw;
-  }
-
-  input {
-    font-size: 1.5vw !important;
-    height: 7vw !important;
-  }
-
-  .gretimg {
-    position: relative;
-    bottom: 6vw;
-  }
-}
-
-
-@media only screen and (max-width: 650px) {
-  .button-container_email {
-    top: -5.5vw;
-    right: 2px !important;
-  }
-
-  .button-container_password {
-    margin: -4% 27%;
-  }
-
-  .button-container_email label {
-    font-size: 1.8vw;
-  }
-
-  .button-container_password label {
-    font-size: 1.8vw;
-  }
-
-  .Loinbtn{
-    top: 0vw;
-  }
-
-  input {
-    font-size: 1.4vw !important;
-    height: 7vw !important;
-    width: 25vw !important;
-  }
-
-  .gretimg {
-    position: relative;
-    bottom: 8.5vw;
-    height: 24vw;
-  }
-} */
-
 .aldc {
   display: flex;
 }
@@ -261,11 +159,231 @@ input {
   width: 100%;
 }
 
-.aldcft {
+
+
+
+
+
+
+
+
+.bodyDiv {
+  height: 100vh;
+  width: 100%;
+  background-color: #e4e0da;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.SCmainDivSM {
   display: none;
 }
 
-.welcomeNoteDiv {
+.SCmainDiv {
+  height: 80%;
+  width: 60%;
+  background-color: #f4f1ec;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttlDiv {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.ttlDiv span:first-child {
+  font-size: 3rem;
+  font-family: "K2D", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: black;
+}
+
+.ttlDiv span:last-child {
+  font-size: 1rem;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(129, 129, 129);
+}
+
+.signinContent {
+  background-color: rgb(255, 252, 252);
+  width: 80%;
+  height: 75%;
+  margin-top: 0.2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.inputDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.inputDiv span {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputDiv span label {
+  position: relative;
+  left: 0.3rem;
+  color: rgb(119, 119, 119);
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.9rem;
+}
+
+.inputDiv span input {
+  width: 15rem;
+  height: 2rem;
+  border: none;
+  border-bottom: 1px solid rgb(212, 212, 212);
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.forgotpassDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #939393;
+}
+
+.forgotpassDiv span a {
+  text-decoration: none;
+  color: rgb(28, 81, 255);
+}
+
+.btnDiv {
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btnDiv button:first-child {
+  height: 1.7rem;
+  width: 18rem;
+  font-size: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.885);
+  font-family: "K2D", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.btnDiv button:first-child:hover {
+  transition: 300ms;
+  background-color: rgb(0, 0, 0);
+}
+
+.btnDiv button:last-child {
+  height: 1.7rem;
+  width: 18rem;
+  font-size: 0.75rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  font-family: "K2D", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.btnDiv button:last-child:hover {
+  transition: 300ms;
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.orDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-family: "K2D", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+  bottom: 1rem;
+}
+
+.googleLoinDiv {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 1rem;
+}
+
+.googleLoinDiv button {
+  height: 2rem;
+  width: 13rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #ebebeb;
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.googleLoinDiv button:hover {
+  transition: 150ms;
+  background-color: #e1e1e1;
+}
+
+.googleLoinDiv button span {
+  font-size: 1rem;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.TandCDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-family: "K2D", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #878787;
+}
+
+/* .aldcft {
+  display: none;
+} */
+
+/* .welcomeNoteDiv {
   position: relative;
   top: 33px;
   left: 22px;
@@ -273,54 +391,54 @@ input {
   font-weight: 400;
   font-style: normal;
   font-size: 2.5vw;
-}
+} */
 
-.mdc {
+/* .mdc {
   display: flex;
   position: relative;
   top: -30px;
-}
+} */
 
-.aldcft .button-container_email .form-floating input {
+/* .aldcft .button-container_email .form-floating input {
   border: none !important;
   border-bottom: 1px solid rgb(66, 64, 64) !important;
   border-radius: 0 !important;
-}
+} */
 
-.aldcft .button-container_password {
+/* .aldcft .button-container_password {
   top: 11vh;
   left: 5vw;
-}
+} */
 
-.aldcft .button-container_password .form-floating input {
+/* .aldcft .button-container_password .form-floating input {
   border: none !important;
   border-bottom: 1px solid rgb(66, 64, 64) !important;
   border-radius: 0 !important;
-}
+} */
 
-.aldcft .mfp .forgotpwdlik {
+/* .aldcft .mfp .forgotpwdlik {
   font-size: 1.7vw;
   top: 8vh;
   left: 110px;
-}
+} */
 
-.aldcft .mlb .Loinbtn {
+/* .aldcft .mlb .Loinbtn {
   position: relative;
   top: 7vh;
   left: 5vw;
   width: 80%;
-}
+} */
 
-.forSscr {
+/* .forSscr {
   height: 100vh;
   width: 100vw;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
-.welcomenote {
+/* .welcomenote {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -328,19 +446,19 @@ input {
   justify-content: center;
   position: relative;
   top: 15vw;
-}
+} */
 
-.welcomenote .welcometxt {
+/* .welcomenote .welcometxt {
   color: black;
   font-weight: 400;
-}
+} */
 
-.welcomenote .greettxt {
+/* .welcomenote .greettxt {
   color: rgba(0, 0, 0, 0.764);
   font-weight: 500;
-}
+} */
 
-.inputfield {
+/* .inputfield {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -367,40 +485,40 @@ input {
   outline: none;
   border-bottom: 1px solid rgb(170, 167, 167);
   margin-top: 1vw;
-}
+} */
 
-.inputfield .password {
+/* .inputfield .password {
   display: flex;
   flex-direction: column;
   width: 60%;
   margin-top: 4vw;
-}
+} */
 
-.inputfield .password label {
+/* .inputfield .password label {
   font-size: 3vw;
-}
+} */
 
-.inputfield .password input {
+/* .inputfield .password input {
   border: none;
   border-radius: 3px;
   width: 100% !important;
   outline: none;
   border-bottom: 1px solid rgb(170, 167, 167);
   margin-top: 1vw;
-}
+} */
 
-.loginbtn {
+/* .loginbtn {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-}
+} */
 
-.loginbtn .subdivloginbtn {
+/* .loginbtn .subdivloginbtn {
   width: 70%;
-}
+} */
 
-.loginbtn .subdivloginbtn button {
+/* .loginbtn .subdivloginbtn button {
   width: 100%;
   border: none;
   border-radius: 3px;
@@ -409,22 +527,65 @@ input {
   color: white;
   height: 8vw;
   font-size: 4.5vw;
-}
+} */
 
-.linkdiv {
+/* .linkdiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   bottom: 5vw;
-}
+} */
 
 /* Media Quaries */
 
-@media only screen and (max-width: 1020px) {
+/* @media only screen and (max-width: 1030px) {
+  .signup-form-container {
+    height: 50rem;
+    width: 60rem;
+  }
+  .CompTitl img {
+    height: 4rem;
+  }
+  .cretantlale {
+    font-size: 2rem;
+    width: 14rem;
+  }
+  .cretantbtn {
+    padding: 2%;
+    font-size: 1.3rem;
+    margin-top: 2vw;
+    margin-right: 3rem;
+    width: 10rem;
+    height: 2.5rem;
+  }
+  .lnepartion {
+    height: 70vw;
+    top: 4vw;
+    left: 2rem;
+  }
+  .loinTtlDiv {
+    height: 5rem;
+  }
+  .loinTtl {
+    font-size: 2.5rem;
+    grid-row: 10 / 10;
+  }
+  .aldc {
+    display: block;
+    position: relative;
+    bottom: 12rem;
+    left: 2rem;
+  }
+  .gretimgDiv {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+  }
   .gretimg {
-    height: 26vw;
+    height: 22rem;
   }
 
   .detailsDiv {
@@ -575,14 +736,14 @@ input {
     bottom: 20vw;
   }
 
-  .linkdiv .cretanaccountlnk{
+  .linkdiv .cretanaccountlnk {
     margin-top: 2vw;
   }
 }
 
 @media only screen and (max-width: 340px) {
-  .inputfield{
-    top:-3vw;
+  .inputfield {
+    top: -3vw;
   }
 
   .loginbtn {
@@ -592,5 +753,249 @@ input {
 
   .linkdiv {
     bottom: 38vw;
+  }
+} */
+
+
+
+@media screen and (max-width: 1040px) {
+  .bodyDiv {
+    display: flex;
+  }
+  .forBscr{
+    display: none;
+  }
+  .inputDiv span input {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .SCmainDiv {
+    display: none;
+  }
+  .SCmainDivSM {
+    height: 80%;
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .contDiv {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .welcomeNote {
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+    font-family: "K2D", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: black;
+  }
+  .companyLogo {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 2rem;
+  }
+  .companyLogo img {
+    height: 4.5rem;
+  }
+  .contWitgoogleDiv {
+    display: flex;
+    justify-content: center;
+  }
+  .contWitgoogleDiv button {
+    height: 2.5rem;
+    width: 18rem;
+    font-size: 1rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    font-family: "K2D", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  .contWitgoogleDiv button span {
+    font-size: 1rem;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .contWitgoogleDiv button:hover {
+    transition: 300ms;
+    background-color: black;
+    border: none;
+    color: white;
+  }
+  .loginCrednDiv {
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .loginCrednDiv span {
+    display: flex;
+    flex-direction: column;
+  }
+  .loginCrednDiv span label {
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .loginCrednDiv span input {
+    border: 1px solid black;
+    border-radius: 4px;
+    outline: none;
+    width: 16rem;
+    height: 2rem;
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .forgotpassDivSM {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 3rem;
+  }
+  .forgotpassDivSM span {
+    color: rgb(61, 61, 61);
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .forgotpassDivSM span a {
+    text-decoration: none;
+    color: rgb(92, 92, 246);
+  }
+  .loginbtnDiv {
+    position: relative;
+    bottom: 2rem;
+  }
+  .loginbtnDiv button {
+    width: 19rem;
+    height: 2.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-size: 1rem;
+    font-family: "K2D", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  .creteaccountDiv {
+    position: relative;
+    bottom: 2rem;
+  }
+  .creteaccountDiv a {
+    color: black;
+    font-size: 1.2rem;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .TandCDivSM {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .TandCDivSM span {
+    width: 90%;
+    color: rgb(151, 151, 151);
+    font-size: 0.8rem;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .TandCDivSM span a {
+    text-decoration: none;
+    color: rgb(125, 125, 255);
+  }
+  .imgDiv {
+    width: 50%;
+    height: 100%;
+  }
+  .imgDiv img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .contDiv {
+    width: 100%;
+  }
+  .companyLogo {
+    position: static;
+  }
+  .imgDiv {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .SCmainDivSM {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .welcomeNote {
+    font-size: 3rem;
+  }
+  .companyLogo img {
+    height: 4rem;
+  }
+  .forgotpassDivSM {
+    bottom: 1.5rem;
+  }
+  .loginbtnDiv {
+    bottom: 1rem;
+  }
+  .creteaccountDiv {
+    bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .welcomeNote {
+    font-size: 2rem;
+  }
+  .companyLogo img {
+    height: 3.5rem;
+  }
+  .forgotpassDivSM span {
+    font-size: 0.9rem;
+  }
+  .loginbtnDiv button {
+    width: 18rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  .creteaccountDiv a {
+    font-size: 1rem;
   }
 }

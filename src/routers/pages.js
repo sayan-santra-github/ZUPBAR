@@ -31,6 +31,8 @@ router.post(
 
 router.get("/email-verify", connecttocontroller.user_email_verify)
 
+router.get('/resend-verification-email', connecttocontroller.Resendverificationmail)
+
 router.get("/login", auth.islogout, connecttocontroller.loginuser_view);
 
 router.post("/login", connecttocontroller.loginuser);

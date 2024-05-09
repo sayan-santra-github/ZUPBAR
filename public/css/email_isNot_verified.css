@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainDiv {
+  background-color: rgb(233, 239, 255);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainDiv img {
+  height: 20rem;
+}
+
+.mainDiv span:nth-child(2) {
+  font-size: 2.3rem;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #438feb;
+}
+
+.mainDiv span:nth-child(3) {
+  font-size: 1.5rem;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mainDiv span:nth-child(3) a {
+  text-decoration: none;
+  color: rgb(44, 91, 223);
+}
+
+@media screen and (min-height: 1100px) {
+  .mainDiv img {
+    height: 35rem;
+  }
+  .mainDiv span:nth-child(2) {
+    font-size: 3rem;
+    margin-top: 5rem;
+  }
+
+  .mainDiv span:nth-child(3) {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .mainDiv img {
+    height: 25rem;
+  }
+  .mainDiv span:nth-child(2) {
+    font-size: 3rem;
+    margin-top: 5rem;
+  }
+
+  .mainDiv span:nth-child(3) {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .mainDiv img {
+    height: 20rem;
+  }
+  .mainDiv span:nth-child(2) {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .mainDiv span:nth-child(3) {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mainDiv img {
+    height: 15rem;
+  }
+  .mainDiv span:nth-child(2) {
+    font-size: 1.7rem;
+  }
+
+  .mainDiv span:nth-child(3) {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .mainDiv img {
+    height: 13rem;
+  }
+  .mainDiv span:nth-child(2) {
+    font-size: 1.5rem;
+  }
+
+  .mainDiv span:nth-child(3) {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+}

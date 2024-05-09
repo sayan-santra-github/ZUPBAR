@@ -1,76 +1,67 @@
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap&family=Merriweather&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap&family=Merriweather&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/login.css">
 
-
-    <div class="forBscr">
-
-
-      <button type="button" id="backbutton" onclick="history.back()"><strong>&#10005;</strong></button>
-
-      <div class="mainDiv">
-
-        <form action="/login" class="signup-form-container" method="post">
-          <p class="CompTitl">
-            <strong><i>Z</i></strong>upbar
-          </p>
-
-          <div class="cretantlale">
-            Don't have an account?
-
-
-            <button class="cretantbtn" value="/createanaccount" onclick="showcreateaccount(this)" type="button">
-              Create Account
-            </button>
-
+<body>
+  <% if (locals.message) { %>
+  <div class="alertDiv" id="alertDiv">
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;<%= locals.message %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <% } %>
+  <div class="forBscr">
+    <button type="button" id="backbutton" onclick="history.back()"><strong>&#10005;</strong></button>
+    <div class="mainDiv">
+      <form action="/login" class="signup-form-container" method="post">
+        <p class="CompTitl">
+          <img src="/photos/zupbar_logo_nav.png" alt="">
+        </p>
+        <div class="cretantlale">
+          Don't have an account?
+          <button class="cretantbtn" value="/createanaccount" onclick="showcreateaccount(this)" type="button">
+            Create Account
+          </button>
+        </div>
+        <div class="lnepartion">
+        </div>
+        <div style="display: grid;" class="loinTtlDiv">
+          <h2 class="loinTtl">
+            Log in
+          </h2>
+        </div>
+        <div class="aldc">
+          <div class="gretimgDiv">
+            <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=740&t=st=1696497423~exp=1696498023~hmac=33a917bbee0c77b84c56dc40173933544442a603dbcc6827aaeb7a79dd85b59e" alt="" class="gretimg">
           </div>
-
-          <div class="lnepartion">
-          </div>
-
-          <div style="display: grid;" class="loinTtlDiv">
-            <h2 class="loinTtl">
-              Log in
-            </h2>
-
-          </div>
-
-          <div class="aldc">
-            <div class="gretimgDiv">
-              <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=740&t=st=1696497423~exp=1696498023~hmac=33a917bbee0c77b84c56dc40173933544442a603dbcc6827aaeb7a79dd85b59e" alt="" class="gretimg">
-
-            </div>
-
-            <div class="detailsDiv">
-              <div class="button-container_email">
-                <div class="form-floating">
-                  <input type="email" class="form-control" id="login_email" name="login_email" placeholder="name@example.com">
-                  <label for="login_email"><i class='bx bx-envelope'></i> Email address</label>
-                </div>
-              </div>
-
-              <div class="button-container_password">
-                <div class="form-floating">
-                  <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password" value="">
-                  <label for="login_password"><i class='bx bx-lock-alt'></i> Password</label>
-                </div>
-                <p class="forgotpwdlik"><a href="/forgot-password" style="text-decoration: none;">Forgot Password ?</a></p>
-
-                <button type="submit" class="btn btn-success Loinbtn">Log in</button>
-
-
+          <div class="detailsDiv">
+            <div class="button-container_email">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="login_email" name="login_email" placeholder="name@example.com">
+                <label for="login_email"><i class='bx bx-envelope'></i> Email address</label>
               </div>
             </div>
 
+            <div class="button-container_password">
+              <div class="form-floating">
+                <input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password" value="">
+                <label for="login_password"><i class='bx bx-lock-alt'></i> Password</label>
+              </div>
+              <p class="forgotpwdlik"><a href="/forgot-password" style="text-decoration: none;">Forgot Password ?</a></p>
 
+              <button type="submit" class="btn btn-success Loinbtn">Log in</button>
+
+
+            </div>
           </div>
 
-          <div class="aldcft">
+
+        </div>
+
+        <!-- <div class="aldcft">
 
             <div class="welcomeNoteDiv">
               <p>Welcome Back,</p>
@@ -99,7 +90,9 @@
                   password?</a></p>
 
             </div>
-
+            <div class="errMsg">
+              <span>!! <strong>Invalid</strong> login details</span>
+            </div>
             <div class="mlb">
               <button type="submit" class="btn btn-success Loinbtn">Log in</button>
 
@@ -107,20 +100,95 @@
 
 
 
-          </div>
+          </div> -->
 
-
-
-
-        </form>
-
-      </div>
-
+      </form>
     </div>
+  </div>
+
+  <div class="bodyDiv">
+    <div class="SCmainDiv">
+      <div class="ttlDiv">
+        <span>Welcome back</span>
+        <span>Join the travellers world</span>
+      </div>
+      <form action="/login" class="signinContent" method="post">
+        <div class="inputDiv">
+          <span>
+            <label for="login_email">Email</label>
+            <input type="email" name="login_email" id="login_email">
+          </span>
+          <span>
+            <label for="login_password">Password</label>
+            <input type="password" name="login_password" id="login_password">
+          </span>
+        </div>
+        <div class="forgotpassDiv">
+          <span>
+            Cannot remember your password?
+            <a href="/forgot-password">reset it</a>
+          </span>
+        </div>
+        <div class="btnDiv">
+          <button type="submit">Log in</button>
+          <button type="button">Create Account</button>
+        </div>
+        <div class="orDiv">
+          <span>________________________or________________________</span>
+        </div>
+        <div class="googleLoinDiv">
+          <button type="button"><span>G</span> &nbsp;&nbsp;continue with google</button>
+        </div>
+        <div class="TandCDiv">
+          <span>By clicking button above, you agree to our <a href="">terms and condition</a> and <a href="">privacy policies</a>.</span>
+        </div>
+      </form>
+    </div>
+    <form action="/login" method="post" class="SCmainDivSM">
+      <div class="contDiv">
+        <div class="welcomeNote">
+          <span>Welcome to</span>
+        </div>
+        <div class="companyLogo">
+          <img src="/photos/zupbar_logo_white.png" alt="">
+        </div>
+        <div class="contWitgoogleDiv">
+          <button type="button"><span>G</span> &nbsp;&nbsp;continue with google</button>
+        </div>
+        <div class="loginCrednDiv">
+          <span>
+            <label for="login_email">Email</label>
+            <input type="email" name="login_email" id="login_email">
+          </span>
+          <span>
+            <label for="login_password">Password</label>
+            <input type="password" name="login_password" id="login_password">
+          </span>
+        </div>
+        <div class="forgotpassDivSM">
+          <span>
+            Cannot remember your password?
+            <a href="/forgot-password">reset it</a>
+          </span>
+        </div>
+        <div class="loginbtnDiv">
+          <button type="submit">Log in</button>
+        </div>
+        <div class="creteaccountDiv">
+          <a href="">Create Account</a>
+        </div>
+        <div class="TandCDivSM">
+          <span>By clicking button above, you agree to our <a href="">terms and condition</a> and <a href="">privacy policies</a>.</span>
+        </div>
+      </div>
+      <div class="imgDiv">
+        <img src="/photos/loginIMG.jpg" alt="">
+      </div>
+    </form>
+  </div>
 
 
-
-    <form action="/login" method="post">
+  <!-- <form action="/login" method="post">
       <div class="forSscr">
 
         <div class="welcomenote">
@@ -156,17 +224,22 @@
         </div>
 
       </div>
-    </form>
+    </form> -->
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-    </script>
+  <script>
+    setTimeout(function() {
+      $('#alertDiv').fadeOut('fast');
+    }, 5000);
+  </script>
 
+  <script>
+    function showcreateaccount(link) {
+      location.href = link.value
+    }
+  </script>
 
-    <script>
-      function showcreateaccount(link) {
-
-        location.href = link.value
-
-      }
-    </script>
+</body>

@@ -2,6 +2,26 @@
   margin: 0;
   padding: 0;
 }
+
+.alertDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.alertDiv span{
+  height: 2rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: white;
+  background-color: rgb(14, 144, 2);
+}
+
 .nav-link {
   opacity: 0.8;
 }

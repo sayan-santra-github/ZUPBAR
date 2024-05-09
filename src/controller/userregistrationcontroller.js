@@ -87,6 +87,51 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
   }
 };
 
+const Resendverificationmailmethod = async (
+  first_name,
+  last_name,
+  email,
+  user_id
+) => {
+  try {
+    const transporter = await nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: {
+        user: "sayanssent@gmail.com",
+        pass: "othe smvx jnvq nwce",
+      },
+    });
+
+    const mailOptions = await {
+      from: "sayanssent@gmail.com",
+      to: email,
+      subject: "no-reply",
+      html:
+        "<p>Hello, " +
+        first_name +
+        " " +
+        last_name +
+        ', please click the link to <a target="_blank" href="http://localhost:8000/email-verify?id=' +
+        user_id +
+        '"> verify</a> your mail.</p>',
+    };
+
+    await transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email has been sent", info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // sending mail for reset password
 
 const sendresetmail = async (first_name, last_name, email, token) => {
@@ -884,7 +929,7 @@ const myaccount = async (req, res) => {
       );
     }
 
-    res.redirect("/");
+    res.status(201).redirect("/");
   } catch (error) {
     console.log(error);
   }
@@ -1039,14 +1084,16 @@ const insertuser = async (req, res) => {
             email,
             user_registerd._id
           );
-          res.status(201).redirect("/");
+          res.status(201).render('index')
         } else {
-          res.redirect("/createanaccount", {
+          res.render("createanaccountform", {
             message: "Please check your details",
           });
         }
       } else {
-        res.send("passwords are not matching");
+        res.render("createanaccountform", {
+          message: "Passwords are not matching",
+        });
       }
     } else {
       res.render("createanaccountform", {
@@ -1055,7 +1102,7 @@ const insertuser = async (req, res) => {
     }
   } catch (error) {
     res.render("createanaccountform", {
-      message: "user already registered",
+      message: "User already registered",
     });
   }
 };
@@ -1067,7 +1114,6 @@ const loginuser_view = (req, res) => {
 };
 
 const loginuser = async (req, res) => {
-  const sublogincheckForUsericon = auth.logincheckForUsericon;
   try {
     const user_typed_email = req.body.login_email;
     const user_typed_password =
@@ -1094,15 +1140,34 @@ const loginuser = async (req, res) => {
       const email_isVerified = useremail.email_isVerified;
       if (email_isVerified) {
         req.session.user_id = useremail._id;
-        res.status(201).redirect("/");
+        res.status(200).redirect("/");
       } else {
-        res.send("Your email is not verified....");
+        res.render("email_isNot_verified", {email: req.body.login_email});
       }
     } else {
-      res.send("invaild password details");
+      res.render("login", { message: "invaild password details" });
     }
   } catch (error) {
-    res.send("invalid email" + "" + error);
+    res.render("login", { message: "invalid email" });
+  }
+};
+
+// Resend verification email
+
+const Resendverificationmail = async (req, res) => {
+  try {
+    const user = req.session.user_id;
+    const userData = await user_data.findOne({email: req.query.email});
+
+    await Resendverificationmailmethod(
+      userData.first_name,
+      userData.last_name,
+      userData.email,
+      userData._id
+    );
+    res.render('index', {user, message: "Please check your email !!"})
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -1561,6 +1626,7 @@ module.exports = {
   insertuser,
   user_email_verify,
   loginuser,
+  Resendverificationmail,
   forgotPassword_view,
   forgotPassword,
   resetPassword_view,
