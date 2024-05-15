@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const userregistrationschema = new mongoose.Schema(
   {
     profile_picture_url: {
@@ -79,35 +78,9 @@ const userregistrationschema = new mongoose.Schema(
       type: String,
       default: "",
     },
-
-    tokens: [
-      {
-        token: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
   },
   { timestamps: true }
 );
-
-//generating token
-
-userregistrationschema.methods.generateAuthToken = async function () {
-  try {
-    const token = jwt.sign(
-      { _id: this._id.toString() },
-      "hnbvt521364%**)(%#5lo;<,/?>:'jhASDER123"
-    );
-    this.tokens = this.tokens.concat({ token });
-    await this.save();
-    return token;
-  } catch (error) {
-    res.send("the error part is:" + error);
-    console.log("the error part is:" + error);
-  }
-};
 
 //hashing password
 

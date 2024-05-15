@@ -3,7 +3,6 @@ const app = express()
 const ejs = require('ejs')
 const path = require('path')
 const router = require("./routers/pages")
-const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 require('./db/connectdb')
 
@@ -21,7 +20,6 @@ app.use(express.static(path.join(__dirname, '../templates/views')))
 app.use(express.static(path.join(__dirname, '../templates/partials')))
 app.use(express.static(path.join(__dirname, '../src/middleware/auth')))
 app.use(router);
-app.use(cookieParser());
 
 
 app.listen(8000, () => {

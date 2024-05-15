@@ -5,8 +5,6 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const path = require("path");
 const multer = require("multer");
-const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const auth = require("../middleware/auth");
@@ -1128,14 +1126,6 @@ const loginuser = async (req, res) => {
       useremail.password
     );
 
-    const token = await useremail.generateAuthToken();
-
-    const cookies = res.cookie("jwt", token, {
-      expires: new Date(Date.now() + 45 * 24 * 3600000),
-      httpOnly: true,
-      // secure: true
-    });
-
     if (isMatch) {
       const email_isVerified = useremail.email_isVerified;
       if (email_isVerified) {
@@ -1281,7 +1271,6 @@ const resetPassword = async (req, res) => {
 const logoutUser = async (req, res) => {
   try {
     req.session.destroy();
-    res.clearCookie("jwt");
     res.redirect("/");
   } catch (error) {
     console.log(error.message);
