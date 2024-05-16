@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const user_data = require("../models/userregistrationsmodel");
+const bodyParser = require('body-parser')
 const session = require("express-session");
 const connecttocontroller = require("./../controller/userregistrationcontroller");
 const auth = require("../middleware/auth");
@@ -12,6 +13,8 @@ router.use(
     saveUninitialized: false,
   })
 );
+router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({ extended: false }))
 
 
 router.get("/", connecttocontroller.homeview);
