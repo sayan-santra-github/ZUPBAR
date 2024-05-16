@@ -1488,7 +1488,7 @@ const tripcancelled = async (req, res) => {
       await user_data.findOneAndUpdate(
         { token: token },
         {
-          $pull: { trip_attended: { trip: istriptoken._id } },
+          $pull: { trip_attended: { trip: isusertoken._id } },
           $set: { token: "" },
         }
       );
