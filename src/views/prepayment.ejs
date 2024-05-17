@@ -68,7 +68,6 @@
           }),
 
           success: function(data) {
-            console.log(data)
             if (data.id) {
 
               obj["order_id"] = data.id
@@ -84,9 +83,6 @@
         };
 
         await jQuery.ajax(settings)
-
-        console.log(obj)
-
 
         var options = {
           "key": "rzp_test_DRZ2l5e2BpzChh",

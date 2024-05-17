@@ -1,6 +1,7 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://sayan-santra:JEug3zHSsNZG3DTp@zupbar-database-cluster.7e93bqx.mongodb.net/?retryWrites=true&w=majority&appName=ZUPBAR-DATABASE-CLUSTER')
+mongoose.connect('mongodb://localhost:27017/User_Database')
 .then(()=>{
     console.log('Connection sucssful....')
 })

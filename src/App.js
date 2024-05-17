@@ -1,6 +1,6 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const ejs = require('ejs')
 const path = require('path')
 const router = require("./routers/pages")
 require('./db/connectdb')
@@ -14,7 +14,8 @@ app.use(express.static(path.join(__dirname, '../public/photos')))
 app.use(express.static(path.join(__dirname, '../src/middleware/auth')))
 app.use(router);
 
+const port = process.env.PORT || 57412;
 
-app.listen(8000, () => {
-    console.log("Listening on port 8000.....")
+app.listen(port, () => {
+    console.log(`Listening.....`);
 })

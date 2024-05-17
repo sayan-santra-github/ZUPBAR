@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router = new express.Router();
 const user_data = require("../models/userregistrationsmodel");
@@ -8,7 +9,7 @@ const auth = require("../middleware/auth");
 
 router.use(
   session({
-    secret: "sadd5410053#@$%^tyrSFSS754",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })

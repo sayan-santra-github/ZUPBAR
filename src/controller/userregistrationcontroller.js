@@ -1,3 +1,4 @@
+require('dotenv').config();
 const user_data = require("./../models/userregistrationsmodel");
 const live_trip_detail = require("./../models/live_trip_detail_model");
 const { order_details_model } = require("../models/order_details_model.js");
@@ -54,13 +55,13 @@ const sendverificationmail = async (first_name, last_name, email, user_id) => {
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: email,
       subject: "no-reply",
       html:
@@ -99,13 +100,13 @@ const Resendverificationmailmethod = async (
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: email,
       subject: "no-reply",
       html:
@@ -141,13 +142,13 @@ const sendresetmail = async (first_name, last_name, email, token) => {
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: email,
       subject: "For Reset Password",
       html:
@@ -225,13 +226,13 @@ const sendtripVerificationmail = async (
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: company_email,
       subject: "For Trip Verification",
       html:
@@ -483,13 +484,13 @@ const sendmailfortripCancellation = async (
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: email,
       subject: "For Trip Cancellation Verification",
       html:
@@ -535,13 +536,13 @@ const sendmailforstopcastingtrip = async (
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: company_email,
       subject: "For Trip Cancellation Verification",
       html:
@@ -585,13 +586,13 @@ const sendmailafterseatpurchase = async (
       secure: false,
       requireTLS: true,
       auth: {
-        user: "sayanssent@gmail.com",
-        pass: "othe smvx jnvq nwce",
+        user: process.env.OUR_EMAIL,
+        pass: process.env.OUR_EMAIL_PASSWORD,
       },
     });
 
     const mailOptions = await {
-      from: "sayanssent@gmail.com",
+      from: process.env.OUR_EMAIL,
       to: email,
       subject: "Order confirmation from Diffroute",
       html:
@@ -1293,15 +1294,11 @@ const prepayment_view = async (req, res) => {
 const Payment = async (req, res) => {
   try {
     var instance = new Razorpay({
-      key_id: "rzp_test_DRZ2l5e2BpzChh",
-      key_secret: "7oHTLeSmCN6ocJiT5a9OVixM",
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
     });
 
-    const body = req.body;
-    console.log(Object.assign(body));
     const amount = Number(req.body.tourPackage) * Number(req.body.numberSeats);
-
-    console.log(amount);
 
     let options = {
       amount: amount * 100,
@@ -1316,7 +1313,6 @@ const Payment = async (req, res) => {
           amount: amount,
         });
 
-        console.log(order);
         res.json(order);
       } else {
         const errobj = err;
@@ -1337,7 +1333,7 @@ const PaymentVerification = async (req, res) => {
     const bodyData = razorpay_order_id + "|" + razorpay_payment_id;
 
     const except_bodyData = crypto
-      .createHmac("sha256", "7oHTLeSmCN6ocJiT5a9OVixM")
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(bodyData)
       .digest("hex");
 
