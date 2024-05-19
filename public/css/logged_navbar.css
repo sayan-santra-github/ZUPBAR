@@ -38,7 +38,7 @@
   justify-content: space-between;
   font-size: 1.6vw;
   margin-top: 1vw;
-  margin-bottom: 2vw;
+  margin-bottom: 1vw;
 }
 
 .join {
@@ -104,7 +104,6 @@
   .navigation-items ul {
     margin-top: 1.6vw;
     font-size: 1.9vw;
-    margin-bottom: 2vw;
   }
 
   .navigation-items ul li a {
@@ -119,7 +118,6 @@
 
   .navigation-items ul {
     font-size: 2.1vw;
-    margin-bottom: 2vw;
   }
 
   .navigation-items {
@@ -144,9 +142,12 @@
     transform: translateX(8vw);
   }
 
+  .join{
+    margin-right: 3vw;
+  }
+
   .navigation-items ul {
     font-size: 2.4vw;
-    margin-bottom: 2vw;
   }
 
   .navigation-items ul li a {
@@ -195,5 +196,22 @@
 
   .navigation-items {
     transform: translateX(-12vw);
+  }
+}
+
+
+@media screen and (max-width: 420px) {
+  .navbar > img{
+    height: 25px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .navbar > img{
+    height: 23px;
+    width: 30px;
+  }
+  .join{
+    margin-right: 5px;
   }
 }
