@@ -31,7 +31,6 @@
 .navigation-items {
   width: 25vw;
   transform: translateX(25vw);
-  background-color: rgb(239 239 239 / 90%);
 }
 
 .navigation-items ul {
@@ -42,15 +41,6 @@
   margin-top: 1vw;
   margin-bottom: 2vw;
   transform: translateY(0.8vw);
-  background-color: rgb(239 239 239 / 90%);
-}
-
-.navigation-items ul li{
-  background-color: rgb(239 239 239 / 90%);
-}
-
-.navigation-items ul li a {
-  background-color: rgb(239 239 239 / 90%);
 }
 
 .nav-divider {
@@ -63,14 +53,12 @@
 .join a {
   font-size: 1.9vw;
   margin-left: 1vw;
-  background-color: rgb(239 239 239 / 90%);
 }
 
 .join {
   margin-left: 1vw;
   margin-right: 5vw;
   margin-top: 1vw;
-  background-color: rgb(239 239 239 / 90%);
 }
 
 /* use media qua... */
