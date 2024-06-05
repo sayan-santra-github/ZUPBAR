@@ -49,8 +49,7 @@ const uploadforprofilepicupdate = multer({
 const sendverificationmail = async (first_name, last_name, email, user_id) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
@@ -94,8 +93,7 @@ const Resendverificationmailmethod = async (
 ) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
@@ -136,8 +134,7 @@ const Resendverificationmailmethod = async (
 const sendresetmail = async (first_name, last_name, email, token) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
@@ -220,8 +217,7 @@ const sendtripVerificationmail = async (
 ) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
@@ -478,8 +474,7 @@ const sendmailfortripCancellation = async (
 ) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
@@ -530,8 +525,7 @@ const sendmailforstopcastingtrip = async (
 ) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
@@ -580,8 +574,7 @@ const sendmailafterseatpurchase = async (
 ) => {
   try {
     const transporter = await nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
+      host: "smtppro.zoho.in",
       port: 587,
       secure: false,
       requireTLS: true,
