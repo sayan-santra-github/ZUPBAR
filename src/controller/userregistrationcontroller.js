@@ -232,9 +232,9 @@ const sendtripVerificationmail = async (
       to: company_email,
       subject: "For Trip Verification",
       html:
-        `<p>Hello, this is sayan from Diffroute. We found that ` +
+        `<p>Hello, this is sayan from zupbar. We found that ` +
         company_name +
-        ` want to organize a Trip. This is a <strong>Verification Mail</strong> from Diffroute, We request you to kindly click the link to <a target="_blank" href="http://localhost:8000/trip-verification?token=` +
+        ` want to organize a Trip. This is a <strong>Verification Mail</strong> from zupbar, We request you to kindly click the link to <a target="_blank" href="http://localhost:8000/trip-verification?token=` +
         token +
         `"> verify</a> the e-mail associated with your company.</p><br/><br/>
         <table style="border: 1px solid red">
@@ -447,7 +447,7 @@ const sendtripVerificationmail = async (
         <br/><br/>
         <p>Thank You,</p>
         <br/>
-        <p>Team Diffroute</p>`,
+        <p>Team ZUPBAR</p>`,
     };
 
     await transporter.sendMail(mailOptions, function (error, info) {
@@ -587,7 +587,7 @@ const sendmailafterseatpurchase = async (
     const mailOptions = await {
       from: process.env.OUR_EMAIL,
       to: email,
-      subject: "Order confirmation from Diffroute",
+      subject: "Order confirmation from zupbar",
       html:
         "<p style='font-size: 1.5vw;'>Hey " +
         first_name +
