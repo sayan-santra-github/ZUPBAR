@@ -1,14 +1,13 @@
 {
-  "name": "backend",
+  "name": "zupbar",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the whole code for the ZUPBAR application.",
   "main": "App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/App.js",
     "start": "node ./src/App.js"
   },
-  "author": "",
+  "author": "Sayan Santra",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -26,5 +25,13 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayan-santra-github/ZUPBAR.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sayan-santra-github/ZUPBAR/issues"
+  },
+  "homepage": "https://github.com/sayan-santra-github/ZUPBAR#readme"
 }
