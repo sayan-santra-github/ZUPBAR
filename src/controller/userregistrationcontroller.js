@@ -16,29 +16,33 @@ const randomstring = require("randomstring");
 
 // user profile picture upload
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    return cb(null, path.join(__dirname, "../../public/user_profile_photos"));
-  },
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     return cb(null, path.join(__dirname, "../../public/user_profile_photos"));
+//   },
 
-  filename: (req, file, cb) => {
-    return cb(null, `${Date.now()}---${file.originalname}`);
-  },
-});
+//   filename: (req, file, cb) => {
+//     return cb(null, `${Date.now()}---${file.originalname}`);
+//   },
+// });
+
+const storage = multer.memoryStorage()
 
 const upload = multer({ storage });
 
-// user profile picture upload
+// user profile picture update
 
-const storageforprofilepicupdate = multer.diskStorage({
-  destination: (req, file, cb) => {
-    return cb(null, path.join(__dirname, "../../public/user_profile_photos"));
-  },
+// const storageforprofilepicupdate = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     return cb(null, path.join(__dirname, "../../public/user_profile_photos"));
+//   },
 
-  filename: (req, file, cb) => {
-    return cb(null, `${Date.now()}---${file.originalname}`);
-  },
-});
+//   filename: (req, file, cb) => {
+//     return cb(null, `${Date.now()}---${file.originalname}`);
+//   },
+// });
+
+const storageforprofilepicupdate = multer.memoryStorage();
 
 const uploadforprofilepicupdate = multer({
   storage: storageforprofilepicupdate,
@@ -895,7 +899,10 @@ const myaccount = async (req, res) => {
         { _id: user._id },
         {
           $set: {
-            profile_picture_url: req.file.filename,
+            profile_picture: {
+              data: req.file.buffer,
+              contentType: req.file.mimetype
+            },
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             gender: req.body.gender,
@@ -1049,13 +1056,19 @@ const insertuser = async (req, res) => {
       if (password === conpassword) {
         let initial_profile_picture;
         if (req.file) {
-          initial_profile_picture = req.file.filename;
+          initial_profile_picture = {
+            data: req.file.buffer,
+            contentType: req.file.mimetype
+          }
         } else {
-          initial_profile_picture = "defaultUser.png";
+          initial_profile_picture = {
+            data: "",
+            contentType: ""
+          };
         }
 
         const registeruser = new user_data({
-          profile_picture_url: initial_profile_picture,
+          profile_picture: initial_profile_picture,
           first_name: first_name,
           last_name: req.body.last_name,
           gender: gender,

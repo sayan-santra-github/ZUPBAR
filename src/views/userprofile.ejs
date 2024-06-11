@@ -147,7 +147,7 @@
             <div class="tab-content">
               <div class="tab-pane fade active show" id="account-general">
                 <div class="card-body media align-items-center">
-                  <img src="/user_profile_photos/<%= user.profile_picture_url %>" class="d-block ui-w-80" id="profilepic">
+                  <img src="data:<%= user.profile_picture.contentType %>;base64,<%= user.profile_picture.data.toString('base64') %>" class="d-block ui-w-80" id="profilepic">
                   <div class="media-body ml-4">
                     <label class="btn btn-outline-primary" for="profile_picture_upload">
                       Upload new photo

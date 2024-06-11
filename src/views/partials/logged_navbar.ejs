@@ -25,7 +25,7 @@
       <div class="nav-divider"></div>
 
       <img
-        src="/user_profile_photos/<%= user.profile_picture_url %>"
+        src="data:<%= user.profile_picture.contentType %>;base64,<%= user.profile_picture.data.toString('base64') %>"
         width="35vw"
         height="35vh"
         style="border-radius: 50%; cursor: pointer;"
@@ -42,7 +42,7 @@
       <ul>
         <li>
           <img
-            src="/user_profile_photos/<%= user.profile_picture_url %>"
+            src="data:<%= user.profile_picture.contentType %>;base64,<%= user.profile_picture.data.toString('base64') %>"
             width="35vw"
             height="35vh"
             style="border-radius: 50%; margin: 0"

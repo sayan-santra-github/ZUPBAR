@@ -2,8 +2,13 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const userregistrationschema = new mongoose.Schema(
   {
-    profile_picture_url: {
-      type: String,
+    // profile_picture_url: {
+    //   type: String,
+    // },
+
+    profile_picture: {
+      data: Buffer,
+      contentType: String
     },
 
     first_name: {
