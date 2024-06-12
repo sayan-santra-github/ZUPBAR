@@ -1089,7 +1089,8 @@ const insertuser = async (req, res) => {
             email,
             user_registerd._id
           );
-          res.status(201).render('index')
+          const user = req.session.user_id
+          res.status(201).render('index', {user})
         } else {
           res.render("createanaccountform", {
             message: "Please check your details",
